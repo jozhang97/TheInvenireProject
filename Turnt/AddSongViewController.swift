@@ -10,12 +10,9 @@ import UIKit
 
 class AddSongViewController: UIViewController, UITextFieldDelegate, UINavigationControllerDelegate {
 
-
     @IBOutlet weak var songName: UITextField!
     @IBOutlet weak var artistName: UITextField!
     @IBOutlet weak var albumName: UITextField!
-    
-    
     @IBAction func submit(sender: AnyObject) {
         var displayError = ""
         if songName.text == ""{
@@ -37,8 +34,17 @@ class AddSongViewController: UIViewController, UITextFieldDelegate, UINavigation
             Test["Artist"] = artistName.text!
             Test["Album"] = albumName.text!
             Test["likes"] = 0
-//            let geo = PFGeoPoint()
-//            Test["location"] = PFGeoPoint.geoPointForCurrentLocationInBackground(<#T##resultBlock: PFGeoPointResultBlock?##PFGeoPointResultBlock?##(PFGeoPoint?, NSError?) -> Void#>)
+            PFGeoPoint.geoPointForCurrentLocationInBackground { //WHY DOESN'T THIS WORK
+                (geoPoint: PFGeoPoint?, error: NSError?) -> Void in
+                if error == nil {
+                    print("Got geoPoint") //Never reaches this
+                    print(geoPoint)
+                    print("done")
+                    Test["location"] = geoPoint
+                } else {
+                    print(error ) //No error either
+                }
+            }
             Test.saveInBackgroundWithBlock { (succeeded, signupError) -> Void in
                 if signupError == nil{
                     self.performSegueWithIdentifier("submitParty", sender: nil)
@@ -72,8 +78,10 @@ class AddSongViewController: UIViewController, UITextFieldDelegate, UINavigation
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
         // Do any additional setup after loading the view.
     }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

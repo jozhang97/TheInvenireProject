@@ -25,6 +25,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
 //    }
     
+    
+    
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         Parse.enableLocalDatastore()
         Parse.setApplicationId("gqlu265uUbOXkoMTSxHgB3X66qIETfirpuGW7IMu",

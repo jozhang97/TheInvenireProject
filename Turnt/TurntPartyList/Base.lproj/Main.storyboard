@@ -208,7 +208,6 @@
                                                     </state>
                                                     <connections>
                                                         <action selector="likeThis:" destination="To3-pj-VGh" eventType="touchUpInside" id="V2g-Ny-6YH"/>
-                                                        <segue destination="G5C-5O-Cpr" kind="show" identifier="likeSegue" id="Ivl-zJ-a26"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -598,7 +597,6 @@
         <image name="ThumbsUpReal" width="570" height="597"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Qvh-xW-4tY"/>
         <segue reference="d8I-vN-Gmc"/>
         <segue reference="X9V-uW-N4I"/>
     </inferredMetricsTieBreakers>

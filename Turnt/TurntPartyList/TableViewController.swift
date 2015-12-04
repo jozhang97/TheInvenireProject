@@ -6,7 +6,7 @@
 //  Copyright © 2015 Jeffrey Zhang. All rights reserved.
 //f
 
-import UIKit
+import UIKit 
 
 class TableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, TableViewCellDelegate {
     
@@ -14,6 +14,7 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     var songNames = Array<String> ()
     var albumNames = Array<String>()
     var likesList = Array<Int>()
+    var locations = Array<PFGeoPoint>()
     
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
@@ -28,6 +29,7 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
 //        self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
         tableView.delegate = self
         tableView.dataSource = self
+        
         getParties()
         //getDescription()
         tableView.reloadData()
@@ -52,6 +54,7 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
                         self.songNames.append(object["Song"] as! String)
                         self.albumNames.append(object["Album"] as! String)
                         self.likesList.append(object["likes"] as! Int)
+                        self.locations.append(object["location"] as! PFGeoPoint)
                     }
                     self.tableView.reloadData()
                 }
@@ -75,13 +78,10 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 if let objects = objects! as? [PFObject] {
                     for object in objects {
                         let currLikes = object["likes"] as! Int
+//                        NSLog("Current Likes %i", currLikes)
                         let newLikes = currLikes + 1
                         object["likes"] = newLikes
-                        object.saveInBackgroundWithBlock { (succeeded, signupError) -> Void in
-                            if signupError == nil{
-                                self.performSegueWithIdentifier("likeSegue", sender: nil)
-                            }
-                        }
+                        object.saveInBackground() 
                     }
                     self.tableView.reloadData()
                     //  viewDidLoad()
@@ -115,13 +115,23 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
         cell.song.text = songNames[indexPath.row]
         cell.album.text = albumNames[indexPath.row]
         cell.likes.text = "x" + String(likesList[indexPath.row])
-        cell.distance.text = "distance of thing is 10 mi"
+//        cell.distance.text = "distance of thing is 10 mi"
+        cell.distance.text = "distance: "+String(findDistance(locations[indexPath.row])) + " miles away"
         // Set the text of the memberName field of the cell to the right value
-        
-        
+        cell.delegate = self
         // Set the image of the memberProfilePic imageview in the cell
-        
         return cell
+    }
+    
+    func findDistance(musicLocation :PFGeoPoint) -> Double {
+        var currLocation = PFGeoPoint(latitude:40.0, longitude:-30.0)
+        PFGeoPoint.geoPointForCurrentLocationInBackground {
+            (geoPoint: PFGeoPoint?, error: NSError?) -> Void in
+            if error == nil {
+                currLocation = geoPoint!
+            }
+        }
+        return round(100*musicLocation.distanceInMilesTo(currLocation))/100
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
