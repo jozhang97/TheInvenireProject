@@ -82,6 +82,16 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UwS-10-EqK">
+                                <rect key="frame" x="274" y="10" width="34" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Back">
+                                    <color key="titleColor" red="0.99228602151201395" green="0.99863916314727907" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="G5C-5O-Cpr" kind="show" id="RkX-Oj-SdN"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" red="0.50434308949999995" green="0.1566390896" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -147,6 +157,16 @@
                                 <rect key="frame" x="0.0" y="63" width="320" height="456"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <segmentedControl key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="wM4-aZ-mpR">
+                                    <rect key="frame" x="0.0" y="185" width="320" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <animations/>
+                                    <segments>
+                                        <segment title="Sort by Likes"/>
+                                        <segment title="Sort by Time"/>
+                                        <segment title="Sort by Distance"/>
+                                    </segments>
+                                </segmentedControl>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tableCell" rowHeight="157" id="To3-pj-VGh" userLabel="tableCell" customClass="TableViewCell" customModule="Invenire" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="157"/>
@@ -156,7 +176,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Music" translatesAutoresizingMaskIntoConstraints="NO" id="xdc-mA-oyT">
-                                                    <rect key="frame" x="8" y="1" width="83" height="80.5"/>
+                                                    <rect key="frame" x="8" y="1" width="83" height="80"/>
                                                     <animations/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gKr-aU-XgU">
@@ -597,6 +617,7 @@
         <image name="ThumbsUpReal" width="570" height="597"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="RkX-Oj-SdN"/>
         <segue reference="d8I-vN-Gmc"/>
         <segue reference="X9V-uW-N4I"/>
     </inferredMetricsTieBreakers>

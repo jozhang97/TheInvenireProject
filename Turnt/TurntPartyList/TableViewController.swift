@@ -42,6 +42,7 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func getParties(){
         let query = PFQuery(className:"Songs")
+        query.addDescendingOrder("likes")
         query.findObjectsInBackgroundWithBlock {
             (objects: [PFObject]?, error: NSError?) -> Void in
             if error == nil {
@@ -115,7 +116,6 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
         cell.song.text = songNames[indexPath.row]
         cell.album.text = albumNames[indexPath.row]
         cell.likes.text = "x" + String(likesList[indexPath.row])
-//        cell.distance.text = "distance of thing is 10 mi"
         cell.distance.text = "distance: "+String(findDistance(locations[indexPath.row])) + " miles away"
         // Set the text of the memberName field of the cell to the right value
         cell.delegate = self
