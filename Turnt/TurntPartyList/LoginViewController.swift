@@ -17,12 +17,18 @@ class LoginViewController: ViewController, FBSDKLoginButtonDelegate {
     @IBOutlet weak var password: UITextField!
     
     @IBOutlet weak var loginButtonView: UIButton!
-    
+    @IBOutlet weak var loginWithFB: UIButton!
     @IBOutlet weak var createAccount: UIButton!
-    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if (FBSDKAccessToken.currentAccessToken() == nil) {
+            print("not logged in")
+        } else {
+            print("logged in") //can put this part in viewDidLoad before everything else
+        }
+        
         let loginButton = FBSDKLoginButton()
         loginButton.readPermissions = ["public_profile", "email", "user_friends"]
         loginButton.center = self.view.center
@@ -32,23 +38,27 @@ class LoginViewController: ViewController, FBSDKLoginButtonDelegate {
         // Do any additional setup after loading the view, typically from a nib.
     }
     
-    override func viewDidAppear(animated: Bool) {
-        if (FBSDKAccessToken.currentAccessToken() == nil) {
-            print("not logged in")
-        } else {
-            print("logged in")
-        }
-    }
-    
     
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
         if (error == nil) {
             print("Login complete")
-            self.performSegueWithIdentifier("showNew", sender: self)
+            self.performSegueWithIdentifier("showFB", sender: self)
         } else {
             print(error.localizedDescription)
         }
     }
+    
+    func loginViewShowingLoggedInUser(loginView: FBLoginView!){
+        print("user logged in")
+    }
+    
+//    func loginViewFetchedUserInfo(loginView: FBLoginView!, user: FBGraphUser! )
+//    {
+//        self.firstName = user.first_name
+//        self.lastName = user.last_name
+//        
+//        FBRequestConnection
+//    }
     
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
         print("user logged out")
@@ -81,7 +91,7 @@ class LoginViewController: ViewController, FBSDKLoginButtonDelegate {
     }
     
     @IBAction func createAccountButton(sender: AnyObject) {
-        self.performSegueWithIdentifier("toCreateAccount", sender: self)
+    self.performSegueWithIdentifier("toCreateAccount", sender: self)
     }
     
     override func didReceiveMemoryWarning() {

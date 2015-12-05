@@ -10,12 +10,12 @@ import UIKit
 
 class SignUpViewController: UIViewController, UITextFieldDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
-    @IBOutlet weak var name: UITextField!
+    
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var confirmPassword: UITextField!
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var username: UITextField!
-    
+    @IBOutlet weak var name: UITextField!
     
     @IBOutlet weak var profPicImageView: UIImageView!
     
@@ -29,6 +29,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UINavigationC
     var confirmPassword_ = ""
     var email_ = ""
     var username_ = ""
+    var profPic_: Image
     
     @IBAction func goToLoginButton(sender: AnyObject) {
         self.performSegueWithIdentifier("goBackToLogin", sender: self)
@@ -73,14 +74,15 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UINavigationC
             confirmPassword_ = confirmPassword.text!
             email_ = email.text!
             username_ = username.text!
+            profPic_ = profPicImageView.image
             
-            let user = PFUser()
-            user.name = name_
-            user.password = password_
-            user.email = email_
-            user.username = username_
-            user["name"] = name // since not part of initial parse table
-            let profPicFile = PFFile(name: "profilePicture.png", data: UIImageJPEGRepresentation(profPicImageView.image!, 0.5)!)
+            let _user = PFUser(className: _User)
+            _user.Name = name_
+            _user.password = password_
+            _user.email = email_
+            _user.username = username_
+            _user["Name"] = name // since not part of initial parse table
+            _user.profPic = profPic_
             
             self.performSegueWithIdentifier("createAccountToFeed", sender: self)
         
