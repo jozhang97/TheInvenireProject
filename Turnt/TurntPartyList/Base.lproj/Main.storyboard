@@ -250,6 +250,7 @@
                                         <connections>
                                             <outlet property="album" destination="F4Y-M0-5fA" id="zFn-I1-rdH"/>
                                             <outlet property="artist" destination="SRk-qp-P1w" id="3SH-Uh-9gz"/>
+                                            <outlet property="artwork" destination="xdc-mA-oyT" id="Z5c-aY-Dnk"/>
                                             <outlet property="distance" destination="g0e-6i-kTH" id="3vL-cc-rF2"/>
                                             <outlet property="likes" destination="Gxh-ah-9hr" id="yO4-UG-6y8"/>
                                             <outlet property="likesButton" destination="thJ-Ew-CoY" id="Syn-li-4oR"/>

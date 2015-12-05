@@ -19,6 +19,8 @@ class TableViewCell: UITableViewCell
     @IBOutlet weak var album: UILabel!
     @IBOutlet weak var distance: UILabel!
     @IBOutlet weak var likes: UILabel!
+    @IBOutlet weak var artwork: UIImageView!
+    
     var delegate:TableViewCellDelegate? = nil
     
 
