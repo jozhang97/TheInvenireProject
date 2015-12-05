@@ -10,6 +10,12 @@ import UIKit
 
 class TableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, TableViewCellDelegate {
     
+
+    @IBAction func segmentChanged(sender: AnyObject) {
+        viewDidLoad()
+    }
+    
+    @IBOutlet weak var segmentControl: UISegmentedControl!
     var artistNames = Array<String>()
     var songNames = Array<String> ()
     var albumNames = Array<String>()
@@ -41,20 +47,26 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func getParties(){
-        let query = PFQuery(className:"Songs")
-        query.addDescendingOrder("likes")
+        let query = PFQuery(className:"Posts")
+        if segmentControl.selectedSegmentIndex == 0 {
+            query.addDescendingOrder("numLikes")
+        }
+        else if segmentControl.selectedSegmentIndex == 1 {
+            query.addDescendingOrder("createdAt")
+        }
+        else if segmentControl.selectedSegmentIndex == 2{
+            query.whereKey("location", nearGeoPoint: findLocation())
+        }
         query.findObjectsInBackgroundWithBlock {
             (objects: [PFObject]?, error: NSError?) -> Void in
             if error == nil {
-                // The find succeeded.
                 print("Successfully retrieved \(objects!.count) scores.")
-                // Do something with the found objects
                 if let objects = objects! as? [PFObject] {
                     for object in objects {
-                        self.artistNames.append(object["Artist"] as! String)
-                        self.songNames.append(object["Song"] as! String)
-                        self.albumNames.append(object["Album"] as! String)
-                        self.likesList.append(object["likes"] as! Int)
+                        self.artistNames.append(object["artist"] as! String)
+                        self.songNames.append(object["title"] as! String)
+                        self.albumNames.append(object["album"] as! String)
+                        self.likesList.append(object["numLikes"] as! Int)
                         self.locations.append(object["location"] as! PFGeoPoint)
                     }
                     self.tableView.reloadData()
@@ -66,10 +78,10 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
     }
     
-    // error in this
+    
     func like (cell: TableViewCell) {
-        let query = PFQuery(className:"Songs")
-        query.whereKey("Song", equalTo: cell.song.text!)
+        let query = PFQuery(className:"Posts")
+        query.whereKey("title", equalTo: cell.song.text!)
         query.findObjectsInBackgroundWithBlock {
             (objects: [PFObject]?, error: NSError?) -> Void in
             if error == nil {
@@ -78,10 +90,10 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 // Do something with the found objects
                 if let objects = objects! as? [PFObject] {
                     for object in objects {
-                        let currLikes = object["likes"] as! Int
+                        let currLikes = object["numLikes"] as! Int
 //                        NSLog("Current Likes %i", currLikes)
                         let newLikes = currLikes + 1
-                        object["likes"] = newLikes
+                        object["numLikes"] = newLikes
                         object.saveInBackground() 
                     }
                     self.tableView.reloadData()
@@ -123,19 +135,24 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
         return cell
     }
     
-    func findDistance(musicLocation :PFGeoPoint) -> Double {
+    func findLocation() -> PFGeoPoint {
         var currLocation = PFGeoPoint(latitude:40.0, longitude:-30.0)
         PFGeoPoint.geoPointForCurrentLocationInBackground {
             (geoPoint: PFGeoPoint?, error: NSError?) -> Void in
             if error == nil {
-                currLocation = geoPoint!
+                    currLocation = geoPoint!
             }
         }
+        return currLocation
+    }
+    
+    func findDistance(musicLocation :PFGeoPoint) -> Double {
+        let currLocation = findLocation()
         return round(100*musicLocation.distanceInMilesTo(currLocation))/100
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 100
+        return 67
     }
 
     /*

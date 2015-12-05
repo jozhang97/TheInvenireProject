@@ -29,11 +29,11 @@ class AddSongViewController: UIViewController, UITextFieldDelegate, UINavigation
         }
         else
         {
-            let Test = PFObject(className: "Songs")
-            Test["Song"] = songName.text!
-            Test["Artist"] = artistName.text!
-            Test["Album"] = albumName.text!
-            Test["likes"] = 0
+            let Test = PFObject(className: "Posts")
+            Test["title"] = songName.text!
+            Test["artist"] = artistName.text!
+            Test["album"] = albumName.text!
+            Test["numLikes"] = 0
             PFGeoPoint.geoPointForCurrentLocationInBackground { //WHY DOESN'T THIS WORK
                 (geoPoint: PFGeoPoint?, error: NSError?) -> Void in
                 if error == nil {
