@@ -29,7 +29,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UINavigationC
     var confirmPassword_ = ""
     var email_ = ""
     var username_ = ""
-    var profPic_: Image
+    var profPic_: UIImage
     
     @IBAction func goToLoginButton(sender: AnyObject) {
         self.performSegueWithIdentifier("goBackToLogin", sender: self)
@@ -76,12 +76,11 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UINavigationC
             username_ = username.text!
             profPic_ = profPicImageView.image
             
-            let _user = PFUser(className: _User)
+            let _user = PFUser(className: "_User")
             _user.Name = name_
             _user.password = password_
             _user.email = email_
             _user.username = username_
-            _user["Name"] = name // since not part of initial parse table
             _user.profPic = profPic_
             
             self.performSegueWithIdentifier("createAccountToFeed", sender: self)

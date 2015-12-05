@@ -42,13 +42,13 @@
 		1F624B601BE7D0A2004549A6 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F624B591BE7D0A2004549A6 /* ParseUI.framework */; };
 		1F624B681BE7D677004549A6 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F624B671BE7D677004549A6 /* TableViewCell.swift */; };
 		1FE0C09F1BF7CF6900C67B48 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE0C09E1BF7CF6900C67B48 /* SignUpViewController.swift */; };
-		1FE0C0A11BF7D44700C67B48 /* AddUserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE0C0A01BF7D44700C67B48 /* AddUserInfoViewController.swift */; };
 		1FE0C0A31BF7DBC000C67B48 /* AddSongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE0C0A21BF7DBC000C67B48 /* AddSongViewController.swift */; };
 		1FEB35191C027EC000F7C424 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FEB35171C027EBF00F7C424 /* FBSDKCoreKit.framework */; };
 		1FEB351A1C027EC000F7C424 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FEB35181C027EC000F7C424 /* FBSDKLoginKit.framework */; };
 		1FF9024E1BF6F60F001CD2AD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF9024D1BF6F60F001CD2AD /* ViewController.swift */; };
 		1FF902501BF6F638001CD2AD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF9024F1BF6F638001CD2AD /* LoginViewController.swift */; };
 		565472B51C1168F50098EA72 /* FBLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565472B41C1168F50098EA72 /* FBLoginViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		56C931471C13957A0041F8C2 /* SongInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C931461C13957A0041F8C2 /* SongInfoViewController.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,13 +111,13 @@
 		1F624B621BE7D0F7004549A6 /* TurntPartyList-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TurntPartyList-Bridging-Header.h"; sourceTree = "<group>"; };
 		1F624B671BE7D677004549A6 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableViewCell.swift; path = ../TableViewCell.swift; sourceTree = "<group>"; };
 		1FE0C09E1BF7CF6900C67B48 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		1FE0C0A01BF7D44700C67B48 /* AddUserInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddUserInfoViewController.swift; sourceTree = "<group>"; };
 		1FE0C0A21BF7DBC000C67B48 /* AddSongViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddSongViewController.swift; path = ../AddSongViewController.swift; sourceTree = "<group>"; };
 		1FEB35171C027EBF00F7C424 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		1FEB35181C027EC000F7C424 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		1FF9024D1BF6F60F001CD2AD /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = ../ViewController.swift; sourceTree = "<group>"; };
 		1FF9024F1BF6F638001CD2AD /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		565472B41C1168F50098EA72 /* FBLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBLoginViewController.swift; sourceTree = "<group>"; };
+		56C931461C13957A0041F8C2 /* SongInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongInfoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,8 +201,8 @@
 				1FF9024D1BF6F60F001CD2AD /* ViewController.swift */,
 				1FF9024F1BF6F638001CD2AD /* LoginViewController.swift */,
 				1F624B0D1BE7291F004549A6 /* Main.storyboard */,
+				56C931461C13957A0041F8C2 /* SongInfoViewController.swift */,
 				565472B41C1168F50098EA72 /* FBLoginViewController.swift */,
-				1FE0C0A01BF7D44700C67B48 /* AddUserInfoViewController.swift */,
 				1FE0C09E1BF7CF6900C67B48 /* SignUpViewController.swift */,
 				1F624B391BE72B22004549A6 /* TableViewController.swift */,
 				1F624B671BE7D677004549A6 /* TableViewCell.swift */,
@@ -400,7 +400,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1FE0C0A11BF7D44700C67B48 /* AddUserInfoViewController.swift in Sources */,
+				56C931471C13957A0041F8C2 /* SongInfoViewController.swift in Sources */,
 				1FF902501BF6F638001CD2AD /* LoginViewController.swift in Sources */,
 				1FF9024E1BF6F60F001CD2AD /* ViewController.swift in Sources */,
 				1FE0C0A31BF7DBC000C67B48 /* AddSongViewController.swift in Sources */,

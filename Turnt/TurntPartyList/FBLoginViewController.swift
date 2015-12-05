@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import FBSDKCoreKit
+import FBSDKLoginKit
 
 class FBLoginViewController: UIViewController {
     
@@ -14,32 +16,46 @@ class FBLoginViewController: UIViewController {
     @IBOutlet weak var profilePic: UIImageView!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var `continue`: UIButton!
+ 
+    @IBOutlet weak var uploadPic: UIButton!
 
 
     override func viewDidLoad() {
+        super.viewDidLoad()
         name.text = "Hello " + FBSDKProfile.currentProfile().name + "!"
         print("Hello " + FBSDKProfile.currentProfile().name + "!")
-        let pictureRequest = FBSDKGraphRequest(graphPath: "me/picture?type=large&redirect=false", parameters: nil)
-        pictureRequest.startWithCompletionHandler({
-            (connection, result, error: NSError!) -> Void in
-            if error == nil {
-                println("\(result)")
-            } else {
-                println("\(error)")
-            }
-        })
-        let _user = PFUser()
-        _user.Name = name.text!
-        _user.profilePic = 
-        
-        // Do any additional setup after loading the view.
-    }
+        let _user = PFUser(className: "_User")
 
+        _user.email = ""
+        _user.username = ""
+        _user.password = ""
+        _user.confirmPassword = ""
+        _user.profPic = profilePic.image
+    }
+    
+
+  
     @IBAction func continueButton(sender: AnyObject) {
     self.performSegueWithIdentifier("FBContinueOn", sender: self)
-    
     }
-        
+    
+    
+    @IBAction func uploadPicButton(sender: AnyObject) {
+        let image = UIImagePickerController()
+        image.delegate = self
+        image.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+        image.allowsEditing = false
+        self.presentViewController(image, animated: true, completion: nil)
+    }
+    
+
+func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) { // different ? !
+    self.dismissViewControllerAnimated(true, completion: nil) // controller goes away
+   profilePic.image = image // puts in image
+    
+}
+
+
         // Do any additional setup after loading the view.
     
     
