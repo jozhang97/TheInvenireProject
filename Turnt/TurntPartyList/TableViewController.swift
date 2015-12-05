@@ -12,7 +12,17 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
 
     @IBAction func segmentChanged(sender: AnyObject) {
-        viewDidLoad()
+        clearArrays()
+        getParties()
+    }
+    
+    func clearArrays(){
+        artistNames = Array<String>()
+        songNames = Array<String>()
+        albumNames = Array<String>()
+        likesList = Array<Int>()
+        locations = Array<PFGeoPoint>()
+        artworks = Array<UIImage>()
     }
     
     @IBOutlet weak var segmentControl: UISegmentedControl!
@@ -36,10 +46,7 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
 //        self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
         tableView.delegate = self
         tableView.dataSource = self
-        
         getParties()
-        //getDescription()
-        tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -48,6 +55,7 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func getParties(){
+        // artwork has error
         let query = PFQuery(className:"Posts")
         if segmentControl.selectedSegmentIndex == 0 {
             query.addDescendingOrder("numLikes")
@@ -60,19 +68,25 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
         /***
         Something wrong with images and synchronous queries
-        let messages = query.findObjects()
-        for object in messages {
-            let artwork = object["artwork"] as? PFFile
-            artwork!.getDataInBackgroundWithBlock { (imageData: NSData?, error: NSError?) -> Void in
+        */
+        let messages = try? query.findObjects()
+        print("message count: ")
+        print(messages!.count)
+        for object in messages! {
+            let artwork = object["artwork"] as! PFFile
+            let image = try? UIImage(data: artwork.getData())
+            self.artworks.append(image!!)
+            /***
+            artwork.getDataInBackgroundWithBlock { (imageData: NSData?, error: NSError?) -> Void in
                 if (error == nil) {
                     let image = UIImage(data:imageData!)
                     print("hello")
                     self.artworks.append(image!)
                 }
-            }
+            }*/
         }
-        */
-            
+
+        query.limit = 15
         query.findObjectsInBackgroundWithBlock {
             (objects: [PFObject]?, error: NSError?) -> Void in
             if error == nil {
@@ -84,10 +98,9 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
                         self.albumNames.append(object["album"] as! String)
                         self.likesList.append(object["numLikes"] as! Int)
                         self.locations.append(object["location"] as! PFGeoPoint)
-                        
                         /***
-                        let artwork = object["artwork"] as? PFFile
-                        artwork!.getDataInBackgroundWithBlock { (imageData: NSData?, error: NSError?) -> Void in
+                        let artwork = object["artwork"] as! PFFile
+                        artwork.getDataInBackgroundWithBlock { (imageData: NSData?, error: NSError?) -> Void in
                                 if (error == nil) {
                                     let image = UIImage(data:imageData!)
                                     print("hello")
@@ -95,6 +108,7 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
                                 }
                         }
                         */
+                        
                     }
                     self.tableView.reloadData()
                 }
@@ -121,11 +135,10 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
 //                        NSLog("Current Likes %i", currLikes)
                         let newLikes = currLikes + 1
                         object["numLikes"] = newLikes
-                        object.saveInBackground() 
+                        object.saveInBackground()
                     }
-                    self.tableView.reloadData()
-                    //  viewDidLoad()
-                    
+                    self.clearArrays()
+                    self.getParties() // use a wherekey (not very efficient)
                 }
             } else {
                 // Log details of the failure
@@ -136,13 +149,11 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        
         return 1
     }
     
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         return songNames.count
     }
     
@@ -156,6 +167,8 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
         cell.album.text = albumNames[indexPath.row]
         cell.likes.text = "x" + String(likesList[indexPath.row])
         cell.distance.text = "distance: "+String(findDistance(locations[indexPath.row])) + " miles away"
+        print(artworks)
+        print(artworks.count)
         cell.artwork.image = artworks[indexPath.row]
         // Set the text of the memberName field of the cell to the right value
         cell.delegate = self
