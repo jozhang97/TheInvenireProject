@@ -58,6 +58,21 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
         else if segmentControl.selectedSegmentIndex == 2{
             query.whereKey("location", nearGeoPoint: findLocation())
         }
+        /***
+        Something wrong with images and synchronous queries
+        let messages = query.findObjects()
+        for object in messages {
+            let artwork = object["artwork"] as? PFFile
+            artwork!.getDataInBackgroundWithBlock { (imageData: NSData?, error: NSError?) -> Void in
+                if (error == nil) {
+                    let image = UIImage(data:imageData!)
+                    print("hello")
+                    self.artworks.append(image!)
+                }
+            }
+        }
+        */
+            
         query.findObjectsInBackgroundWithBlock {
             (objects: [PFObject]?, error: NSError?) -> Void in
             if error == nil {
@@ -70,17 +85,16 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
                         self.likesList.append(object["numLikes"] as! Int)
                         self.locations.append(object["location"] as! PFGeoPoint)
                         
-                        let artwork = object["artwork"] as! PFFile
-                        artwork.getDataInBackgroundWithBlock {
-                            (imageData: NSData!, error: NSError!) -> Void in
-                            if (error == nil) {
-                                let image = UIImage(data:imageData)
-                                self.artworks.append(image!)
-                            }
+                        /***
+                        let artwork = object["artwork"] as? PFFile
+                        artwork!.getDataInBackgroundWithBlock { (imageData: NSData?, error: NSError?) -> Void in
+                                if (error == nil) {
+                                    let image = UIImage(data:imageData!)
+                                    print("hello")
+                                    self.artworks.append(image!)
+                                }
                         }
-                        
-                        
-                        
+                        */
                     }
                     self.tableView.reloadData()
                 }
