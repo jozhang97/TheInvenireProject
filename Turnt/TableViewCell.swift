@@ -28,8 +28,8 @@ class TableViewCell: UITableViewCell
     @IBAction func likeThis(sender: AnyObject) {
         delegate?.like(self)
         
-        let liked = UIImage(named: "TurtleTurnt")
-        likesButton.setImage(liked, forState: .Normal)
+//        let liked = UIImage(named: "TurtleTurnt")
+//        likesButton.setImage(liked, forState: .Normal)
     }
     override func awakeFromNib() {
         super.awakeFromNib()
