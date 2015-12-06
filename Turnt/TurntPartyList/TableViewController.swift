@@ -23,6 +23,7 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
         likesList = Array<Int>()
         locations = Array<PFGeoPoint>()
         artworks = Array<UIImage>()
+        peopleNames = Array<String>()
     }
     
     @IBOutlet weak var segmentControl: UISegmentedControl!
@@ -32,6 +33,8 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     var likesList = Array<Int>()
     var locations = Array<PFGeoPoint>()
     var artworks = Array<UIImage>()
+    var peopleNames = Array<String>()
+    var selectedSongIndex = 0
     
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
@@ -98,6 +101,8 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
                         self.albumNames.append(object["album"] as! String)
                         self.likesList.append(object["numLikes"] as! Int)
                         self.locations.append(object["location"] as! PFGeoPoint)
+                        let name = (object["firstName"] as! String) + " " + (object["lastName"] as! String)
+                        self.peopleNames.append(name)
                         /***
                         let artwork = object["artwork"] as! PFFile
                         artwork.getDataInBackgroundWithBlock { (imageData: NSData?, error: NSError?) -> Void in
@@ -195,6 +200,30 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 67
     }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        selectedSongIndex = indexPath.row
+        self.performSegueWithIdentifier("showSongDetail", sender: self)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "showSongDetail"
+        {
+            selectedSongIndex = (self.tableView.indexPathForSelectedRow?.row)!
+            
+            let vc = segue.destinationViewController as! SongDetailViewController
+            vc.selectedArtist = self.artistNames[selectedSongIndex]
+            vc.selectedSongName = self.songNames[selectedSongIndex]
+            vc.selectedAlbum  = self.albumNames[selectedSongIndex]
+            vc.selectedSharedBy = "Shared by " + self.peopleNames[selectedSongIndex]
+            vc.selectedDistance = String(findDistance(locations[selectedSongIndex])) + " miles away."
+            vc.selectedLikes = "Like by " + String(likesList[selectedSongIndex]) + " people!"
+            vc.selectedArtwork = self.artworks[selectedSongIndex]
+            
+        }
+    }
+
+    
 
     /*
     // MARK: - Navigation
