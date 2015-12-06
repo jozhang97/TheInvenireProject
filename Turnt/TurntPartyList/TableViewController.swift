@@ -101,8 +101,7 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
                         self.albumNames.append(object["album"] as! String)
                         self.likesList.append(object["numLikes"] as! Int)
                         self.locations.append(object["location"] as! PFGeoPoint)
-                        let name = (object["firstName"] as! String) + " " + (object["lastName"] as! String)
-                        self.peopleNames.append(name)
+                        self.peopleNames.append(object["username"] as! String)
                         /***
                         let artwork = object["artwork"] as! PFFile
                         artwork.getDataInBackgroundWithBlock { (imageData: NSData?, error: NSError?) -> Void in
