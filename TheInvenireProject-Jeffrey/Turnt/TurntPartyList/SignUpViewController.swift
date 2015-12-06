@@ -20,9 +20,9 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UINavigationC
     @IBOutlet weak var username: UITextField!
     
     @IBOutlet weak var profPic: UIImageView!
+    @IBOutlet weak var backToLogin: UIButton!
     @IBOutlet weak var chooseImage: UIButton!
     @IBOutlet weak var createAccount: UIButton!
-    @IBOutlet weak var backToLogin: UIButton!
     
     var name_ = ""
     var password_ = ""
@@ -90,17 +90,27 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UINavigationC
             
             let user = PFUser(className: "_User")
             user.password = password_
+            user["confirmPassword"] = confirmPassword_
             user.email = email_
             user.username = username_
-            user["profPic"] = profPic_
             user["Name"] = name_
+            let profPicFile = PFFile(name: "profilePicture.png", data: UIImageJPEGRepresentation(profPic.image!, 0.5)!)
+            user["profPic"] = profPicFile
             
-            self.performSegueWithIdentifier("goBackToLogin", sender: self)
             
+            user.signUpInBackgroundWithBlock { (succeeded, signupError) -> Void in
+                if signupError == nil{
+                    self.performSegueWithIdentifier("goBackToLogin", sender: self)
+                } else {
+                    if let error = signupError!.userInfo["error"] as? NSString {
+                        displayError = error as String
+                    } else {
+                        displayError = "Please try again later"
+                    }
+            }
         }
-        
     }
-    
+
     
     @IBAction func chooseImageButton(sender: AnyObject) {
         let image = UIImagePickerController()
@@ -108,22 +118,25 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UINavigationC
         image.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
         image.allowsEditing = false
         self.presentViewController(image, animated: true, completion: nil)
+
     }
+
 
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) { // different ? !
         self.dismissViewControllerAnimated(true, completion: nil) // controller goes away
         profPic.image = image // puts in image
         
-    }
+            }
+        }
     
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
     }
-    
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -131,14 +144,4 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UINavigationC
     }
     
     
-    /*
-    // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    // Get the new view controller using segue.destinationViewController.
-    // Pass the selected object to the new view controller.
     }
-    */
-    
-}

@@ -320,6 +320,8 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="createAccount" destination="eG7-N7-NHz" id="3D5-mw-eox"/>
+                        <outlet property="login" destination="HNT-D8-Bdb" id="vhM-Dn-Q4i"/>
                         <outlet property="password" destination="tzl-TG-3eo" id="Hvc-IM-eeX"/>
                         <outlet property="username" destination="Zha-8c-7dA" id="9VS-kC-ebY"/>
                         <segue destination="xpk-yq-48b" kind="show" identifier="toMainVC" id="byS-0u-uRQ"/>
@@ -383,20 +385,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dzw-Yc-TOT">
-                                <rect key="frame" x="96" y="182" width="99" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="77j-gi-YUa"/>
-                                    <constraint firstAttribute="width" constant="99" id="hFd-Av-ime"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <state key="normal" title="Choose Image">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="chooseImageButton:" destination="8e3-jq-HFi" eventType="touchUpInside" id="3H0-hJ-zs2"/>
-                                </connections>
-                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7wR-2A-lmO">
                                 <rect key="frame" x="92" y="74" width="122" height="112"/>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -416,6 +404,13 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2xc-Ck-RGe">
+                                <rect key="frame" x="100" y="185" width="105" height="30"/>
+                                <state key="normal" title="Choose Image"/>
+                                <connections>
+                                    <action selector="chooseImageButton:" destination="8e3-jq-HFi" eventType="touchUpInside" id="YGr-Zf-r3P"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -443,18 +438,16 @@
                             <constraint firstAttribute="trailingMargin" secondItem="IiT-GZ-6jU" secondAttribute="trailing" constant="13" id="qk5-eJ-Bdd"/>
                             <constraint firstItem="hPa-L5-Jbe" firstAttribute="trailing" secondItem="Fg0-Cf-0UJ" secondAttribute="trailing" id="tla-Q7-egx"/>
                             <constraint firstItem="zkF-Kq-B5L" firstAttribute="trailing" secondItem="4PU-tr-AsW" secondAttribute="trailing" id="u8Q-Hh-v0g"/>
-                            <constraint firstItem="zkF-Kq-B5L" firstAttribute="top" secondItem="dzw-Yc-TOT" secondAttribute="bottom" constant="21" id="vF2-eC-bDg"/>
                             <constraint firstItem="61q-bl-Hmh" firstAttribute="trailing" secondItem="hPa-L5-Jbe" secondAttribute="trailing" id="vz2-O4-57h"/>
-                            <constraint firstItem="dzw-Yc-TOT" firstAttribute="leading" secondItem="NrD-bd-sqQ" secondAttribute="leadingMargin" constant="80" id="z8J-yF-AED"/>
                             <constraint firstItem="61q-bl-Hmh" firstAttribute="top" secondItem="hPa-L5-Jbe" secondAttribute="bottom" constant="16" id="zM0-Ct-Tw0"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="backToLogin" destination="hHx-MY-rCG" id="kzv-u1-uJV"/>
-                        <outlet property="chooseImage" destination="dzw-Yc-TOT" id="X5r-yV-z0F"/>
+                        <outlet property="chooseImage" destination="2xc-Ck-RGe" id="vq8-6k-o0d"/>
                         <outlet property="confirmPassword" destination="hPa-L5-Jbe" id="9HB-QX-lWI"/>
-                        <outlet property="createAccount" destination="znG-YY-SCh" id="lNG-z2-pqH"/>
+                        <outlet property="createAccount" destination="znG-YY-SCh" id="TOA-I7-2KR"/>
                         <outlet property="email" destination="61q-bl-Hmh" id="CAK-9H-ZUJ"/>
                         <outlet property="name" destination="zkF-Kq-B5L" id="JGc-DF-Cex"/>
                         <outlet property="password" destination="Fg0-Cf-0UJ" id="Igk-Dn-GJQ"/>
@@ -1046,9 +1039,9 @@
         <image name="ThumbsUpReal" width="570" height="597"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="1AH-IY-Lir"/>
-        <segue reference="uvo-FD-0pD"/>
         <segue reference="Op4-7J-muL"/>
+        <segue reference="uvo-FD-0pD"/>
+        <segue reference="qEl-XA-vPd"/>
         <segue reference="byS-0u-uRQ"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
