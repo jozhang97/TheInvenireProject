@@ -23,6 +23,7 @@ class AddSongViewController: UIViewController, UITextFieldDelegate, CLLocationMa
     @IBOutlet weak var artistName: UILabel!
     @IBOutlet weak var albumName: UILabel!
     
+    @IBOutlet weak var background: UIImageView!
 
     @IBAction func shareMusic(sender: AnyObject) {
         let myPost = PFObject(className:"Posts")
@@ -102,6 +103,13 @@ class AddSongViewController: UIViewController, UITextFieldDelegate, CLLocationMa
             artistName.text = artist
             albumName.text = album
             albumArt.image = artwork
+
+            let darkBlur = UIBlurEffect(style: UIBlurEffectStyle.Dark)
+            let blurView = UIVisualEffectView(effect: darkBlur)
+            blurView.frame = background.bounds
+            background.addSubview(blurView)
+            self.background.image = artwork
+            
         } else {
             albumArt.image = UIImage(named: "placeholderimage.png")
             songTitle.text = "Unknown"

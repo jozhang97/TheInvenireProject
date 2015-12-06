@@ -42,6 +42,9 @@
 		1F624B601BE7D0A2004549A6 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F624B591BE7D0A2004549A6 /* ParseUI.framework */; };
 		1F624B681BE7D677004549A6 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F624B671BE7D677004549A6 /* TableViewCell.swift */; };
 		1F67E45B1C13B3490069F797 /* SongDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F67E45A1C13B3490069F797 /* SongDetailViewController.swift */; };
+		1F89497E1C13E20F005548D2 /* postsCellTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F89497B1C13E20F005548D2 /* postsCellTVC.swift */; };
+		1F89497F1C13E20F005548D2 /* profileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F89497C1C13E20F005548D2 /* profileViewController.swift */; };
+		1F8949801C13E20F005548D2 /* changeProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F89497D1C13E20F005548D2 /* changeProfileVC.swift */; };
 		1FE0C09F1BF7CF6900C67B48 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE0C09E1BF7CF6900C67B48 /* SignUpViewController.swift */; };
 		1FE0C0A11BF7D44700C67B48 /* AddUserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE0C0A01BF7D44700C67B48 /* AddUserInfoViewController.swift */; };
 		1FE0C0A31BF7DBC000C67B48 /* AddSongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE0C0A21BF7DBC000C67B48 /* AddSongViewController.swift */; };
@@ -111,6 +114,9 @@
 		1F624B621BE7D0F7004549A6 /* TurntPartyList-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TurntPartyList-Bridging-Header.h"; sourceTree = "<group>"; };
 		1F624B671BE7D677004549A6 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableViewCell.swift; path = ../TableViewCell.swift; sourceTree = "<group>"; };
 		1F67E45A1C13B3490069F797 /* SongDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongDetailViewController.swift; sourceTree = "<group>"; };
+		1F89497B1C13E20F005548D2 /* postsCellTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = postsCellTVC.swift; sourceTree = "<group>"; };
+		1F89497C1C13E20F005548D2 /* profileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = profileViewController.swift; sourceTree = "<group>"; };
+		1F89497D1C13E20F005548D2 /* changeProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = changeProfileVC.swift; sourceTree = "<group>"; };
 		1FE0C09E1BF7CF6900C67B48 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		1FE0C0A01BF7D44700C67B48 /* AddUserInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddUserInfoViewController.swift; sourceTree = "<group>"; };
 		1FE0C0A21BF7DBC000C67B48 /* AddSongViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddSongViewController.swift; path = ../AddSongViewController.swift; sourceTree = "<group>"; };
@@ -211,6 +217,9 @@
 				1F624B121BE7291F004549A6 /* LaunchScreen.storyboard */,
 				1F624B151BE7291F004549A6 /* Info.plist */,
 				1F624B621BE7D0F7004549A6 /* TurntPartyList-Bridging-Header.h */,
+				1F89497B1C13E20F005548D2 /* postsCellTVC.swift */,
+				1F89497C1C13E20F005548D2 /* profileViewController.swift */,
+				1F89497D1C13E20F005548D2 /* changeProfileVC.swift */,
 			);
 			path = TurntPartyList;
 			sourceTree = "<group>";
@@ -406,9 +415,12 @@
 				1F67E45B1C13B3490069F797 /* SongDetailViewController.swift in Sources */,
 				1FE0C0A31BF7DBC000C67B48 /* AddSongViewController.swift in Sources */,
 				1FE0C09F1BF7CF6900C67B48 /* SignUpViewController.swift in Sources */,
+				1F89497F1C13E20F005548D2 /* profileViewController.swift in Sources */,
 				1F624B681BE7D677004549A6 /* TableViewCell.swift in Sources */,
+				1F8949801C13E20F005548D2 /* changeProfileVC.swift in Sources */,
 				1F624B0A1BE7291F004549A6 /* AppDelegate.swift in Sources */,
 				1F624B3A1BE72B22004549A6 /* TableViewController.swift in Sources */,
+				1F89497E1C13E20F005548D2 /* postsCellTVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
