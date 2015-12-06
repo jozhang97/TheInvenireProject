@@ -47,8 +47,9 @@
 		1FEB351A1C027EC000F7C424 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FEB35181C027EC000F7C424 /* FBSDKLoginKit.framework */; };
 		1FF9024E1BF6F60F001CD2AD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF9024D1BF6F60F001CD2AD /* ViewController.swift */; };
 		1FF902501BF6F638001CD2AD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF9024F1BF6F638001CD2AD /* LoginViewController.swift */; };
-		565472B51C1168F50098EA72 /* FBLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565472B41C1168F50098EA72 /* FBLoginViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		56C931471C13957A0041F8C2 /* SongInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C931461C13957A0041F8C2 /* SongInfoViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		317D26DA1C13AD5200FCD7F8 /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 317D26D91C13AD5200FCD7F8 /* placeholder.png */; };
+		565472B51C1168F50098EA72 /* FBLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565472B41C1168F50098EA72 /* FBLoginViewController.swift */; };
+		56C931471C13957A0041F8C2 /* SongInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C931461C13957A0041F8C2 /* SongInfoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,6 +117,7 @@
 		1FEB35181C027EC000F7C424 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		1FF9024D1BF6F60F001CD2AD /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = ../ViewController.swift; sourceTree = "<group>"; };
 		1FF9024F1BF6F638001CD2AD /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		317D26D91C13AD5200FCD7F8 /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder.png; sourceTree = "<group>"; };
 		565472B41C1168F50098EA72 /* FBLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBLoginViewController.swift; sourceTree = "<group>"; };
 		56C931461C13957A0041F8C2 /* SongInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongInfoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -196,6 +198,7 @@
 		1F624B081BE7291F004549A6 /* TurntPartyList */ = {
 			isa = PBXGroup;
 			children = (
+				317D26D91C13AD5200FCD7F8 /* placeholder.png */,
 				1F624B611BE7D0C0004549A6 /* Frameworks */,
 				1F624B091BE7291F004549A6 /* AppDelegate.swift */,
 				1FF9024D1BF6F60F001CD2AD /* ViewController.swift */,
@@ -374,6 +377,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F624B141BE7291F004549A6 /* LaunchScreen.storyboard in Resources */,
+				317D26DA1C13AD5200FCD7F8 /* placeholder.png in Resources */,
 				1F624B111BE7291F004549A6 /* Assets.xcassets in Resources */,
 				1F624B0F1BE7291F004549A6 /* Main.storyboard in Resources */,
 			);

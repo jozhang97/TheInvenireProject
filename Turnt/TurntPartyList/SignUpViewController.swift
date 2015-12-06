@@ -11,11 +11,12 @@ import UIKit
 class SignUpViewController: UIViewController, UITextFieldDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     
+    @IBOutlet weak var name: UITextField!
+    
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var confirmPassword: UITextField!
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var username: UITextField!
-    @IBOutlet weak var name: UITextField!
     
     @IBOutlet weak var profPicImageView: UIImageView!
     
@@ -23,6 +24,11 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UINavigationC
     @IBOutlet weak var createAccount: UIButton!
     @IBOutlet weak var goToLogin: UIButton!
     
+    enum UINavigationControllerOperation : Int {
+        case None
+        case Push
+        case Pop
+    }
     
     var name_ = ""
     var password_ = ""
@@ -38,10 +44,9 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UINavigationC
     
     @IBAction func createAccountButton(sender: AnyObject) {
         var displayError = ""
-        if name.text == ""{
+        if name.text == "" {
             displayError = "Please enter a name"
-        }
-        else if email.text == ""
+        } else if email.text == ""
         {
             displayError = "Please enter a email"
         }
@@ -74,16 +79,16 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UINavigationC
             confirmPassword_ = confirmPassword.text!
             email_ = email.text!
             username_ = username.text!
-            profPic_ = profPicImageView.image
+            profPic_ = profPicImageView.image!
             
-            let _user = PFUser(className: "_User")
-            _user.Name = name_
-            _user.password = password_
-            _user.email = email_
-            _user.username = username_
-            _user.profPic = profPic_
+            let user = PFUser(className: "_User")
+            user.password = password_
+            user.email = email_
+            user.username = username_
+            user["profPic"] = profPic_
+            user["Name"] = name_
             
-            self.performSegueWithIdentifier("createAccountToFeed", sender: self)
+        self.performSegueWithIdentifier("createAccountToFeed", sender: self)
         
         }
         

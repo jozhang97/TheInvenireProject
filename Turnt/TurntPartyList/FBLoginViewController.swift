@@ -10,7 +10,7 @@ import UIKit
 import FBSDKCoreKit
 import FBSDKLoginKit
 
-class FBLoginViewController: UIViewController {
+class FBLoginViewController: UIViewController, UIImagePickerControllerDelegate {
     
 
     @IBOutlet weak var profilePic: UIImageView!
@@ -27,10 +27,10 @@ class FBLoginViewController: UIViewController {
         let _user = PFUser(className: "_User")
 
         _user.email = ""
-        _user.username = ""
+        _user.username = FBSDKProfile.currentProfile().name
         _user.password = ""
-        _user.confirmPassword = ""
-        _user.profPic = profilePic.image
+        _user["confirmPassword"] = ""
+        _user["profPic"] = profilePic.image
     }
     
 
@@ -42,7 +42,7 @@ class FBLoginViewController: UIViewController {
     
     @IBAction func uploadPicButton(sender: AnyObject) {
         let image = UIImagePickerController()
-        image.delegate = self
+        //image.delegate = self
         image.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
         image.allowsEditing = false
         self.presentViewController(image, animated: true, completion: nil)
