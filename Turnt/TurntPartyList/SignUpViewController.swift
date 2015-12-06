@@ -24,11 +24,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UINavigationC
     @IBOutlet weak var createAccount: UIButton!
     @IBOutlet weak var goToLogin: UIButton!
     
-    enum UINavigationControllerOperation : Int {
-        case None
-        case Push
-        case Pop
-    }
     
     var name_ = ""
     var password_ = ""

@@ -258,18 +258,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8nD-I9-D7i">
-                                <rect key="frame" x="33" y="225" width="246" height="30"/>
+                                <rect key="frame" x="33" y="264" width="246" height="30"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SZl-An-5X5">
-                                <rect key="frame" x="32" y="269" width="246" height="30"/>
+                                <rect key="frame" x="32" y="308" width="246" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HAY-X1-RNE">
-                                <rect key="frame" x="10" y="335" width="127" height="35"/>
+                                <rect key="frame" x="10" y="374" width="127" height="35"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Create Account">
@@ -281,14 +281,14 @@
                                 </connections>
                             </button>
                             <button contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CiL-3D-ROJ">
-                                <rect key="frame" x="164" y="336" width="145" height="30"/>
+                                <rect key="frame" x="164" y="375" width="145" height="30"/>
                                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Log in with Facebook">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                             </button>
                             <button contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g9c-dW-mhE">
-                                <rect key="frame" x="18" y="298" width="275" height="30"/>
+                                <rect key="frame" x="18" y="337" width="275" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Login!">
@@ -299,7 +299,7 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="12355759_10205524923184603_16442520_o" translatesAutoresizingMaskIntoConstraints="NO" id="7Rd-EN-ir4">
-                                <rect key="frame" x="38" y="28" width="240" height="180"/>
+                                <rect key="frame" x="38" y="28" width="240" height="218"/>
                             </imageView>
                         </subviews>
                         <color key="tintColor" red="0.28910618129702681" green="0.5940082556705778" blue="0.7741279987373737" alpha="1" colorSpace="calibratedRGB"/>
@@ -356,6 +356,7 @@
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
+                                    <action selector="goToLoginButton:" destination="8e3-jq-HFi" eventType="touchUpInside" id="q07-ZK-7k7"/>
                                     <segue destination="5t6-dT-g5v" kind="show" identifier="goBackToLogin" id="b0M-OJ-WAR"/>
                                 </connections>
                             </button>
@@ -370,11 +371,12 @@
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
+                                    <action selector="chooseImageButton:" destination="8e3-jq-HFi" eventType="touchUpInside" id="yHi-gg-E6x"/>
                                     <action selector="createAccountButton:" destination="8e3-jq-HFi" eventType="touchUpInside" id="Hx5-Xa-doE"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Create Account" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QKd-IO-PeT">
-                                <rect key="frame" x="35" y="28" width="237" height="30"/>
+                                <rect key="frame" x="54" y="28" width="237" height="30"/>
                                 <animations/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
@@ -414,10 +416,14 @@
                     <navigationItem key="navigationItem" id="VhI-1t-3ES"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="chooseImage" destination="fuK-cv-GwC" id="Vvb-7A-vVe"/>
                         <outlet property="confirmPassword" destination="YpS-FW-cdY" id="sBS-mf-W5u"/>
+                        <outlet property="createAccount" destination="GgT-DO-0Ry" id="a4t-Kd-jHu"/>
                         <outlet property="email" destination="UpN-cy-PV2" id="lmi-HB-FRn"/>
+                        <outlet property="goToLogin" destination="Ha7-Yb-kCf" id="wcE-UK-m0F"/>
                         <outlet property="name" destination="65i-uI-eVI" id="bq8-pK-cuP"/>
                         <outlet property="password" destination="tm9-b3-6GV" id="ouw-Z4-tsQ"/>
+                        <outlet property="profPicImageView" destination="Dku-Py-bZs" id="byI-qB-O0O"/>
                         <outlet property="username" destination="nGX-9y-o7Z" id="eM6-X9-7Nu"/>
                     </connections>
                 </viewController>
