@@ -10,35 +10,48 @@ import UIKit
 import FBSDKCoreKit
 import FBSDKLoginKit
 
-class LoginViewController: ViewController,FBSDKLoginButtonDelegate {
-
+class LoginViewController: ViewController {
+//FBSDKLoginButtonDelegate
+    
     // start of FB Stuff
 
-    override func viewDidAppear(animated: Bool) {
-        if (FBSDKAccessToken.currentAccessToken() == nil) {
-            print("not logged in")
-        } else {
-            print("logged in")
-        }
-    }
+//    override func viewDidAppear(animated: Bool) {
+//        if (FBSDKAccessToken.currentAccessToken() == nil) {
+//            print("not logged in")
+//        } else {
+//            print("logged in")
+//            self.performSegueWithIdentifier("toFB", sender: self)
+//        }
+//    }
     
-    //MARK: Facebook Login
-    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
-        if (error == nil) {
-            print("Login complete")
-            self.performSegueWithIdentifier("showNew", sender: self)
-        } else {
-            print(error.localizedDescription)
-        }
-    }
-    
-    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
-        print("user logged out")
-    }
-
-    @IBAction func facebookLogin(sender: AnyObject) {
-        
-    }
+//    //MARK: Facebook Login
+//    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
+//        if (error == nil) {
+//            print("Login complete")
+//        } else {
+//            print(error.localizedDescription)
+//        }
+//    }
+//    
+//    func putDataInDB() {
+//        let user = PFUser.currentUser()
+//        user!["Name"] = FBSDKProfile.currentProfile().name
+//        user!.username = ""
+//        user!.password = ""
+//        user!.email = ""
+//        user!["confirmPassword"] = ""
+//        user!.saveInBackground()
+//    }
+//    
+//    
+//    
+//    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
+//        print("user logged out")
+//    }
+//
+//    @IBAction func facebookLogin(sender: AnyObject) {
+//        
+//    }
     
     // End Facebook stuff
     
@@ -48,13 +61,13 @@ class LoginViewController: ViewController,FBSDKLoginButtonDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let loginButton = FBSDKLoginButton()
-        loginButton.readPermissions = ["public_profile", "email", "user_friends"]
-        loginButton.center = self.view.center
-        loginButton.delegate = self
-        self.view.addSubview(loginButton)
-        FBSDKProfile.enableUpdatesOnAccessTokenChange(true)
-        // Do any additional setup after loading the view, typically from a nib.
+//        let loginButton = FBSDKLoginButton()
+//        loginButton.readPermissions = ["public_profile", "email", "user_friends"]
+//        loginButton.center = self.view.center
+//        loginButton.delegate = self
+//        self.view.addSubview(loginButton)
+//        FBSDKProfile.enableUpdatesOnAccessTokenChange(true)
+//        // Do any additional setup after loading the view, typically from a nib.
     }
     
     
