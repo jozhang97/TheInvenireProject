@@ -6,17 +6,38 @@
 //  Copyright © 2015 Jeffrey Zhang. All rights reserved.
 //f
 
-import UIKit
+import UIKit 
 
 class TableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, TableViewCellDelegate {
+
+    @IBAction func segmentChanged(sender: AnyObject) {
+        clearArrays()
+        getParties()
+    }
     
+    func clearArrays(){
+        artistNames = Array<String>()
+        songNames = Array<String>()
+        albumNames = Array<String>()
+        likesList = Array<Int>()
+        locations = Array<PFGeoPoint>()
+        artworks = Array<UIImage>()
+        peopleNames = Array<String>()
+    }
+    
+    @IBOutlet weak var segmentControl: UISegmentedControl!
     var artistNames = Array<String>()
     var songNames = Array<String> ()
     var albumNames = Array<String>()
     var likesList = Array<Int>()
+    var locations = Array<PFGeoPoint>()
+    var artworks = Array<UIImage>()
+    var peopleNames = Array<String>()
+    var selectedSongIndex = 0
     
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "titlepageBackground1")!)
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
@@ -29,8 +50,6 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
         tableView.delegate = self
         tableView.dataSource = self
         getParties()
-        //getDescription()
-        tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -39,19 +58,61 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func getParties(){
-        let query = PFQuery(className:"Songs")
+        // artwork has error
+        let query = PFQuery(className:"Posts")
+        if segmentControl.selectedSegmentIndex == 0 {
+            query.addDescendingOrder("numLikes")
+        }
+        else if segmentControl.selectedSegmentIndex == 1 {
+            query.addDescendingOrder("createdAt")
+        }
+        else if segmentControl.selectedSegmentIndex == 2{
+            query.whereKey("location", nearGeoPoint: findLocation())
+        }
+        /***
+        Something wrong with images and synchronous queries
+        */
+        let messages = try? query.findObjects()
+        print("message count: ")
+        print(messages!.count)
+        for object in messages! {
+            let artwork = object["artwork"] as! PFFile
+            let image = try? UIImage(data: artwork.getData())
+            self.artworks.append(image!!)
+            /***
+            artwork.getDataInBackgroundWithBlock { (imageData: NSData?, error: NSError?) -> Void in
+                if (error == nil) {
+                    let image = UIImage(data:imageData!)
+                    print("hello")
+                    self.artworks.append(image!)
+                }
+            }*/
+        }
+
+        query.limit = 15
         query.findObjectsInBackgroundWithBlock {
             (objects: [PFObject]?, error: NSError?) -> Void in
             if error == nil {
-                // The find succeeded.
                 print("Successfully retrieved \(objects!.count) scores.")
-                // Do something with the found objects
                 if let objects = objects! as? [PFObject] {
                     for object in objects {
-                        self.artistNames.append(object["Artist"] as! String)
-                        self.songNames.append(object["Song"] as! String)
-                        self.albumNames.append(object["Album"] as! String)
-                        self.likesList.append(object["likes"] as! Int)
+                        self.artistNames.append(object["artist"] as! String)
+                        self.songNames.append(object["title"] as! String)
+                        self.albumNames.append(object["album"] as! String)
+                        self.likesList.append(object["numLikes"] as! Int)
+                        self.locations.append(object["location"] as! PFGeoPoint)
+                        self.peopleNames.append(object["username"] as! String)
+                        /***
+                        let artwork = object["artwork"] as! PFFile
+                        artwork.getDataInBackgroundWithBlock { (imageData: NSData?, error: NSError?) -> Void in
+                                if (error == nil) {
+                                    let image = UIImage(data:imageData!)
+                                    print("hello")
+                                    self.artworks.append(image!)
+                                }
+                        }
+                        */
+                        
                     }
                     self.tableView.reloadData()
                 }
@@ -62,10 +123,10 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
     }
     
-    // error in this
     func like (cell: TableViewCell) {
-        let query = PFQuery(className:"Songs")
-        query.whereKey("Song", equalTo: cell.song.text!)
+        var displayError = ""
+        let query = PFQuery(className:"Posts")
+        query.whereKey("title", equalTo: cell.song.text!)
         query.findObjectsInBackgroundWithBlock {
             (objects: [PFObject]?, error: NSError?) -> Void in
             if error == nil {
@@ -74,18 +135,41 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 // Do something with the found objects
                 if let objects = objects! as? [PFObject] {
                     for object in objects {
-                        let currLikes = object["likes"] as! Int
-                        let newLikes = currLikes + 1
-                        object["likes"] = newLikes
-                        object.saveInBackgroundWithBlock { (succeeded, signupError) -> Void in
-                            if signupError == nil{
-                                self.performSegueWithIdentifier("likeSegue", sender: nil)
+                        if object["usersLiked"] == nil {
+                            let currLikes = object["numLikes"] as! Int
+                            //                        NSLog("Current Likes %i", currLikes)
+                            let newLikes = currLikes + 1
+                            object["numLikes"] = newLikes
+                            object.addUniqueObject((PFUser.currentUser()?.username!)!, forKey: "usersLiked")
+                            PFUser.currentUser()!.addUniqueObject(object.objectId!, forKey: "postsLiked")
+                            PFUser.currentUser()?.saveInBackground()
+                            object.saveInBackground()
+                        }
+                        else {
+                            var liableUser = ""
+                            for user in object["usersLiked"] as! NSArray {
+                                if user as! String == (PFUser.currentUser()?.username!)! {
+                                    liableUser = user as! String
+                                }
+                            }
+                            if liableUser == "" {
+                                let currLikes = object["numLikes"] as! Int
+                                //                        NSLog("Current Likes %i", currLikes)
+                                let newLikes = currLikes + 1
+                                object["numLikes"] = newLikes
+                                object.addUniqueObject((PFUser.currentUser()?.username!)!, forKey: "usersLiked")
+                                PFUser.currentUser()!.addUniqueObject(object.objectId!, forKey: "postsLiked")
+                                PFUser.currentUser()?.saveInBackground()
+                                object.saveInBackground()
+                            }
+                            else {
+                                displayError = "You have already liked this post!"
+                                self.displayAlert("Impossible Action", displayError: displayError)
                             }
                         }
                     }
-                    self.tableView.reloadData()
-                    //  viewDidLoad()
-                    
+                    self.clearArrays()
+                    self.getParties() // use a wherekey (not very efficient)
                 }
             } else {
                 // Log details of the failure
@@ -94,15 +178,19 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
     }
     
+    func displayAlert(title: String, displayError: String)
+    {
+        let alert = UIAlertController(title: title, message: displayError, preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "OK",style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        
         return 1
     }
     
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         return songNames.count
     }
     
@@ -115,18 +203,62 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
         cell.song.text = songNames[indexPath.row]
         cell.album.text = albumNames[indexPath.row]
         cell.likes.text = "x" + String(likesList[indexPath.row])
-        cell.distance.text = "distance of thing is 10 mi"
+        cell.distance.text = "distance: "+String(findDistance(locations[indexPath.row])) + " miles away"
+        print(artworks)
+        print(artworks.count)
+        cell.artwork.image = artworks[indexPath.row]
         // Set the text of the memberName field of the cell to the right value
-        
-        
+        cell.delegate = self
         // Set the image of the memberProfilePic imageview in the cell
-        
         return cell
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 100
+    func findLocation() -> PFGeoPoint {
+        
+        var currLocation = PFGeoPoint(latitude:40.0, longitude:-30.0)
+        PFGeoPoint.geoPointForCurrentLocationInBackground {
+            (geoPoint: PFGeoPoint?, error: NSError?) -> Void in
+            if error == nil {
+                    currLocation = geoPoint!
+            }
+        }
+        return currLocation
     }
+    
+    func findDistance(musicLocation :PFGeoPoint) -> Double {
+        let currLocation = findLocation()
+        print(currLocation)
+        print(musicLocation)
+        return round(100*musicLocation.distanceInMilesTo(currLocation))/100
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 67
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        selectedSongIndex = indexPath.row
+        self.performSegueWithIdentifier("showSongDetail", sender: self)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "showSongDetail"
+        {
+            selectedSongIndex = (self.tableView.indexPathForSelectedRow?.row)!
+            
+            let vc = segue.destinationViewController as! SongDetailViewController
+            vc.selectedArtist = self.artistNames[selectedSongIndex]
+            vc.selectedSongName = self.songNames[selectedSongIndex]
+            vc.selectedAlbum  = self.albumNames[selectedSongIndex]
+            vc.selectedSharedBy = "Shared by " + self.peopleNames[selectedSongIndex]
+            vc.selectedDistance = String(findDistance(locations[selectedSongIndex])) + " miles away."
+            vc.selectedLikes = "Like by " + String(likesList[selectedSongIndex]) + " people!"
+            vc.selectedArtwork = self.artworks[selectedSongIndex]
+            
+        }
+    }
+
+    
 
     /*
     // MARK: - Navigation

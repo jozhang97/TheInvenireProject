@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18D95C441C14C90A00CFF63F /* FBLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D95C431C14C90A00CFF63F /* FBLoginViewController.swift */; };
+		18F840341C2685620086A44F /* MapTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F840331C2685620086A44F /* MapTabViewController.swift */; };
+		18F840361C2687B10086A44F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18F840351C2687B10086A44F /* MapKit.framework */; };
 		1F08132F1BF6F20C00165A71 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F0813281BF6F20C00165A71 /* Bolts.framework */; };
 		1F0813301BF6F20C00165A71 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F0813291BF6F20C00165A71 /* Parse.framework */; };
 		1F0813311BF6F20C00165A71 /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F08132A1BF6F20C00165A71 /* ParseCrashReporting.framework */; };
@@ -41,8 +44,11 @@
 		1F624B5F1BE7D0A2004549A6 /* ParseTwitterUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F624B581BE7D0A2004549A6 /* ParseTwitterUtils.framework */; };
 		1F624B601BE7D0A2004549A6 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F624B591BE7D0A2004549A6 /* ParseUI.framework */; };
 		1F624B681BE7D677004549A6 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F624B671BE7D677004549A6 /* TableViewCell.swift */; };
+		1F67E45B1C13B3490069F797 /* SongDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F67E45A1C13B3490069F797 /* SongDetailViewController.swift */; };
+		1F89497E1C13E20F005548D2 /* postsCellTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F89497B1C13E20F005548D2 /* postsCellTVC.swift */; };
+		1F89497F1C13E20F005548D2 /* profileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F89497C1C13E20F005548D2 /* profileViewController.swift */; };
+		1F8949801C13E20F005548D2 /* changeProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F89497D1C13E20F005548D2 /* changeProfileVC.swift */; };
 		1FE0C09F1BF7CF6900C67B48 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE0C09E1BF7CF6900C67B48 /* SignUpViewController.swift */; };
-		1FE0C0A11BF7D44700C67B48 /* AddUserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE0C0A01BF7D44700C67B48 /* AddUserInfoViewController.swift */; };
 		1FE0C0A31BF7DBC000C67B48 /* AddSongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE0C0A21BF7DBC000C67B48 /* AddSongViewController.swift */; };
 		1FEB35191C027EC000F7C424 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FEB35171C027EBF00F7C424 /* FBSDKCoreKit.framework */; };
 		1FEB351A1C027EC000F7C424 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FEB35181C027EC000F7C424 /* FBSDKLoginKit.framework */; };
@@ -68,6 +74,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		18D95C431C14C90A00CFF63F /* FBLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBLoginViewController.swift; sourceTree = "<group>"; };
+		18F840331C2685620086A44F /* MapTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapTabViewController.swift; sourceTree = "<group>"; };
+		18F840351C2687B10086A44F /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		1F0813281BF6F20C00165A71 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		1F0813291BF6F20C00165A71 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		1F08132A1BF6F20C00165A71 /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseCrashReporting.framework; sourceTree = "<group>"; };
@@ -109,8 +118,11 @@
 		1F624B591BE7D0A2004549A6 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseUI.framework; path = Parse/ParseUI.framework; sourceTree = "<group>"; };
 		1F624B621BE7D0F7004549A6 /* TurntPartyList-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TurntPartyList-Bridging-Header.h"; sourceTree = "<group>"; };
 		1F624B671BE7D677004549A6 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableViewCell.swift; path = ../TableViewCell.swift; sourceTree = "<group>"; };
+		1F67E45A1C13B3490069F797 /* SongDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongDetailViewController.swift; sourceTree = "<group>"; };
+		1F89497B1C13E20F005548D2 /* postsCellTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = postsCellTVC.swift; sourceTree = "<group>"; };
+		1F89497C1C13E20F005548D2 /* profileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = profileViewController.swift; sourceTree = "<group>"; };
+		1F89497D1C13E20F005548D2 /* changeProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = changeProfileVC.swift; sourceTree = "<group>"; };
 		1FE0C09E1BF7CF6900C67B48 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		1FE0C0A01BF7D44700C67B48 /* AddUserInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddUserInfoViewController.swift; sourceTree = "<group>"; };
 		1FE0C0A21BF7DBC000C67B48 /* AddSongViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddSongViewController.swift; path = ../AddSongViewController.swift; sourceTree = "<group>"; };
 		1FEB35171C027EBF00F7C424 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		1FEB35181C027EC000F7C424 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
@@ -123,6 +135,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18F840361C2687B10086A44F /* MapKit.framework in Frameworks */,
 				1F624B481BE7CFB7004549A6 /* StoreKit.framework in Frameworks */,
 				1F624B461BE7CFB3004549A6 /* Security.framework in Frameworks */,
 				1F624B441BE7CFAC004549A6 /* QuartzCore.framework in Frameworks */,
@@ -174,6 +187,7 @@
 		1F624AFD1BE7291E004549A6 = {
 			isa = PBXGroup;
 			children = (
+				18F840351C2687B10086A44F /* MapKit.framework */,
 				1F624B081BE7291F004549A6 /* TurntPartyList */,
 				1F624B1D1BE7291F004549A6 /* TurntPartyListTests */,
 				1F624B281BE7291F004549A6 /* TurntPartyListUITests */,
@@ -197,17 +211,22 @@
 				1F624B611BE7D0C0004549A6 /* Frameworks */,
 				1F624B091BE7291F004549A6 /* AppDelegate.swift */,
 				1FF9024D1BF6F60F001CD2AD /* ViewController.swift */,
-				1FF9024F1BF6F638001CD2AD /* LoginViewController.swift */,
 				1F624B0D1BE7291F004549A6 /* Main.storyboard */,
-				1FE0C0A01BF7D44700C67B48 /* AddUserInfoViewController.swift */,
+				18D95C431C14C90A00CFF63F /* FBLoginViewController.swift */,
+				1FF9024F1BF6F638001CD2AD /* LoginViewController.swift */,
 				1FE0C09E1BF7CF6900C67B48 /* SignUpViewController.swift */,
+				1F624B101BE7291F004549A6 /* Assets.xcassets */,
+				18F840331C2685620086A44F /* MapTabViewController.swift */,
 				1F624B391BE72B22004549A6 /* TableViewController.swift */,
 				1F624B671BE7D677004549A6 /* TableViewCell.swift */,
-				1F624B101BE7291F004549A6 /* Assets.xcassets */,
 				1FE0C0A21BF7DBC000C67B48 /* AddSongViewController.swift */,
+				1F67E45A1C13B3490069F797 /* SongDetailViewController.swift */,
 				1F624B121BE7291F004549A6 /* LaunchScreen.storyboard */,
 				1F624B151BE7291F004549A6 /* Info.plist */,
 				1F624B621BE7D0F7004549A6 /* TurntPartyList-Bridging-Header.h */,
+				1F89497B1C13E20F005548D2 /* postsCellTVC.swift */,
+				1F89497C1C13E20F005548D2 /* profileViewController.swift */,
+				1F89497D1C13E20F005548D2 /* changeProfileVC.swift */,
 			);
 			path = TurntPartyList;
 			sourceTree = "<group>";
@@ -333,7 +352,7 @@
 				TargetAttributes = {
 					1F624B051BE7291E004549A6 = {
 						CreatedOnToolsVersion = 7.1;
-						DevelopmentTeam = 2ZAB53W5TP;
+						DevelopmentTeam = 93GPGDAN9C;
 					};
 					1F624B191BE7291F004549A6 = {
 						CreatedOnToolsVersion = 7.1;
@@ -397,14 +416,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1FE0C0A11BF7D44700C67B48 /* AddUserInfoViewController.swift in Sources */,
 				1FF902501BF6F638001CD2AD /* LoginViewController.swift in Sources */,
 				1FF9024E1BF6F60F001CD2AD /* ViewController.swift in Sources */,
+				18D95C441C14C90A00CFF63F /* FBLoginViewController.swift in Sources */,
+				1F67E45B1C13B3490069F797 /* SongDetailViewController.swift in Sources */,
 				1FE0C0A31BF7DBC000C67B48 /* AddSongViewController.swift in Sources */,
 				1FE0C09F1BF7CF6900C67B48 /* SignUpViewController.swift in Sources */,
+				18F840341C2685620086A44F /* MapTabViewController.swift in Sources */,
+				1F89497F1C13E20F005548D2 /* profileViewController.swift in Sources */,
 				1F624B681BE7D677004549A6 /* TableViewCell.swift in Sources */,
+				1F8949801C13E20F005548D2 /* changeProfileVC.swift in Sources */,
 				1F624B0A1BE7291F004549A6 /* AppDelegate.swift in Sources */,
 				1F624B3A1BE72B22004549A6 /* TableViewController.swift in Sources */,
+				1F89497E1C13E20F005548D2 /* postsCellTVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

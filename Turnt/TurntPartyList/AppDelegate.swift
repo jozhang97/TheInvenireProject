@@ -25,13 +25,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
 //    }
     
+    
+    
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         Parse.enableLocalDatastore()
-        Parse.setApplicationId("gqlu265uUbOXkoMTSxHgB3X66qIETfirpuGW7IMu",
-            clientKey: "LnUFicCjywfpSxMlfRU6YmHTR6c09wDyGvivgKMs")
-        
-//        Parse.setApplicationId("ubX1Uz9t0xey3JmriirdALN8g7aUyQLPK7hdXt0y",
-//            clientKey: "7xiy0Gn2sgQW5YVnABWUvC1BoX1idQekHf80vXiM")
+
+        Parse.setApplicationId("ubX1Uz9t0xey3JmriirdALN8g7aUyQLPK7hdXt0y",
+            clientKey: "7xiy0Gn2sgQW5YVnABWUvC1BoX1idQekHf80vXiM")
         
         // Override point for customization after application launch.
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)

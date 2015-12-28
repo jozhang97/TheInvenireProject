@@ -19,6 +19,8 @@ class TableViewCell: UITableViewCell
     @IBOutlet weak var album: UILabel!
     @IBOutlet weak var distance: UILabel!
     @IBOutlet weak var likes: UILabel!
+    @IBOutlet weak var artwork: UIImageView!
+    
     var delegate:TableViewCellDelegate? = nil
     
 
@@ -26,8 +28,8 @@ class TableViewCell: UITableViewCell
     @IBAction func likeThis(sender: AnyObject) {
         delegate?.like(self)
         
-        let liked = UIImage(named: "TurtleTurnt")
-        likesButton.setImage(liked, forState: .Normal)
+//        let liked = UIImage(named: "TurtleTurnt")
+//        likesButton.setImage(liked, forState: .Normal)
     }
     override func awakeFromNib() {
         super.awakeFromNib()
