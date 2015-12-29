@@ -1,8 +1,8 @@
 //
 //  ViewController.swift
-//  TurntPartyList
+//  Invenire
 //
-//  Created by Jeffrey Zhang on 11/13/15.
+//  Created by Apple on 12/29/15.
 //  Copyright © 2015 Jeffrey Zhang. All rights reserved.
 //
 

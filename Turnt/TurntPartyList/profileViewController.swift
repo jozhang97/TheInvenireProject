@@ -17,7 +17,12 @@ class profileViewController: UIViewController, UITableViewDelegate, UITableViewD
     var artistTitles = [String]()
     var albumTitles = [String]()
     var pictures = [PFFile]()
+    var locations = [PFGeoPoint]()
+    var peopleNames = [String]()
     var likes = [String]()
+    var selectedSongIndex = 0
+    var artworks = [UIImage]()
+    var currentState = 0
     
     @IBOutlet weak var profbgImageView: UIImageView!
     @IBOutlet weak var postsTableView: UITableView!
@@ -30,16 +35,18 @@ class profileViewController: UIViewController, UITableViewDelegate, UITableViewD
         albumTitles.removeAll()
         pictures.removeAll()
         likes.removeAll()
+        artworks.removeAll()
     }
 
     @IBAction func segmentControlAction(sender: AnyObject) {
         if segmentControl.selectedSegmentIndex == 0 {
             clearArrays()
-            getMemberInfo(0)
+            getMemberInfoPosts()
         }
         else {
             clearArrays()
-            getMemberInfo(1)
+            currentState = 1
+            getMemberInfoLikes()
         }
     }
     
@@ -72,40 +79,77 @@ class profileViewController: UIViewController, UITableViewDelegate, UITableViewD
         profbgImageView.layer.borderColor = UIColor.blackColor().CGColor
         profbgImageView.layer.borderWidth = 5;
         
-        getMemberInfo(0)
-        //imageLabel.bringSubviewToFront(profileViewController)
-        
-        
-        // Do any additional setup after loading the view.
+        if currentState == 0 {
+            segmentControl.selectedSegmentIndex = 0
+            getMemberInfo()
+            getMemberInfoPosts()
+        }
+        else {
+            segmentControl.selectedSegmentIndex = 1
+            getMemberInfo()
+            getMemberInfoLikes()
+        }
+        postsTableView.separatorStyle = UITableViewCellSeparatorStyle.None
     }
     
-    func getMemberInfo(postType: Int) {
+    func getMemberInfoLikes() {
+        var query2 = PFQuery(className: "Posts")
+        var postsLiked = [String] ()
+        if let a = PFUser.currentUser()!["postsLiked"] {
+            postsLiked = a as! [String]
+        }
+        query2.whereKey("objectId", containedIn: postsLiked)
+        //deleted stuff here
+        
+        query2.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) -> Void in
+            if error == nil {
+                print("number of objects: " + String(objects!.count))
+                for object in objects! {
+                    self.songTitles.append(object["title"] as! (String))
+                    self.artistTitles.append(object["artist"] as! (String))
+                    self.albumTitles.append(object["album"] as! (String))
+                    self.likes.append(String(object["numLikes"]))
+                    self.pictures.append(object["artwork"] as! PFFile)
+                    self.locations.append(object["location"] as! PFGeoPoint)
+                    self.peopleNames.append(object["username"] as! String)
+                    let artwork = object["artwork"] as! PFFile
+                    let image = try? UIImage(data: artwork.getData())
+                    self.artworks.append(image!!)
+                }
+                self.postsTableView.reloadData()
+            }
+        }
+    }
+
+    func getMemberInfo() {
+        //this first query deals with loading user profile image and name
         var query = PFQuery(className:"_User")
         query.whereKey("username", equalTo: (PFUser.currentUser()?.username)!)
         query.findObjectsInBackgroundWithBlock {
             (objects: [PFObject]?, error: NSError?) -> Void in
-            
             if error == nil {
-                // The find succeeded.
-                print("Successfully retrieved \(objects!.count) scores.")
-                // Do something with the found objects
                 if let objects = objects! as? [PFObject] {
                     self.userNameLabel.text = "Welcome " + (PFUser.currentUser()?.username)! + "!"
                     
                     let imageFile = objects[0]["profPic"] as! PFFile
                     imageFile.getDataInBackgroundWithBlock { (imageData: NSData?, error: NSError?) -> Void in if error == nil {
-                        let image1 = UIImage(data: imageData!)
-                        self.imageLabel.image = image1
+                            let image1 = UIImage(data: imageData!)
+                            self.imageLabel.image = image1
                         }
                     }
                 }
-            } else {
+            }
+            else {
                 // Log details of the failure
                 print("Error: \(error!) \(error!.userInfo)")
             }
+        }
+    }
+    
+    func getMemberInfoPosts() {
+            //second query deals with loading table with posts that user has made.
             var query2 = PFQuery(className: "Posts")
-            if postType == 0 {
-                query2.whereKey("username", equalTo: (PFUser.currentUser()?.username)!)
+            query2.whereKey("username", equalTo: (PFUser.currentUser()?.username)!)
                 query2.orderByAscending("createdAt")
                 query2.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) -> Void in
                     if error == nil {
@@ -115,41 +159,30 @@ class profileViewController: UIViewController, UITableViewDelegate, UITableViewD
                             self.albumTitles.append(object["album"] as! (String))
                             self.likes.append(String(object["numLikes"]))
                             self.pictures.append(object["artwork"] as! PFFile)
+                            self.locations.append(object["location"] as! PFGeoPoint)
+                            self.peopleNames.append(object["username"] as! String)
+                            let artwork = object["artwork"] as! PFFile
+                            let image = try? UIImage(data: artwork.getData())
+                            self.artworks.append(image!!)
                         }
                         self.postsTableView.reloadData()
                     }
-                }
             }
-            else {
-                var postsLiked = [String] ()
-                postsLiked = (PFUser.currentUser()?["postsLiked"])! as! [String]
-                for x in postsLiked {
-                    query2.whereKey("objectId", equalTo: x)
-                    query2.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) -> Void in
-                        if error == nil {
-                            for object in objects! {
-                                self.songTitles.append(object["title"] as! (String))
-                                self.artistTitles.append(object["artist"] as! (String))
-                                self.albumTitles.append(object["album"] as! (String))
-                                self.likes.append(String(object["numLikes"]))
-                                self.pictures.append(object["artwork"] as! PFFile)
-                            }
-                            //self.postsTableView.reloadData()
-                        }
-                    }
-
-                }
-                print(self.songTitles)
-                self.postsTableView.reloadData()
-            }
-            //self.postsTableView.reloadData()
-        }
-        
-        
     }
-    
+
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+        var numOfSection = 0
+        if self.songTitles.count > 0 {
+            self.postsTableView.backgroundView = nil
+            numOfSection = 1
+        } else {
+            var noDataLabel: UILabel = UILabel(frame: CGRectMake(0, 0, self.postsTableView.bounds.size.width, self.postsTableView.bounds.size.height))
+            noDataLabel.text = "No Data Available"
+            noDataLabel.textColor = UIColor(red: 22.0/255.0, green: 106.0/255.0, blue: 176.0/255.0, alpha: 1.0)
+            noDataLabel.textAlignment = NSTextAlignment.Center
+            self.postsTableView.backgroundView = noDataLabel
+        }
+        return numOfSection
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -160,7 +193,7 @@ class profileViewController: UIViewController, UITableViewDelegate, UITableViewD
         cell.albumTitle.text = albumTitles[indexPath.row]
         cell.numberOfLikes.text = likes[indexPath.row]
         
-        let imageFile = pictures[indexPath.row] as! PFFile
+        let imageFile = pictures[indexPath.row] 
         imageFile.getDataInBackgroundWithBlock { (imageData: NSData?, error: NSError?) -> Void in if error == nil {
                 let image1 = UIImage(data: imageData!)
                 cell.musicImage.image = image1
@@ -191,5 +224,51 @@ class profileViewController: UIViewController, UITableViewDelegate, UITableViewD
     // Pass the selected object to the new view controller.
     }
     */
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        selectedSongIndex = indexPath.row
+        //self.performSegueWithIdentifier("moreSongDetail2", sender: self)
+    }
+
+    func findLocation() -> PFGeoPoint {
+        
+        var currLocation = PFGeoPoint(latitude:40.0, longitude:-30.0)
+        PFGeoPoint.geoPointForCurrentLocationInBackground {
+            (geoPoint: PFGeoPoint?, error: NSError?) -> Void in
+            if error == nil {
+                currLocation = geoPoint!
+            }
+        }
+        return currLocation
+    }
+    
+    func findDistance(musicLocation :PFGeoPoint) -> Double {
+        let currLocation = findLocation()
+        print(currLocation)
+        print(musicLocation)
+        return round(100*musicLocation.distanceInMilesTo(currLocation))/100
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "moreSongDetail"
+        {
+            selectedSongIndex = (self.postsTableView.indexPathForSelectedRow?.row)!
+            let vc = segue.destinationViewController as! SongDetailViewController
+            vc.selectedArtist = self.artistTitles[selectedSongIndex]
+            vc.selectedSongName = self.songTitles[selectedSongIndex]
+            vc.selectedAlbum  = self.albumTitles[selectedSongIndex]
+            vc.selectedSharedBy = "Shared by " + self.peopleNames[selectedSongIndex]
+            vc.selectedDistance = String(findDistance(locations[selectedSongIndex])) + " miles away."
+            vc.selectedLikes = "Liked by " + String(likes[selectedSongIndex]) + " people!"
+            vc.selectedArtwork = self.artworks[selectedSongIndex]
+            vc.check = 1
+            if currentState == 0 {
+                vc.check2 = 0
+            }
+            else {
+                vc.check2 = 1
+            }
+            
+        }
+    }
     
 }

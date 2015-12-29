@@ -39,17 +39,10 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     override func viewDidLoad() {
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "titlepageBackground1")!)
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        
-//        self.navigationController!.navigationBar.hidden = false
-//        self.navigationController!.navigationBar.barTintColor = UIColor(red: 0.2, green: 0.678, blue: 1, alpha: 1)
-//        let titleDict: NSDictionary = [NSForegroundColorAttributeName: UIColor.whiteColor()]
-//        self.navigationController!.navigationBar.titleTextAttributes = titleDict as? Dictionary
-//        self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
         tableView.delegate = self
         tableView.dataSource = self
         getParties()
+        tableView.separatorStyle = UITableViewCellSeparatorStyle.None
     }
 
     override func didReceiveMemoryWarning() {
@@ -79,14 +72,6 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
             let artwork = object["artwork"] as! PFFile
             let image = try? UIImage(data: artwork.getData())
             self.artworks.append(image!!)
-            /***
-            artwork.getDataInBackgroundWithBlock { (imageData: NSData?, error: NSError?) -> Void in
-                if (error == nil) {
-                    let image = UIImage(data:imageData!)
-                    print("hello")
-                    self.artworks.append(image!)
-                }
-            }*/
         }
 
         query.limit = 15
@@ -102,17 +87,6 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
                         self.likesList.append(object["numLikes"] as! Int)
                         self.locations.append(object["location"] as! PFGeoPoint)
                         self.peopleNames.append(object["username"] as! String)
-                        /***
-                        let artwork = object["artwork"] as! PFFile
-                        artwork.getDataInBackgroundWithBlock { (imageData: NSData?, error: NSError?) -> Void in
-                                if (error == nil) {
-                                    let image = UIImage(data:imageData!)
-                                    print("hello")
-                                    self.artworks.append(image!)
-                                }
-                        }
-                        */
-                        
                     }
                     self.tableView.reloadData()
                 }
@@ -196,9 +170,6 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("tableCell", forIndexPath: indexPath) as! TableViewCell
-//        cell.memberProfilePic.layer.cornerRadius = cell.memberProfilePic.frame.size.width/2
-//        cell.memberProfilePic.clipsToBounds = true
-//        cell.delegate = self
         cell.artist.text = artistNames[indexPath.row]
         cell.song.text = songNames[indexPath.row]
         cell.album.text = albumNames[indexPath.row]
@@ -252,23 +223,10 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
             vc.selectedAlbum  = self.albumNames[selectedSongIndex]
             vc.selectedSharedBy = "Shared by " + self.peopleNames[selectedSongIndex]
             vc.selectedDistance = String(findDistance(locations[selectedSongIndex])) + " miles away."
-            vc.selectedLikes = "Like by " + String(likesList[selectedSongIndex]) + " people!"
+            vc.selectedLikes = "Liked by " + String(likesList[selectedSongIndex]) + " people!"
             vc.selectedArtwork = self.artworks[selectedSongIndex]
-            
+            vc.check = 0    //not needed but to re-ensure
         }
     }
 
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
-//
