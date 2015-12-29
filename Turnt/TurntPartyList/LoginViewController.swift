@@ -70,35 +70,9 @@ class LoginViewController: ViewController {
         loginButton.layer.backgroundColor  = UIColor.orangeColor().CGColor
         loginButton.layer.cornerRadius = 10
         super.viewDidLoad()
-//        let loginButton = FBSDKLoginButton()
-//        loginButton.readPermissions = ["public_profile", "email", "user_friends"]
-//        loginButton.center = self.view.center
-//        loginButton.delegate = self
-//        self.view.addSubview(loginButton)
-//        FBSDKProfile.enableUpdatesOnAccessTokenChange(true)
-//        // Do any additional setup after loading the view, typically from a nib.
-        if activateLabel == true {
-            updateCreationLabel()
-        }
+        //Do any additional setup after loading the view, typically from a nib.
     }
     
-    
-    @IBOutlet weak var successfulCreationLabel: UILabel!
-    
-    func updateCreationLabel() {
-        self.successfulCreationLabel.alpha = 1.0
-        self.successfulCreationLabel.text = "Account Made!"
-        self.successfulCreationLabel.textColor = UIColor.greenColor()
-        // Fade out to set the text
-        UIView.animateWithDuration(3.0, delay: 2.0, options: UIViewAnimationOptions.CurveEaseOut, animations: {
-            self.successfulCreationLabel.alpha = 0.0
-            }, completion: {
-                (finished: Bool) -> Void in
-                
-                //Once the label is completely invisible, set the text and fade it back in
-                self.successfulCreationLabel.text = " "
-        })
-    }
     
     func displayAlert(title: String)
     {
@@ -128,8 +102,6 @@ class LoginViewController: ViewController {
                 }
             }
             }, completion: nil)
-        
-        
     }
 
 

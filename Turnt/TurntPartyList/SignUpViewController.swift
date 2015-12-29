@@ -68,10 +68,10 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
             alert.show()
             
         } else if email!.characters.count < 8 || email!.containsString("@") == false {
-            var alert = UIAlertView(title: "Invalid", message: "Please enter a valid email address", delegate: self, cancelButtonTitle: "OK")
+            let alert = UIAlertView(title: "Invalid", message: "Please enter a valid email address", delegate: self, cancelButtonTitle: "OK")
             alert.show()
         } else if confirmPassword != password {
-            var alert = UIAlertView(title: "Invalid", message: "Passwords do not match!", delegate: self, cancelButtonTitle: "OK")
+            let alert = UIAlertView(title: "Invalid", message: "Passwords do not match!", delegate: self, cancelButtonTitle: "OK")
             alert.show()
         }
         else {
@@ -84,7 +84,7 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
             newUser.username = username
             newUser.password = password
             newUser.email = finalEmail
-            newUser["name"] = name
+            newUser["Name"] = name
             newUser["confirmPassword"] = confirmPassword
             
             if profPic.image == nil {

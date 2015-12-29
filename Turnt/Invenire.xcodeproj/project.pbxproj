@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18442D4C1C330C3900A228E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18442D4B1C330C3900A228E2 /* Main.storyboard */; };
+		18442D4E1C3325A400A228E2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18442D4D1C3325A400A228E2 /* ViewController.swift */; };
+		18442D501C33265900A228E2 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18442D4F1C33265900A228E2 /* TableViewCell.swift */; };
+		18442D521C33266500A228E2 /* AddSongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18442D511C33266500A228E2 /* AddSongViewController.swift */; };
 		18D95C441C14C90A00CFF63F /* FBLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D95C431C14C90A00CFF63F /* FBLoginViewController.swift */; };
 		18F840341C2685620086A44F /* MapTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F840331C2685620086A44F /* MapTabViewController.swift */; };
 		18F840361C2687B10086A44F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18F840351C2687B10086A44F /* MapKit.framework */; };
@@ -18,7 +22,6 @@
 		1F0813341BF6F20C00165A71 /* ParseTwitterUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F08132D1BF6F20C00165A71 /* ParseTwitterUtils.framework */; };
 		1F0813351BF6F20C00165A71 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F08132E1BF6F20C00165A71 /* ParseUI.framework */; };
 		1F624B0A1BE7291F004549A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F624B091BE7291F004549A6 /* AppDelegate.swift */; };
-		1F624B0F1BE7291F004549A6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F624B0D1BE7291F004549A6 /* Main.storyboard */; };
 		1F624B111BE7291F004549A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F624B101BE7291F004549A6 /* Assets.xcassets */; };
 		1F624B141BE7291F004549A6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F624B121BE7291F004549A6 /* LaunchScreen.storyboard */; };
 		1F624B1F1BE7291F004549A6 /* TurntPartyListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F624B1E1BE7291F004549A6 /* TurntPartyListTests.swift */; };
@@ -43,16 +46,13 @@
 		1F624B5E1BE7D0A2004549A6 /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F624B571BE7D0A2004549A6 /* ParseFacebookUtilsV4.framework */; };
 		1F624B5F1BE7D0A2004549A6 /* ParseTwitterUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F624B581BE7D0A2004549A6 /* ParseTwitterUtils.framework */; };
 		1F624B601BE7D0A2004549A6 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F624B591BE7D0A2004549A6 /* ParseUI.framework */; };
-		1F624B681BE7D677004549A6 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F624B671BE7D677004549A6 /* TableViewCell.swift */; };
 		1F67E45B1C13B3490069F797 /* SongDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F67E45A1C13B3490069F797 /* SongDetailViewController.swift */; };
 		1F89497E1C13E20F005548D2 /* postsCellTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F89497B1C13E20F005548D2 /* postsCellTVC.swift */; };
 		1F89497F1C13E20F005548D2 /* profileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F89497C1C13E20F005548D2 /* profileViewController.swift */; };
 		1F8949801C13E20F005548D2 /* changeProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F89497D1C13E20F005548D2 /* changeProfileVC.swift */; };
 		1FE0C09F1BF7CF6900C67B48 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE0C09E1BF7CF6900C67B48 /* SignUpViewController.swift */; };
-		1FE0C0A31BF7DBC000C67B48 /* AddSongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE0C0A21BF7DBC000C67B48 /* AddSongViewController.swift */; };
 		1FEB35191C027EC000F7C424 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FEB35171C027EBF00F7C424 /* FBSDKCoreKit.framework */; };
 		1FEB351A1C027EC000F7C424 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FEB35181C027EC000F7C424 /* FBSDKLoginKit.framework */; };
-		1FF9024E1BF6F60F001CD2AD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF9024D1BF6F60F001CD2AD /* ViewController.swift */; };
 		1FF902501BF6F638001CD2AD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF9024F1BF6F638001CD2AD /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -74,6 +74,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		18442D4B1C330C3900A228E2 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		18442D4D1C3325A400A228E2 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		18442D4F1C33265900A228E2 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		18442D511C33266500A228E2 /* AddSongViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddSongViewController.swift; sourceTree = "<group>"; };
 		18D95C431C14C90A00CFF63F /* FBLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBLoginViewController.swift; sourceTree = "<group>"; };
 		18F840331C2685620086A44F /* MapTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapTabViewController.swift; sourceTree = "<group>"; };
 		18F840351C2687B10086A44F /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -86,7 +90,6 @@
 		1F08132E1BF6F20C00165A71 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
 		1F624B061BE7291F004549A6 /* Invenire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Invenire.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F624B091BE7291F004549A6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		1F624B0E1BE7291F004549A6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1F624B101BE7291F004549A6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1F624B131BE7291F004549A6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1F624B151BE7291F004549A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -117,16 +120,13 @@
 		1F624B581BE7D0A2004549A6 /* ParseTwitterUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseTwitterUtils.framework; path = Parse/ParseTwitterUtils.framework; sourceTree = "<group>"; };
 		1F624B591BE7D0A2004549A6 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseUI.framework; path = Parse/ParseUI.framework; sourceTree = "<group>"; };
 		1F624B621BE7D0F7004549A6 /* TurntPartyList-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TurntPartyList-Bridging-Header.h"; sourceTree = "<group>"; };
-		1F624B671BE7D677004549A6 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableViewCell.swift; path = ../TableViewCell.swift; sourceTree = "<group>"; };
 		1F67E45A1C13B3490069F797 /* SongDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongDetailViewController.swift; sourceTree = "<group>"; };
 		1F89497B1C13E20F005548D2 /* postsCellTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = postsCellTVC.swift; sourceTree = "<group>"; };
 		1F89497C1C13E20F005548D2 /* profileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = profileViewController.swift; sourceTree = "<group>"; };
 		1F89497D1C13E20F005548D2 /* changeProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = changeProfileVC.swift; sourceTree = "<group>"; };
 		1FE0C09E1BF7CF6900C67B48 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		1FE0C0A21BF7DBC000C67B48 /* AddSongViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddSongViewController.swift; path = ../AddSongViewController.swift; sourceTree = "<group>"; };
 		1FEB35171C027EBF00F7C424 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		1FEB35181C027EC000F7C424 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
-		1FF9024D1BF6F60F001CD2AD /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = ../ViewController.swift; sourceTree = "<group>"; };
 		1FF9024F1BF6F638001CD2AD /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -210,16 +210,16 @@
 			children = (
 				1F624B611BE7D0C0004549A6 /* Frameworks */,
 				1F624B091BE7291F004549A6 /* AppDelegate.swift */,
-				1FF9024D1BF6F60F001CD2AD /* ViewController.swift */,
-				1F624B0D1BE7291F004549A6 /* Main.storyboard */,
 				18D95C431C14C90A00CFF63F /* FBLoginViewController.swift */,
+				18442D4B1C330C3900A228E2 /* Main.storyboard */,
 				1FF9024F1BF6F638001CD2AD /* LoginViewController.swift */,
 				1FE0C09E1BF7CF6900C67B48 /* SignUpViewController.swift */,
 				1F624B101BE7291F004549A6 /* Assets.xcassets */,
 				18F840331C2685620086A44F /* MapTabViewController.swift */,
 				1F624B391BE72B22004549A6 /* TableViewController.swift */,
-				1F624B671BE7D677004549A6 /* TableViewCell.swift */,
-				1FE0C0A21BF7DBC000C67B48 /* AddSongViewController.swift */,
+				18442D4D1C3325A400A228E2 /* ViewController.swift */,
+				18442D4F1C33265900A228E2 /* TableViewCell.swift */,
+				18442D511C33266500A228E2 /* AddSongViewController.swift */,
 				1F67E45A1C13B3490069F797 /* SongDetailViewController.swift */,
 				1F624B121BE7291F004549A6 /* LaunchScreen.storyboard */,
 				1F624B151BE7291F004549A6 /* Info.plist */,
@@ -389,9 +389,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18442D4C1C330C3900A228E2 /* Main.storyboard in Resources */,
 				1F624B141BE7291F004549A6 /* LaunchScreen.storyboard in Resources */,
 				1F624B111BE7291F004549A6 /* Assets.xcassets in Resources */,
-				1F624B0F1BE7291F004549A6 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,18 +417,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				1FF902501BF6F638001CD2AD /* LoginViewController.swift in Sources */,
-				1FF9024E1BF6F60F001CD2AD /* ViewController.swift in Sources */,
 				18D95C441C14C90A00CFF63F /* FBLoginViewController.swift in Sources */,
 				1F67E45B1C13B3490069F797 /* SongDetailViewController.swift in Sources */,
-				1FE0C0A31BF7DBC000C67B48 /* AddSongViewController.swift in Sources */,
 				1FE0C09F1BF7CF6900C67B48 /* SignUpViewController.swift in Sources */,
+				18442D501C33265900A228E2 /* TableViewCell.swift in Sources */,
 				18F840341C2685620086A44F /* MapTabViewController.swift in Sources */,
 				1F89497F1C13E20F005548D2 /* profileViewController.swift in Sources */,
-				1F624B681BE7D677004549A6 /* TableViewCell.swift in Sources */,
+				18442D4E1C3325A400A228E2 /* ViewController.swift in Sources */,
 				1F8949801C13E20F005548D2 /* changeProfileVC.swift in Sources */,
 				1F624B0A1BE7291F004549A6 /* AppDelegate.swift in Sources */,
 				1F624B3A1BE72B22004549A6 /* TableViewController.swift in Sources */,
 				1F89497E1C13E20F005548D2 /* postsCellTVC.swift in Sources */,
+				18442D521C33266500A228E2 /* AddSongViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -464,14 +464,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		1F624B0D1BE7291F004549A6 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1F624B0E1BE7291F004549A6 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		1F624B121BE7291F004549A6 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

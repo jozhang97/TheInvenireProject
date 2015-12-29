@@ -18,19 +18,29 @@ class SongDetailViewController: UIViewController {
     var selectedSharedBy = ""
     var selectedArtwork = UIImage(named: "Music")
     var check = 0
+<<<<<<< HEAD
+=======
+    var check2 = 0
+    
+>>>>>>> abhi
     @IBOutlet weak var albumArt: UIImageView!
     @IBOutlet weak var artist: UILabel!
     @IBOutlet weak var album: UILabel!
     @IBOutlet weak var likes: UILabel!
     @IBOutlet weak var sharedBy: UILabel!
     @IBOutlet weak var profileImage: UIImageView!
-    //var image = UIImage()
+    
+    @IBAction func backPressed(sender: AnyObject) {
+        if check == 0 {
+            performSegueWithIdentifier("back1", sender: self)
+        }
+        else {
+            performSegueWithIdentifier("back2", sender: self)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        //self.albumArt.image = self.image
         self.artist.text = selectedArtist + " - " + selectedSongName
         self.album.text = selectedAlbum
         self.likes.text = selectedLikes
@@ -44,8 +54,11 @@ class SongDetailViewController: UIViewController {
         
         self.profileImage.image = selectedArtwork
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "titlepageBackground1")!)
+<<<<<<< HEAD
         //self.profileImage.layer.cornerRadius = self.profileImage.frame.size.width/2
         //self.profileImage.clipsToBounds = true
+=======
+>>>>>>> abhi
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -62,7 +75,17 @@ class SongDetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "back2" {
+            let vc = segue.destinationViewController as! profileViewController
+            if check2 == 0 {
+                vc.currentState = 0
+            }
+            else {
+                vc.currentState = 1
+            }
+        }
+    }
     /*
     // MARK: - Navigation
 
