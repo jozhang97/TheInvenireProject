@@ -252,7 +252,7 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
             vc.selectedAlbum  = self.albumNames[selectedSongIndex]
             vc.selectedSharedBy = "Shared by " + self.peopleNames[selectedSongIndex]
             vc.selectedDistance = String(findDistance(locations[selectedSongIndex])) + " miles away."
-            vc.selectedLikes = "Like by " + String(likesList[selectedSongIndex]) + " people!"
+            vc.selectedLikes = "Liked by " + String(likesList[selectedSongIndex]) + " people!"
             vc.selectedArtwork = self.artworks[selectedSongIndex]
             
         }
