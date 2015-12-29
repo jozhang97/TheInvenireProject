@@ -274,7 +274,7 @@
                                     <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="rR3-7z-ypx" kind="show" id="mRv-FB-Pdu"/>
+                                    <segue destination="rR3-7z-ypx" kind="show" identifier="" id="mRv-FB-Pdu"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -683,7 +683,7 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="xpk-yq-48b" kind="show" id="GlO-J7-0bn"/>
+                                    <segue destination="IM6-eO-AOL" kind="show" identifier="secondaryBack" id="LMR-Dp-OII"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hZx-Zi-VoX">
@@ -1049,7 +1049,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ilM-OE-b1D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-650" y="1307"/>
+            <point key="canvasLocation" x="-624" y="1153"/>
         </scene>
         <!--Change ProfileVC-->
         <scene sceneID="Z6Y-d1-2rO">
@@ -1266,7 +1266,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="1AH-IY-Lir"/>
-        <segue reference="OTm-Id-EZh"/>
-        <segue reference="G2F-XL-sze"/>
+        <segue reference="LMR-Dp-OII"/>
+        <segue reference="ECh-ix-QxF"/>
     </inferredMetricsTieBreakers>
 </document>

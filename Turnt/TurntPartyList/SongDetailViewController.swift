@@ -17,6 +17,7 @@ class SongDetailViewController: UIViewController {
     var selectedLikes = ""
     var selectedSharedBy = ""
     var selectedArtwork = UIImage(named: "Music")
+    var check = 0
     @IBOutlet weak var albumArt: UIImageView!
     @IBOutlet weak var artist: UILabel!
     @IBOutlet weak var album: UILabel!
@@ -52,6 +53,14 @@ class SongDetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if check == 0 {
+            performSegueWithIdentifier("originalBack", sender: nil)
+        }
+        else {
+            performSegueWithIdentifier("secondaryBack", sender: nil)
+        }
+    }
 
     /*
     // MARK: - Navigation
