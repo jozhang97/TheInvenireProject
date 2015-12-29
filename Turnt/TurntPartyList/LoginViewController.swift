@@ -62,7 +62,8 @@ class LoginViewController: ViewController {
     
     
     @IBOutlet weak var loginButton: UIButton!
-    var activateLabel = false
+    
+    @IBOutlet weak var bufferView: UIActivityIndicatorView!
 
 
     override func viewDidLoad() {
@@ -87,12 +88,28 @@ class LoginViewController: ViewController {
     
     @IBAction func Login(sender: AnyObject) {
         let bounds = self.loginButton.bounds
+        if !UIAccessibilityIsReduceTransparencyEnabled() {
+            self.view.backgroundColor = UIColor.clearColor()
+            
+            let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Dark)
+            let blurEffectView = UIVisualEffectView(effect: blurEffect)
+            //always fill the view
+            blurEffectView.frame = self.view.bounds
+            blurEffectView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
+            
+            self.view.addSubview(blurEffectView) //if you have more UIViews, use an insertSubview API to place it where needed
+            view.insertSubview(bufferView, aboveSubview: view)
+        } 
+        else {
+            self.view.backgroundColor = UIColor.blackColor()
+        }
+        bufferView.startAnimating()
         UIView.animateWithDuration(1.0, delay: 0.0, usingSpringWithDamping: 0.2, initialSpringVelocity: 10, options: [], animations: {
             self.loginButton.bounds = CGRect(x: bounds.origin.x - 20, y: bounds.origin.y, width: bounds.size.width, height: bounds.size.height)
             self.loginButton.enabled = true
             PFUser.logInWithUsernameInBackground(self.username.text!, password: self.password.text!) {
                 (success, loginError) in
-                
+                self.bufferView.stopAnimating()
                 if loginError == nil {
                     self.performSegueWithIdentifier("toMainVC", sender: self)
                 } else {
@@ -109,16 +126,5 @@ class LoginViewController: ViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

@@ -18,11 +18,8 @@ class SongDetailViewController: UIViewController {
     var selectedSharedBy = ""
     var selectedArtwork = UIImage(named: "Music")
     var check = 0
-<<<<<<< HEAD
-=======
     var check2 = 0
     
->>>>>>> abhi
     @IBOutlet weak var albumArt: UIImageView!
     @IBOutlet weak var artist: UILabel!
     @IBOutlet weak var album: UILabel!
@@ -54,20 +51,6 @@ class SongDetailViewController: UIViewController {
         
         self.profileImage.image = selectedArtwork
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "titlepageBackground1")!)
-<<<<<<< HEAD
-        //self.profileImage.layer.cornerRadius = self.profileImage.frame.size.width/2
-        //self.profileImage.clipsToBounds = true
-=======
->>>>>>> abhi
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if check == 0 {
-            performSegueWithIdentifier()
-        }
-        else {
-            performSegue
-        }
     }
 
     override func didReceiveMemoryWarning() {

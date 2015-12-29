@@ -66,8 +66,6 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
         Something wrong with images and synchronous queries
         */
         let messages = try? query.findObjects()
-        print("message count: ")
-        print(messages!.count)
         for object in messages! {
             let artwork = object["artwork"] as! PFFile
             let image = try? UIImage(data: artwork.getData())
@@ -78,7 +76,6 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
         query.findObjectsInBackgroundWithBlock {
             (objects: [PFObject]?, error: NSError?) -> Void in
             if error == nil {
-                print("Successfully retrieved \(objects!.count) scores.")
                 if let objects = objects! as? [PFObject] {
                     for object in objects {
                         self.artistNames.append(object["artist"] as! String)
@@ -104,8 +101,7 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
         query.findObjectsInBackgroundWithBlock {
             (objects: [PFObject]?, error: NSError?) -> Void in
             if error == nil {
-                // The find succeeded.
-                print("Successfully retrieved \(objects!.count) scores.")
+                
                 // Do something with the found objects
                 if let objects = objects! as? [PFObject] {
                     for object in objects {
@@ -175,8 +171,6 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
         cell.album.text = albumNames[indexPath.row]
         cell.likes.text = "x" + String(likesList[indexPath.row])
         cell.distance.text = "distance: "+String(findDistance(locations[indexPath.row])) + " miles away"
-        print(artworks)
-        print(artworks.count)
         cell.artwork.image = artworks[indexPath.row]
         // Set the text of the memberName field of the cell to the right value
         cell.delegate = self
@@ -198,8 +192,6 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func findDistance(musicLocation :PFGeoPoint) -> Double {
         let currLocation = findLocation()
-        print(currLocation)
-        print(musicLocation)
         return round(100*musicLocation.distanceInMilesTo(currLocation))/100
     }
     
