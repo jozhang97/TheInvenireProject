@@ -25,6 +25,20 @@ class changeProfileVC: UIViewController, UINavigationControllerDelegate, UITextF
         self.presentViewController(image, animated: true, completion: nil)
         
     }
+    override func shouldAutorotate() -> Bool {
+        if (UIDevice.currentDevice().orientation == UIDeviceOrientation.LandscapeLeft ||
+            UIDevice.currentDevice().orientation == UIDeviceOrientation.LandscapeRight ||
+            UIDevice.currentDevice().orientation == UIDeviceOrientation.Unknown) {
+                return false
+        }
+        else {
+            return true
+        }
+    }
+    
+    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+        return [UIInterfaceOrientationMask.Portrait ,UIInterfaceOrientationMask.PortraitUpsideDown]
+    }
     
     @IBAction func confirmPic(sender: AnyObject) {
         if let currentUser = PFUser.currentUser(){

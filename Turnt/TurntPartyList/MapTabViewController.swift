@@ -34,6 +34,21 @@ class MapTabViewController: UIViewController, UISearchBarDelegate, CLLocationMan
         presentViewController(searchController, animated: true, completion: nil)
     }
     
+    override func shouldAutorotate() -> Bool {
+        if (UIDevice.currentDevice().orientation == UIDeviceOrientation.LandscapeLeft ||
+            UIDevice.currentDevice().orientation == UIDeviceOrientation.LandscapeRight ||
+            UIDevice.currentDevice().orientation == UIDeviceOrientation.Unknown) {
+                return false
+        }
+        else {
+            return true
+        }
+    }
+    
+    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+        return [UIInterfaceOrientationMask.Portrait ,UIInterfaceOrientationMask.PortraitUpsideDown]
+    }
+    
     @IBOutlet weak var mapView: MKMapView!
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar){
