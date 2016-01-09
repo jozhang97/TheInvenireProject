@@ -10,8 +10,9 @@ import UIKit
 import CoreLocation
 import MapKit
 
-class NewMapViewController: UIViewController, MKMapViewDelegate {
+class NewMapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
 
+    let locationManager = CLLocationManager()
     @IBOutlet weak var mapView: MKMapView!
     {
         didSet {
@@ -43,6 +44,14 @@ class NewMapViewController: UIViewController, MKMapViewDelegate {
         super.viewDidLoad()
         clearAnnotations()
         handleExistingMusic()
+        locationManager.delegate = self
+//        locationManager.requestWhenInUseAuthorization()
+        
+        if CLLocationManager.locationServicesEnabled()
+        {
+            locationManager.delegate = self
+            locationManager.startUpdatingLocation()
+        }
         
         // Do any additional setup after loading the view.
     }
@@ -147,25 +156,34 @@ class NewMapViewController: UIViewController, MKMapViewDelegate {
     }
     
     func findLocation() -> PFGeoPoint {
-        var currLocation = PFGeoPoint(latitude:-40.0, longitude:-30.0)
-        PFGeoPoint.geoPointForCurrentLocationInBackground ({
-            (point: PFGeoPoint?, error: NSError?) -> Void in
-            if error == nil {
-                print("Why didn't I test this")
-                currLocation = point!
-            }
-            else
-            {
-                print(error)
-            }
-        })
-        return currLocation
+
+        let currLocation = locationManager.location
+        let currLocationGeoPoint = PFGeoPoint(location: currLocation)
+        return currLocationGeoPoint
+//        var currLocation: PFGeoPoint?
+//        PFGeoPoint.geoPointForCurrentLocationInBackground ({
+//            (point: PFGeoPoint?, error: NSError?) -> Void in
+//            if error == nil {
+//                print("Why didn't I test this")
+//                currLocation = point!
+//            }
+//            else
+//            {
+//                print(error)
+//            }
+//        })
+//        return currLocation
         
     }
     
     func findDistance(musicLocation :PFGeoPoint) -> Double {
         let currLocation = findLocation()
-        return round(100*musicLocation.distanceInMilesTo(currLocation))/100
+        print("locations are")
+        print(currLocation)
+        print(musicLocation)
+        let distance = round(100*musicLocation.distanceInMilesTo(currLocation))/100
+        print(distance)
+        return distance
     }
     
     override func didReceiveMemoryWarning() {

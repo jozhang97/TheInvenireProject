@@ -6,15 +6,17 @@
 //  Copyright © 2015 Jeffrey Zhang. All rights reserved.
 //f
 
+
 import UIKit 
 
-class TableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, TableViewCellDelegate {
+class TableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, TableViewCellDelegate, CLLocationManagerDelegate {
 
     @IBAction func segmentChanged(sender: AnyObject) {
         clearArrays()
         getParties()
     }
     
+    let locationManager = CLLocationManager()
     func clearArrays(){
         artistNames = Array<String>()
         songNames = Array<String>()
@@ -39,7 +41,11 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     override func viewDidLoad() {
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "titlepageBackground1")!)
         super.viewDidLoad()
-        tableView.delegate = self
+        // new
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        // end new
+        tableView.delegate = self   
         tableView.dataSource = self
         getParties()
         tableView.separatorStyle = UITableViewCellSeparatorStyle.None
@@ -193,15 +199,23 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func findLocation() -> PFGeoPoint {
-        
-        var currLocation = PFGeoPoint(latitude:40.0, longitude:-30.0)
-        PFGeoPoint.geoPointForCurrentLocationInBackground {
-            (geoPoint: PFGeoPoint?, error: NSError?) -> Void in
-            if error == nil {
-                    currLocation = geoPoint!
-            }
+//        var currLocation = PFGeoPoint(latitude:40.0, longitude:-30.0)
+//        PFGeoPoint.geoPointForCurrentLocationInBackground {
+//            (geoPoint: PFGeoPoint?, error: NSError?) -> Void in
+//            if error == nil {
+//                    currLocation = geoPoint!
+//            }
+//        }
+//        return currLocation
+        if CLLocationManager.locationServicesEnabled()
+        {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
+            locationManager.startUpdatingLocation()
         }
-        return currLocation
+        let currLocation = locationManager.location
+        let currLocationGeoPoint = PFGeoPoint(location: currLocation)
+        return currLocationGeoPoint
     }
     
     func findDistance(musicLocation :PFGeoPoint) -> Double {
