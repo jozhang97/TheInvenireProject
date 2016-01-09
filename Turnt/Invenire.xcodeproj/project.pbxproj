@@ -11,7 +11,6 @@
 		18442D4E1C3325A400A228E2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18442D4D1C3325A400A228E2 /* ViewController.swift */; };
 		18442D501C33265900A228E2 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18442D4F1C33265900A228E2 /* TableViewCell.swift */; };
 		18442D521C33266500A228E2 /* AddSongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18442D511C33266500A228E2 /* AddSongViewController.swift */; };
-		18D95C441C14C90A00CFF63F /* FBLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D95C431C14C90A00CFF63F /* FBLoginViewController.swift */; };
 		18F840341C2685620086A44F /* MapTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F840331C2685620086A44F /* MapTabViewController.swift */; };
 		18F840361C2687B10086A44F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18F840351C2687B10086A44F /* MapKit.framework */; };
 		1F08132F1BF6F20C00165A71 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F0813281BF6F20C00165A71 /* Bolts.framework */; };
@@ -78,7 +77,6 @@
 		18442D4D1C3325A400A228E2 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		18442D4F1C33265900A228E2 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		18442D511C33266500A228E2 /* AddSongViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddSongViewController.swift; sourceTree = "<group>"; };
-		18D95C431C14C90A00CFF63F /* FBLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBLoginViewController.swift; sourceTree = "<group>"; };
 		18F840331C2685620086A44F /* MapTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapTabViewController.swift; sourceTree = "<group>"; };
 		18F840351C2687B10086A44F /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		1F0813281BF6F20C00165A71 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
@@ -210,7 +208,6 @@
 			children = (
 				1F624B611BE7D0C0004549A6 /* Frameworks */,
 				1F624B091BE7291F004549A6 /* AppDelegate.swift */,
-				18D95C431C14C90A00CFF63F /* FBLoginViewController.swift */,
 				18442D4B1C330C3900A228E2 /* Main.storyboard */,
 				1FF9024F1BF6F638001CD2AD /* LoginViewController.swift */,
 				1FE0C09E1BF7CF6900C67B48 /* SignUpViewController.swift */,
@@ -417,7 +414,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1FF902501BF6F638001CD2AD /* LoginViewController.swift in Sources */,
-				18D95C441C14C90A00CFF63F /* FBLoginViewController.swift in Sources */,
 				1F67E45B1C13B3490069F797 /* SongDetailViewController.swift in Sources */,
 				1FE0C09F1BF7CF6900C67B48 /* SignUpViewController.swift in Sources */,
 				18442D501C33265900A228E2 /* TableViewCell.swift in Sources */,

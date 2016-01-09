@@ -22,14 +22,36 @@ import UIKit
 
 class SignUpViewController: UIViewController, UINavigationControllerDelegate, UITextFieldDelegate, UIImagePickerControllerDelegate{
     
+    @IBOutlet weak var profPic: UIImageView!
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var confirmPasswordField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
-    @IBOutlet weak var profPic: UIImageView!
-    @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var usernameField: UITextField!
+    @IBOutlet weak var nameField: UITextField!
     
+    
+    @IBOutlet weak var scrollView: UIScrollView!
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        if textField == emailField || textField == confirmPasswordField {
+            scrollView.setContentOffset(CGPointMake(0, 250), animated: true)
+        }
+        else {
+            
+        }
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        scrollView.setContentOffset(CGPointMake(0, 0), animated: true)
+    }
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        
+        
+        textField.resignFirstResponder()
+        self.view.endEditing(true)
+        return false
+    }
     override func shouldAutorotate() -> Bool {
         if (UIDevice.currentDevice().orientation == UIDeviceOrientation.LandscapeLeft ||
             UIDevice.currentDevice().orientation == UIDeviceOrientation.LandscapeRight ||
@@ -149,13 +171,22 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
     
     override func viewDidLoad() {
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "titlepageBackground1")!)
+        
+        self.nameField.delegate = self
+        self.usernameField.delegate = self
+        self.passwordField.delegate = self
+        self.confirmPasswordField.delegate = self
+        self.emailField.delegate = self
+        
         submitButton.layer.backgroundColor  = UIColor.orangeColor().CGColor
         submitButton.layer.cornerRadius = 10
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         view.addGestureRecognizer(tap)
+        
     }
+    
     func dismissKeyboard() {
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
         view.endEditing(true)

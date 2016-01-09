@@ -12,59 +12,16 @@ import FBSDKLoginKit
 import QuartzCore
 
 
-class LoginViewController: ViewController {
-//FBSDKLoginButtonDelegate
+class LoginViewController: ViewController, UITextFieldDelegate {
     
-    // start of FB Stuff
-
-//    override func viewDidAppear(animated: Bool) {
-//        if (FBSDKAccessToken.currentAccessToken() == nil) {
-//            print("not logged in")
-//        } else {
-//            print("logged in")
-//            self.performSegueWithIdentifier("toFB", sender: self)
-//        }
-//    }
-    
-//    //MARK: Facebook Login
-//    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
-//        if (error == nil) {
-//            print("Login complete")
-//        } else {
-//            print(error.localizedDescription)
-//        }
-//    }
-//    
-//    func putDataInDB() {
-//        let user = PFUser.currentUser()
-//        user!["Name"] = FBSDKProfile.currentProfile().name
-//        user!.username = ""
-//        user!.password = ""
-//        user!.email = ""
-//        user!["confirmPassword"] = ""
-//        user!.saveInBackground()
-//    }
-//    
-//    
-//    
-//    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
-//        print("user logged out")
-//    }
-//
-//    @IBAction func facebookLogin(sender: AnyObject) {
-//        
-//    }
-    
-    // End Facebook stuff
     
     @IBOutlet weak var username: UITextField!
     @IBOutlet weak var password: UITextField!
-    
-    
     @IBOutlet weak var loginButton: UIButton!
-    
     @IBOutlet weak var bufferView: UIActivityIndicatorView!
 
+    
+    //locks VC in portrait orientation
     override func shouldAutorotate() -> Bool {
         if (UIDevice.currentDevice().orientation == UIDeviceOrientation.LandscapeLeft ||
             UIDevice.currentDevice().orientation == UIDeviceOrientation.LandscapeRight ||
@@ -79,6 +36,7 @@ class LoginViewController: ViewController {
     override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
         return [UIInterfaceOrientationMask.Portrait ,UIInterfaceOrientationMask.PortraitUpsideDown]
     }
+    //end of locking vc to portrait code
     
     override func viewDidLoad() {
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "titlepageBackground1")!)
@@ -88,6 +46,8 @@ class LoginViewController: ViewController {
         //Do any additional setup after loading the view, typically from a nib.
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         view.addGestureRecognizer(tap)
+        self.username.delegate = self
+        self.password.delegate = self
     }
     //Calls this function when the tap is recognized.
     func dismissKeyboard() {
@@ -111,7 +71,7 @@ class LoginViewController: ViewController {
         
         let bounds = self.loginButton.bounds
         let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Dark)
-        var blurEffectView = UIVisualEffectView(effect: blurEffect)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
         
         //always fill the view
         blurEffectView.frame = self.view.bounds
@@ -136,10 +96,22 @@ class LoginViewController: ViewController {
         }
         
     }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        self.view.endEditing(true)
+        return false
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        if PFUser.currentUser() != nil {
+            self.performSegueWithIdentifier("toMainVC", sender: self)
+        }
     }
 
 }

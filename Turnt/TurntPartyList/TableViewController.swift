@@ -10,6 +10,7 @@ import UIKit
 
 class TableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, TableViewCellDelegate {
 
+    
     @IBAction func segmentChanged(sender: AnyObject) {
         clearArrays()
         getParties()
@@ -108,6 +109,60 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
         return [UIInterfaceOrientationMask.Portrait ,UIInterfaceOrientationMask.PortraitUpsideDown]
     }
     
+    func check(cell:TableViewCell) -> Int {
+        let query = PFQuery(className:"Posts")
+        var answer = 0
+        query.whereKey("title", equalTo: cell.song.text!)
+        var messages = try? query.findObjects()
+        var liableUser = ""
+        for object in messages! {
+            if object["usersLiked"] == nil {
+                
+            }
+            else {
+                for user in object["usersLiked"] as! NSArray {
+                    if user as! String == (PFUser.currentUser()?.username!)! {
+                        liableUser = user as! String
+                    }
+                }
+            }
+        }
+        if liableUser == "" {
+            answer = 0
+        }
+        else {
+            answer = 1
+        }
+        return answer
+    }
+
+    func checker(songTitle:String) -> Int {
+        let query = PFQuery(className:"Posts")
+        var answer = 0
+        query.whereKey("title", equalTo: songTitle)
+        var messages = try? query.findObjects()
+        var liableUser = ""
+        for object in messages! {
+            if object["usersLiked"] == nil {
+                
+            }
+            else {
+                for user in object["usersLiked"] as! NSArray {
+                    if user as! String == (PFUser.currentUser()?.username!)! {
+                    liableUser = user as! String
+                    }
+                }
+            }
+        }
+        if liableUser == "" {
+            answer = 1
+        }
+        else {
+            answer = 0
+        }
+        return answer
+    }
+
     func like (cell: TableViewCell) {
         var displayError = ""
         let query = PFQuery(className:"Posts")
@@ -136,19 +191,26 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
                                     liableUser = user as! String
                                 }
                             }
+                            let currLikes = object["numLikes"] as! Int
                             if liableUser == "" {
-                                let currLikes = object["numLikes"] as! Int
-                                //                        NSLog("Current Likes %i", currLikes)
                                 let newLikes = currLikes + 1
                                 object["numLikes"] = newLikes
                                 object.addUniqueObject((PFUser.currentUser()?.username!)!, forKey: "usersLiked")
                                 PFUser.currentUser()!.addUniqueObject(object.objectId!, forKey: "postsLiked")
                                 PFUser.currentUser()?.saveInBackground()
                                 object.saveInBackground()
+                                
                             }
                             else {
-                                displayError = "You have already liked this post!"
-                                self.displayAlert("Impossible Action", displayError: displayError)
+                                //displayError = "You have already liked this post!"
+                                //self.displayAlert("Impossible Action", displayError: displayError)
+                                let newLikes = currLikes - 1
+                                object["numLikes"] = newLikes
+                                object.removeObject((PFUser.currentUser()?.username!)!, forKey: "usersLiked")
+                                PFUser.currentUser()!.removeObject(object.objectId!, forKey: "postsLiked")
+                                PFUser.currentUser()?.saveInBackground()
+                                object.saveInBackground()
+                                
                             }
                         }
                     }
@@ -187,6 +249,12 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
         cell.distance.text = "distance: "+String(findDistance(locations[indexPath.row])) + " miles away"
         cell.artwork.image = artworks[indexPath.row]
         // Set the text of the memberName field of the cell to the right value
+        if checker(cell.song.text!) == 0 {
+            cell.likeButton.setImage(UIImage(named: "redThumbsDown"), forState: .Normal)
+        }
+        else {
+            cell.likeButton.setImage(UIImage(named: "greenThumbsUp"), forState: .Normal)
+        }
         cell.delegate = self
         // Set the image of the memberProfilePic imageview in the cell
         return cell

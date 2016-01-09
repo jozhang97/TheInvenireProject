@@ -9,6 +9,7 @@
 import UIKit
 protocol TableViewCellDelegate{ // A
     func like(cell: TableViewCell) // A
+    func check(cell: TableViewCell)->Int // A
 } // A
 
 class TableViewCell: UITableViewCell
@@ -23,11 +24,16 @@ class TableViewCell: UITableViewCell
     
     var delegate:TableViewCellDelegate? = nil
     
+    @IBOutlet weak var likeButton: UIButton!
 
-    @IBOutlet weak var likesButton: UIButton!
     @IBAction func likeThis(sender: AnyObject) {
         delegate?.like(self)
-        
+        if delegate?.check(self) == 0 {
+            self.likeButton.setImage(UIImage(named: "greenThumbsUp"), forState: .Normal)
+        }
+        else {
+            self.likeButton.setImage(UIImage(named: "redThumbsDown"), forState: .Normal)
+        }
 //        let liked = UIImage(named: "TurtleTurnt")
 //        likesButton.setImage(liked, forState: .Normal)
     }
