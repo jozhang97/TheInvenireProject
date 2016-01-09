@@ -4,7 +4,7 @@
 //
 //  Created by Apple on 12/19/15.
 //  Copyright © 2015 Abhishek Mangla. All rights reserved.
-// This is a test 
+// This is a test
 
 import UIKit
 import MapKit
@@ -12,6 +12,7 @@ import CoreLocation
 
 class MapTabViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDelegate{
     
+
     let locationManager = CLLocationManager()
     
     @IBOutlet weak var latLabel: UILabel!
@@ -142,6 +143,13 @@ class MapTabViewController: UIViewController, UISearchBarDelegate, CLLocationMan
     func locationManagerDidPauseLocationUpdates(manager: CLLocationManager) {
         
     }
+    
+    
+    
+    
+    
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

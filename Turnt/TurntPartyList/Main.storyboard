@@ -93,7 +93,6 @@
                     <connections>
                         <outlet property="albumName" destination="bUQ-Pi-VnP" id="eH6-G7-Uvy"/>
                         <outlet property="artistName" destination="Q3h-7O-UB9" id="KuH-Fy-hSk"/>
-                        <outlet property="songName" destination="BVh-xu-LtO" id="eI5-sW-3w0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HMt-Sb-WD6" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -580,11 +579,12 @@
                     <connections>
                         <segue destination="G5C-5O-Cpr" kind="relationship" relationship="viewControllers" id="Qvh-xW-4tY"/>
                         <segue destination="Qxh-13-EMo" kind="relationship" relationship="viewControllers" id="Ku6-uR-gIA"/>
+                        <segue destination="Sbg-zF-0tB" kind="relationship" relationship="viewControllers" id="gBF-Cm-XLO"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hlb-zT-czx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-444" y="557"/>
+            <point key="canvasLocation" x="-450" y="559"/>
         </scene>
         <!--Song Detail View Controller-->
         <scene sceneID="2rW-aR-M04">
@@ -601,7 +601,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LqP-7D-TZR">
                                 <rect key="frame" x="0.0" y="58" width="320" height="430"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Likes" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZdM-qK-fic">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Likes" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZdM-qK-fic">
                                 <rect key="frame" x="15" y="397" width="290" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="XRn-NV-dtC"/>
@@ -610,7 +610,7 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Album" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G7c-wc-p21">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Album" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G7c-wc-p21">
                                 <rect key="frame" x="0.0" y="297" width="320" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="Exk-Wc-pxO"/>
@@ -619,13 +619,13 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EUu-9a-Dd0">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EUu-9a-Dd0">
                                 <rect key="frame" x="123" y="125" width="75" height="75"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="75" id="xXg-rR-XlS"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="sharedBy" text="Shared by " lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="roZ-bB-MtI">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" restorationIdentifier="sharedBy" text="Shared by " lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="roZ-bB-MtI">
                                 <rect key="frame" x="15" y="318" width="290" height="71"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="71" id="W6Y-HY-8S7"/>
@@ -644,7 +644,7 @@
                                     <action selector="backPressed:" destination="wer-xT-3S9" eventType="touchUpInside" id="WqB-q4-1kr"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hZx-Zi-VoX">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Artist" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hZx-Zi-VoX">
                                 <rect key="frame" x="0.0" y="224" width="320" height="65"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="65" id="gnm-NJ-eNW"/>
@@ -1239,13 +1239,61 @@
                     <connections>
                         <outlet property="latLabel" destination="SM3-Pm-6cf" id="pOy-cQ-zC4"/>
                         <outlet property="longLabel" destination="NGd-cS-HyY" id="aC1-Ws-3Nt"/>
-                        <outlet property="mapView" destination="2hY-28-iHi" id="zhO-1i-iZK"/>
+                        <outlet property="mapView" destination="2hY-28-iHi" id="LAX-4e-3OB"/>
                         <outlet property="placeLabel" destination="LIf-wp-7jL" id="e9M-cE-GmJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="US5-zq-xnw" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="343" y="345"/>
+            <point key="canvasLocation" x="349" y="-19"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="UKY-sX-5Tx">
+            <objects>
+                <viewController id="Sbg-zF-0tB" customClass="NewMapViewController" customModule="Invenire" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="pa7-47-q3p"/>
+                        <viewControllerLayoutGuide type="bottom" id="0ss-QP-TZA"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="LMG-f1-pRO">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="kYT-0K-v55">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="4Bd-dh-ojI"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="mapView" destination="kYT-0K-v55" id="CqE-Ys-yWy"/>
+                        <segue destination="Unk-Iv-Xrn" kind="show" identifier="showImage" id="SX5-sX-gcc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sQF-PX-Bcx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="349" y="613"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="cAv-2V-hjb">
+            <objects>
+                <viewController id="Unk-Iv-Xrn" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="reo-nF-NzX"/>
+                        <viewControllerLayoutGuide type="bottom" id="hTE-Lk-3sF"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="b6I-Cq-jvw">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fNY-fT-80L" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="779" y="613"/>
         </scene>
     </scenes>
     <resources>
@@ -1254,9 +1302,9 @@
         <image name="profileIcon2" width="247" height="247"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="byS-0u-uRQ"/>
-        <segue reference="1AH-IY-Lir"/>
-        <segue reference="OTm-Id-EZh"/>
-        <segue reference="BHD-e6-5gV"/>
+        <segue reference="duY-VN-9Tm"/>
+        <segue reference="d3z-by-DEv"/>
+        <segue reference="uaJ-LJ-mro"/>
+        <segue reference="t5C-mC-9MT"/>
     </inferredMetricsTieBreakers>
 </document>
