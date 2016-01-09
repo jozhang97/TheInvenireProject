@@ -601,7 +601,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LqP-7D-TZR">
                                 <rect key="frame" x="0.0" y="58" width="320" height="430"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Likes" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZdM-qK-fic">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Likes" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZdM-qK-fic">
                                 <rect key="frame" x="15" y="397" width="290" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="XRn-NV-dtC"/>
@@ -610,7 +610,7 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Album" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G7c-wc-p21">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Album" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G7c-wc-p21">
                                 <rect key="frame" x="0.0" y="297" width="320" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="Exk-Wc-pxO"/>
@@ -619,13 +619,13 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EUu-9a-Dd0">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EUu-9a-Dd0">
                                 <rect key="frame" x="123" y="125" width="75" height="75"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="75" id="xXg-rR-XlS"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" restorationIdentifier="sharedBy" text="Shared by " lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="roZ-bB-MtI">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="sharedBy" text="Shared by " lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="roZ-bB-MtI">
                                 <rect key="frame" x="15" y="318" width="290" height="71"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="71" id="W6Y-HY-8S7"/>
@@ -644,7 +644,7 @@
                                     <action selector="backPressed:" destination="wer-xT-3S9" eventType="touchUpInside" id="WqB-q4-1kr"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Artist" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hZx-Zi-VoX">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hZx-Zi-VoX">
                                 <rect key="frame" x="0.0" y="224" width="320" height="65"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="65" id="gnm-NJ-eNW"/>
@@ -694,7 +694,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DHw-Ab-HBa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-847" y="1941"/>
+            <point key="canvasLocation" x="-695" y="2391"/>
         </scene>
         <!--AddSong-->
         <scene sceneID="rrT-TX-F4Q">
@@ -1262,6 +1262,17 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="kYT-0K-v55">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </mapView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="2YV-0f-Gsi">
+                                <rect key="frame" x="54" y="28" width="212" height="29"/>
+                                <segments>
+                                    <segment title="Standard"/>
+                                    <segment title="Hybrid"/>
+                                    <segment title="Satelitte"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segmentChanged:" destination="Sbg-zF-0tB" eventType="valueChanged" id="JHZ-ix-vRE"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -1269,31 +1280,13 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="mapView" destination="kYT-0K-v55" id="CqE-Ys-yWy"/>
-                        <segue destination="Unk-Iv-Xrn" kind="show" identifier="showImage" id="SX5-sX-gcc"/>
+                        <outlet property="segmentedControl" destination="2YV-0f-Gsi" id="bVx-Jg-8Bi"/>
+                        <segue destination="wer-xT-3S9" kind="show" identifier="showDetails" id="K38-XI-ZZc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sQF-PX-Bcx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="349" y="613"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="cAv-2V-hjb">
-            <objects>
-                <viewController id="Unk-Iv-Xrn" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="reo-nF-NzX"/>
-                        <viewControllerLayoutGuide type="bottom" id="hTE-Lk-3sF"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="b6I-Cq-jvw">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fNY-fT-80L" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="779" y="613"/>
+            <point key="canvasLocation" x="3" y="2695"/>
         </scene>
     </scenes>
     <resources>
@@ -1303,7 +1296,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="duY-VN-9Tm"/>
-        <segue reference="d3z-by-DEv"/>
+        <segue reference="K38-XI-ZZc"/>
         <segue reference="uaJ-LJ-mro"/>
         <segue reference="t5C-mC-9MT"/>
     </inferredMetricsTieBreakers>

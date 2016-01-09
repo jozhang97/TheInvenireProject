@@ -8,6 +8,8 @@
 	</array>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Requesting your location </string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string></string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>LSApplicationCategoryType</key>

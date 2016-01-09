@@ -12,11 +12,29 @@ import MapKit
 
 class NewMapViewController: UIViewController, MKMapViewDelegate {
 
-    
     @IBOutlet weak var mapView: MKMapView!
     {
         didSet {
             mapView.delegate = self
+            mapView.mapType = .Standard
+            mapView.showsUserLocation = true
+        }
+    }
+
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    
+    @IBAction func segmentChanged(sender: AnyObject)
+    {
+        if segmentedControl.selectedSegmentIndex == 0
+        {
+            mapView.mapType = .Standard
+        }
+        else if segmentedControl.selectedSegmentIndex == 1
+        {
+            mapView.mapType = .Hybrid
+        }
+        else if segmentedControl.selectedSegmentIndex == 2
+        {
             mapView.mapType = .Satellite
         }
     }
@@ -25,6 +43,7 @@ class NewMapViewController: UIViewController, MKMapViewDelegate {
         super.viewDidLoad()
         clearAnnotations()
         handleExistingMusic()
+        
         // Do any additional setup after loading the view.
     }
     
@@ -38,24 +57,25 @@ class NewMapViewController: UIViewController, MKMapViewDelegate {
     
     func handleExistingMusic() {
         let query = PFQuery(className:"Posts")
-        let objects = try? query.findObjects()
-//        query.findObjectsInBackgroundWithBlock {
-//            (objects: [PFObject]?, error: NSError?) -> Void in
-//            if error == nil {
-//                // The find succeeded.
-//                print("Successfully retrieved \(objects!.count) scores.")
-//                // Do something with the found objects
-//                if let objects = objects {
-//                    for object in objects {
-                        self.mapView.addAnnotations(objects!)
-                        self.mapView.showAnnotations(objects!, animated: true)
-//                    }
-//                }
-//            } else {
-//                // Log details of the failure
-//                print("Error: \(error!) \(error!.userInfo)")
-//            }
-//        }
+//      Try the next line if the images don't show up
+//        let objects = try? query.findObjects()
+        query.findObjectsInBackgroundWithBlock {
+            (objects: [PFObject]?, error: NSError?) -> Void in
+            if error == nil {
+                // The find succeeded.
+                print("Successfully retrieved \(objects!.count) scores.")
+                // Do something with the found objects
+                if let objects = objects {
+                    for object in objects {
+                        self.mapView.addAnnotations(objects)
+                        self.mapView.showAnnotations(objects, animated: true)
+                    }
+                }
+            } else {
+                // Log details of the failure
+                print("Error: \(error!) \(error!.userInfo)")
+            }
+        }
     }
     
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView?
@@ -66,18 +86,22 @@ class NewMapViewController: UIViewController, MKMapViewDelegate {
         {
             view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "PFObject")
             view?.canShowCallout = true
+//            view.pinTintColor = UIColor.blueColor()
         }
         else
         {
             view?.annotation = annotation
         }
+    
         
         view?.leftCalloutAccessoryView = nil
+        view?.rightCalloutAccessoryView = nil
         if let pf = annotation as? PFObject
         {
             if pf.image != nil
             {
                 view?.leftCalloutAccessoryView = UIImageView(frame: CGRect(x: 0, y: 0, width: 59, height: 59))
+                view?.rightCalloutAccessoryView = UIButton(type: UIButtonType.DetailDisclosure) as UIButton
             }
         }
         
@@ -97,6 +121,53 @@ class NewMapViewController: UIViewController, MKMapViewDelegate {
             }
         }
     }
+    
+    func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        performSegueWithIdentifier("showDetails", sender: view)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "showDetails"
+        {
+            if let pf = (sender as? MKAnnotationView)?.annotation as? PFObject
+            {
+                let vc = segue.destinationViewController as! SongDetailViewController
+                vc.selectedArtist = pf["artist"] as! String
+                vc.selectedSongName = pf["title"] as! String
+                vc.selectedAlbum = pf["album"] as! String
+                vc.selectedSharedBy = "Shared by " + (pf["username"] as! String)
+                let distance: Double = findDistance(pf["location"] as! PFGeoPoint)
+                vc.selectedDistance = "distance: " + String(distance) + "miles away"
+                let likes = pf["numLikes"] as! Int
+                vc.selectedLikes = "Liked by " + String(likes)
+                vc.selectedArtwork = pf.image
+                vc.check = 0
+            }
+        }
+    }
+    
+    func findLocation() -> PFGeoPoint {
+        var currLocation = PFGeoPoint(latitude:-40.0, longitude:-30.0)
+        PFGeoPoint.geoPointForCurrentLocationInBackground ({
+            (point: PFGeoPoint?, error: NSError?) -> Void in
+            if error == nil {
+                print("Why didn't I test this")
+                currLocation = point!
+            }
+            else
+            {
+                print(error)
+            }
+        })
+        return currLocation
+        
+    }
+    
+    func findDistance(musicLocation :PFGeoPoint) -> Double {
+        let currLocation = findLocation()
+        return round(100*musicLocation.distanceInMilesTo(currLocation))/100
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
