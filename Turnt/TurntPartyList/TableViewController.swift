@@ -8,14 +8,14 @@
 
 import UIKit 
 
-class TableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, TableViewCellDelegate {
+class TableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, TableViewCellDelegate, CLLocationManagerDelegate {
 
     
     @IBAction func segmentChanged(sender: AnyObject) {
         clearArrays()
         getParties()
     }
-    
+    let locationManager = CLLocationManager()
     func clearArrays(){
         artistNames = Array<String>()
         songNames = Array<String>()
@@ -40,6 +40,10 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     override func viewDidLoad() {
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "titlepageBackground1")!)
         super.viewDidLoad()
+        // new
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        // end new
         tableView.delegate = self
         tableView.dataSource = self
         getParties()
@@ -245,7 +249,7 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
         cell.artist.text = artistNames[indexPath.row]
         cell.song.text = songNames[indexPath.row]
         cell.album.text = albumNames[indexPath.row]
-        cell.likes.text = "x" + String(likesList[indexPath.row])
+        cell.likes.text = String(likesList[indexPath.row]) + " likes"
         cell.distance.text = "distance: "+String(findDistance(locations[indexPath.row])) + " miles away"
         cell.artwork.image = artworks[indexPath.row]
         // Set the text of the memberName field of the cell to the right value
@@ -261,15 +265,23 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func findLocation() -> PFGeoPoint {
-        
-        var currLocation = PFGeoPoint(latitude:40.0, longitude:-30.0)
-        PFGeoPoint.geoPointForCurrentLocationInBackground {
-            (geoPoint: PFGeoPoint?, error: NSError?) -> Void in
-            if error == nil {
-                    currLocation = geoPoint!
-            }
+        //        var currLocation = PFGeoPoint(latitude:40.0, longitude:-30.0)
+        //        PFGeoPoint.geoPointForCurrentLocationInBackground {
+        //            (geoPoint: PFGeoPoint?, error: NSError?) -> Void in
+        //            if error == nil {
+        //                    currLocation = geoPoint!
+        //            }
+        //        }
+        //        return currLocation
+        if CLLocationManager.locationServicesEnabled()
+        {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
+            locationManager.startUpdatingLocation()
         }
-        return currLocation
+        let currLocation = locationManager.location
+        let currLocationGeoPoint = PFGeoPoint(location: currLocation)
+        return currLocationGeoPoint
     }
     
     func findDistance(musicLocation :PFGeoPoint) -> Double {

@@ -7,7 +7,7 @@
 		<string>fbauth2</string>
 	</array>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Requesting your location </string>
+	<string>Requesting your location to find music around you.</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>LSApplicationCategoryType</key>
