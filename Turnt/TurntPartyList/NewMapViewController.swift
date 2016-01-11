@@ -168,36 +168,34 @@ class NewMapViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         return CLLocationCoordinate2D(latitude: totalLat/numObjects, longitude: totalLong/numObjects)
     }
     
-    /*
+    //this function makes the blue user location into a red pin
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView?
     {
         var view = mapView.dequeueReusableAnnotationViewWithIdentifier("PFObject")
-        
-        if view == nil
-        {
-            view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "PFObject")
-            view?.canShowCallout = true
-//            view.pinTintColor = UIColor.blueColor()
+        if annotation.title! == "Current Location" {
+            
         }
-        else
-        {
-            view?.annotation = annotation
-        }
-    
-        
-        view?.leftCalloutAccessoryView = nil
-        view?.rightCalloutAccessoryView = nil
-        if let pf = annotation as? PFObject
-        {
-            if pf.image != nil
-            {
-                view?.leftCalloutAccessoryView = UIImageView(frame: CGRect(x: 0, y: 0, width: 59, height: 59))
-                view?.rightCalloutAccessoryView = UIButton(type: UIButtonType.DetailDisclosure) as UIButton
+        else {
+            if view == nil {
+                view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "PFObject")
+                view?.canShowCallout = true
+//              view.pinTintColor = UIColor.blueColor()
+            }
+            else {
+                view?.annotation = annotation
+            }
+            view?.leftCalloutAccessoryView = nil
+            view?.rightCalloutAccessoryView = nil
+            if let pf = annotation as? PFObject {
+                if pf.image != nil {
+                    view?.leftCalloutAccessoryView = UIImageView(frame: CGRect(x: 0, y: 0, width: 59, height: 59))
+                    view?.rightCalloutAccessoryView = UIButton(type: UIButtonType.DetailDisclosure) as UIButton
+                }
             }
         }
-        
         return view
     }
+
 
     func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView)
     {
@@ -213,11 +211,12 @@ class NewMapViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         }
     }
     
+    
     func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         performSegueWithIdentifier("showDetails", sender: view)
     }
     
-    */
+    
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showDetails"
