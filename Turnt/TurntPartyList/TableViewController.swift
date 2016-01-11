@@ -15,6 +15,7 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
         clearArrays()
         getParties()
     }
+    
     let locationManager = CLLocationManager()
     func clearArrays(){
         artistNames = Array<String>()
@@ -76,7 +77,7 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
             let image = try? UIImage(data: artwork.getData())
             self.artworks.append(image!!)
         }
-
+        query.whereKey("location", nearGeoPoint: findLocation(), withinMiles: 100)
         query.limit = 15
         query.findObjectsInBackgroundWithBlock {
             (objects: [PFObject]?, error: NSError?) -> Void in
@@ -246,33 +247,27 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("tableCell", forIndexPath: indexPath) as! TableViewCell
-        cell.artist.text = artistNames[indexPath.row]
-        cell.song.text = songNames[indexPath.row]
-        cell.album.text = albumNames[indexPath.row]
-        cell.likes.text = String(likesList[indexPath.row]) + " likes"
-        cell.distance.text = "distance: "+String(findDistance(locations[indexPath.row])) + " miles away"
-        cell.artwork.image = artworks[indexPath.row]
-        // Set the text of the memberName field of the cell to the right value
-        if checker(cell.song.text!) == 0 {
-            cell.likeButton.setImage(UIImage(named: "redThumbsDown"), forState: .Normal)
-        }
-        else {
-            cell.likeButton.setImage(UIImage(named: "greenThumbsUp"), forState: .Normal)
-        }
+            cell.artist.text = artistNames[indexPath.row]
+            cell.song.text = songNames[indexPath.row]
+            cell.album.text = albumNames[indexPath.row]
+            cell.likes.text = String(likesList[indexPath.row]) + " likes"
+            cell.distance.text = "distance: "+String(findDistance(locations[indexPath.row])) + " miles away"
+            cell.artwork.image = artworks[indexPath.row]
+            // Set the text of the memberName field of the cell to the right value
+            if checker(cell.song.text!) == 0 {
+                cell.likeButton.setImage(UIImage(named: "redThumbsDown"), forState: .Normal)
+            }
+            else {
+                cell.likeButton.setImage(UIImage(named: "greenThumbsUp"), forState: .Normal)
+            }
+        
+        
         cell.delegate = self
         // Set the image of the memberProfilePic imageview in the cell
         return cell
     }
     
     func findLocation() -> PFGeoPoint {
-        //        var currLocation = PFGeoPoint(latitude:40.0, longitude:-30.0)
-        //        PFGeoPoint.geoPointForCurrentLocationInBackground {
-        //            (geoPoint: PFGeoPoint?, error: NSError?) -> Void in
-        //            if error == nil {
-        //                    currLocation = geoPoint!
-        //            }
-        //        }
-        //        return currLocation
         if CLLocationManager.locationServicesEnabled()
         {
             locationManager.delegate = self

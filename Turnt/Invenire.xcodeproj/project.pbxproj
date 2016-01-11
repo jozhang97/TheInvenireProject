@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		1830F7791C41E07800D22DEA /* NewMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1830F7771C41E07800D22DEA /* NewMapViewController.swift */; };
 		1830F77A1C41E07800D22DEA /* MKPFObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1830F7781C41E07800D22DEA /* MKPFObject.swift */; };
-		18442D4C1C330C3900A228E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18442D4B1C330C3900A228E2 /* Main.storyboard */; };
+		1830F77C1C43274800D22DEA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1830F77B1C43274800D22DEA /* Main.storyboard */; };
 		18442D4E1C3325A400A228E2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18442D4D1C3325A400A228E2 /* ViewController.swift */; };
 		18442D501C33265900A228E2 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18442D4F1C33265900A228E2 /* TableViewCell.swift */; };
 		18442D521C33266500A228E2 /* AddSongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18442D511C33266500A228E2 /* AddSongViewController.swift */; };
@@ -76,7 +76,7 @@
 /* Begin PBXFileReference section */
 		1830F7771C41E07800D22DEA /* NewMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewMapViewController.swift; sourceTree = "<group>"; };
 		1830F7781C41E07800D22DEA /* MKPFObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKPFObject.swift; sourceTree = "<group>"; };
-		18442D4B1C330C3900A228E2 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		1830F77B1C43274800D22DEA /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		18442D4D1C3325A400A228E2 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		18442D4F1C33265900A228E2 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		18442D511C33266500A228E2 /* AddSongViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddSongViewController.swift; sourceTree = "<group>"; };
@@ -210,7 +210,7 @@
 			children = (
 				1F624B611BE7D0C0004549A6 /* Frameworks */,
 				1F624B091BE7291F004549A6 /* AppDelegate.swift */,
-				18442D4B1C330C3900A228E2 /* Main.storyboard */,
+				1830F77B1C43274800D22DEA /* Main.storyboard */,
 				1FF9024F1BF6F638001CD2AD /* LoginViewController.swift */,
 				1FE0C09E1BF7CF6900C67B48 /* SignUpViewController.swift */,
 				1F624B101BE7291F004549A6 /* Assets.xcassets */,
@@ -389,7 +389,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18442D4C1C330C3900A228E2 /* Main.storyboard in Resources */,
+				1830F77C1C43274800D22DEA /* Main.storyboard in Resources */,
 				1F624B141BE7291F004549A6 /* LaunchScreen.storyboard in Resources */,
 				1F624B111BE7291F004549A6 /* Assets.xcassets in Resources */,
 			);

@@ -11,7 +11,25 @@ import CoreLocation
 import MapKit
 
 class NewMapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
-
+    var zoomFactor:CLLocationDistance = 50000
+    
+    @IBAction func zoomIn(sender: AnyObject) {
+        zoomFactor -= 5000
+        //let userLocation = mapView.userLocation
+        let region = MKCoordinateRegionMakeWithDistance(
+                mapView.centerCoordinate, zoomFactor, zoomFactor)
+            mapView.setRegion(region, animated: true)
+    }
+    
+    
+    @IBAction func zoomOut(sender: AnyObject) {
+        zoomFactor += 5000
+        //let userLocation = mapView.userLocation
+        let region = MKCoordinateRegionMakeWithDistance(
+            mapView.centerCoordinate, zoomFactor, zoomFactor)
+        mapView.setRegion(region, animated: true)
+    }
+    
     let locationManager = CLLocationManager()
     @IBOutlet weak var mapView: MKMapView!
     {
@@ -40,22 +58,81 @@ class NewMapViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        clearAnnotations()
-        handleExistingMusic()
-        locationManager.delegate = self
-//        locationManager.requestWhenInUseAuthorization()
-        
-        if CLLocationManager.locationServicesEnabled()
-        {
-            locationManager.delegate = self
-            locationManager.startUpdatingLocation()
-        }
-        
-        // Do any additional setup after loading the view.
+    func mapView(mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+        var center = mapView.centerCoordinate
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        //clearAnnotations()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+        mapView.showsUserLocation = true
+        
+        // Do any additional setup after loading the view.
+        
+        /* OLD WAY of showing area around user
+        var location = CLLocationCoordinate2DMake(currentLocation.coordinate.latitude, currentLocation.coordinate.longitude)
+        
+        var span = MKCoordinateSpanMake(0.5, 0.5)
+        var region = MKCoordinateRegionMake(location, span)
+        mapView.setRegion(region, animated: true)
+        */
+        
+        /* Another way
+        var currentLocation = CLLocation()
+        if CLLocationManager.locationServicesEnabled()
+        {
+        locationManager.delegate = self
+        locationManager.startUpdatingLocation()
+        currentLocation = locationManager.location!
+        }
+        var userLocation = CLLocationCoordinate2DMake(currentLocation.coordinate.latitude, currentLocation.coordinate.longitude)
+        
+        let region = MKCoordinateRegionMakeWithDistance(
+            userLocation, zoomFactor, zoomFactor)
+        mapView.setRegion(region, animated: true)
+        */
+        
+        let center = handleExistingMusic()
+        addRadiusCircle(CLLocation(latitude: center.latitude, longitude: center.longitude))
+    }
+    
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let location = locations.last
+        let center = CLLocationCoordinate2D(latitude: location!.coordinate.latitude, longitude: location!.coordinate.longitude)
+        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpanMake(1, 1))
+        self.mapView.setRegion(region, animated: true)
+        self.locationManager.stopUpdatingLocation()
+    }
+    
+    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+        print("Errors: " + error.localizedDescription)
+    }
+    
+    func addRadiusCircle(location: CLLocation){
+        self.mapView.delegate = self
+        var circle = MKCircle(centerCoordinate: location.coordinate, radius: 10000 as CLLocationDistance)
+        self.mapView.addOverlay(circle)
+    }
+    
+    
+    
+    func mapView(mapView: MKMapView!, rendererForOverlay overlay: MKOverlay!) -> MKOverlayRenderer! {
+        if overlay is MKCircle {
+            var circle = MKCircleRenderer(overlay: overlay)
+            circle.strokeColor = UIColor.redColor()
+            circle.fillColor = UIColor(red: 255, green: 0, blue: 0, alpha: 0.1)
+            circle.lineWidth = 1
+            return circle
+        } else {
+            return nil
+        }
+    }
+    
+    /*
     func clearAnnotations()
     {
         if mapView?.annotations != nil
@@ -63,30 +140,35 @@ class NewMapViewController: UIViewController, MKMapViewDelegate, CLLocationManag
             mapView.removeAnnotations(mapView.annotations as [MKAnnotation])
         }
     }
+    */
     
-    func handleExistingMusic() {
+    func handleExistingMusic()->CLLocationCoordinate2D {
         let query = PFQuery(className:"Posts")
-//      Try the next line if the images don't show up
-//        let objects = try? query.findObjects()
-        query.findObjectsInBackgroundWithBlock {
-            (objects: [PFObject]?, error: NSError?) -> Void in
-            if error == nil {
+        var totalLat:Double = 0
+        var totalLong:Double = 0
+        var numObjects:Double = 1
+        
+        query.whereKey("location", nearGeoPoint: findLocation(), withinMiles: 100)
+        let objects = try? query.findObjects()
+        
                 // The find succeeded.
+                numObjects = Double(objects!.count)
                 print("Successfully retrieved \(objects!.count) scores.")
                 // Do something with the found objects
                 if let objects = objects {
                     for object in objects {
                         self.mapView.addAnnotations(objects)
-                        self.mapView.showAnnotations(objects, animated: true)
+                        
+                        totalLat = totalLat + object["location"].latitude
+                        totalLong = totalLong + object["location"].longitude
+                        //self.mapView.showAnnotations(objects, animated: true)
                     }
                 }
-            } else {
-                // Log details of the failure
-                print("Error: \(error!) \(error!.userInfo)")
-            }
-        }
+        
+        return CLLocationCoordinate2D(latitude: totalLat/numObjects, longitude: totalLong/numObjects)
     }
     
+    /*
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView?
     {
         var view = mapView.dequeueReusableAnnotationViewWithIdentifier("PFObject")
@@ -135,6 +217,8 @@ class NewMapViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         performSegueWithIdentifier("showDetails", sender: view)
     }
     
+    */
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showDetails"
         {
@@ -150,7 +234,7 @@ class NewMapViewController: UIViewController, MKMapViewDelegate, CLLocationManag
                 let likes = pf["numLikes"] as! Int
                 vc.selectedLikes = "Liked by " + String(likes)
                 vc.selectedArtwork = pf.image
-                vc.check = 0
+                vc.check = 2
             }
         }
     }
@@ -160,20 +244,6 @@ class NewMapViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         let currLocation = locationManager.location
         let currLocationGeoPoint = PFGeoPoint(location: currLocation)
         return currLocationGeoPoint
-//        var currLocation: PFGeoPoint?
-//        PFGeoPoint.geoPointForCurrentLocationInBackground ({
-//            (point: PFGeoPoint?, error: NSError?) -> Void in
-//            if error == nil {
-//                print("Why didn't I test this")
-//                currLocation = point!
-//            }
-//            else
-//            {
-//                print(error)
-//            }
-//        })
-//        return currLocation
-        
     }
     
     func findDistance(musicLocation :PFGeoPoint) -> Double {
@@ -190,16 +260,5 @@ class NewMapViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

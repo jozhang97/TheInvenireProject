@@ -31,8 +31,11 @@ class SongDetailViewController: UIViewController {
         if check == 0 {
             performSegueWithIdentifier("back1", sender: self)
         }
-        else {
+        else if check == 1{
             performSegueWithIdentifier("back2", sender: self)
+        }
+        else {
+            performSegueWithIdentifier("back3", sender: self)
         }
     }
     override func shouldAutorotate() -> Bool {
