@@ -11,7 +11,7 @@ import CoreLocation
 import Parse
 import MediaPlayer
 
-class AddSongViewController: UIViewController, UITextFieldDelegate, CLLocationManagerDelegate,  UINavigationControllerDelegate {
+class AddSongViewController: ViewController, UITextFieldDelegate, CLLocationManagerDelegate,  UINavigationControllerDelegate {
     
     var locationManager: CLLocationManager!
     var currentLocation = CLLocation!()

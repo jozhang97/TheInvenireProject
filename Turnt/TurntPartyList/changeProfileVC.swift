@@ -8,7 +8,7 @@
 
 import UIKit
 
-class changeProfileVC: UIViewController, UINavigationControllerDelegate, UITextFieldDelegate, UIImagePickerControllerDelegate {
+class changeProfileVC: ViewController, UINavigationControllerDelegate, UITextFieldDelegate, UIImagePickerControllerDelegate {
     
     @IBOutlet weak var updateEmailButton: UIButton!
     @IBOutlet weak var updatePasswordButton: UIButton!

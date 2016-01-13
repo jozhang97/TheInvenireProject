@@ -9,12 +9,24 @@
 import UIKit
 
 class ViewController: UIViewController {
-
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        // screen width and height:
+        let width = UIScreen.mainScreen().bounds.size.width
+        let height = UIScreen.mainScreen().bounds.size.height
+        
+        let imageViewBackground = UIImageView(frame: CGRectMake(0, 0, width, height))
+        imageViewBackground.image = UIImage(named: "gradient3")
+        
+        // you can change the content mode:
+        imageViewBackground.contentMode = UIViewContentMode.ScaleAspectFill
+        
+        view.addSubview(imageViewBackground)
+        view.sendSubviewToBack(imageViewBackground)
+        
         // Do any additional setup after loading the view.
     }
+    
     //locks VC in portrait orientation
     override func shouldAutorotate() -> Bool {
         if (UIDevice.currentDevice().orientation == UIDeviceOrientation.LandscapeLeft ||

@@ -8,7 +8,7 @@
 
 import UIKit 
 
-class TableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, TableViewCellDelegate, CLLocationManagerDelegate {
+class TableViewController: ViewController, UITableViewDelegate, UITableViewDataSource, TableViewCellDelegate, CLLocationManagerDelegate {
 
     
     @IBAction func segmentChanged(sender: AnyObject) {

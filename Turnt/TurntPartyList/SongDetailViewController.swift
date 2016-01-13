@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SongDetailViewController: UIViewController {
+class SongDetailViewController: ViewController {
 
     var selectedArtist = ""
     var selectedSongName = ""

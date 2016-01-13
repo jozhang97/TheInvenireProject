@@ -8,7 +8,7 @@
 
 import UIKit
 
-class profileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class profileViewController: ViewController, UITableViewDelegate, UITableViewDataSource {
     
     //@IBOutlet weak var postsLabel: UILabel!
     @IBOutlet weak var userNameLabel: UILabel!
