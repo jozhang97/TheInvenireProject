@@ -55,7 +55,7 @@ class SignUpViewController: ViewController, UINavigationControllerDelegate, UITe
     
     func containDB(test: String, classer: String, column: String) -> Bool {
         var num = 0
-        var query = PFQuery(className: classer)
+        let query = PFQuery(className: classer)
         query.whereKey(column, equalTo: test)
         do {
             let objects = try query.findObjects()

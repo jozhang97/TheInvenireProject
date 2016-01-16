@@ -77,7 +77,7 @@ class profileViewController: ViewController, UITableViewDelegate, UITableViewDat
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "titlepageBackground1")!)
         postsTableView.delegate = self
         postsTableView.dataSource = self
-        var count = Int(arc4random_uniform(5) + 1)
+        let count = Int(arc4random_uniform(5) + 1)
         profbgImageView.image = UIImage(named: "profbg\(count)")
         imageLabel.bringSubviewToFront(profbgImageView)
         // Create a white border with defined width
@@ -107,7 +107,7 @@ class profileViewController: ViewController, UITableViewDelegate, UITableViewDat
     }
     
     func getMemberInfoLikes() {
-        var query2 = PFQuery(className: "Posts")
+        let query2 = PFQuery(className: "Posts")
         var postsLiked = [String] ()
         if let a = PFUser.currentUser()!["postsLiked"] {
             postsLiked = a as! [String]
@@ -137,7 +137,7 @@ class profileViewController: ViewController, UITableViewDelegate, UITableViewDat
 
     func getMemberInfo() {
         //this first query deals with loading user profile image and name
-        var query = PFQuery(className:"_User")
+        let query = PFQuery(className:"_User")
         query.whereKey("username", equalTo: (PFUser.currentUser()?.username)!)
         query.findObjectsInBackgroundWithBlock {
             (objects: [PFObject]?, error: NSError?) -> Void in
@@ -162,7 +162,7 @@ class profileViewController: ViewController, UITableViewDelegate, UITableViewDat
     
     func getMemberInfoPosts() {
             //second query deals with loading table with posts that user has made.
-            var query2 = PFQuery(className: "Posts")
+            let query2 = PFQuery(className: "Posts")
             query2.whereKey("username", equalTo: (PFUser.currentUser()?.username)!)
                 query2.orderByAscending("createdAt")
                 query2.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) -> Void in
@@ -190,7 +190,7 @@ class profileViewController: ViewController, UITableViewDelegate, UITableViewDat
             self.postsTableView.backgroundView = nil
             numOfSection = 1
         } else {
-            var noDataLabel: UILabel = UILabel(frame: CGRectMake(0, 0, self.postsTableView.bounds.size.width, self.postsTableView.bounds.size.height))
+            let noDataLabel: UILabel = UILabel(frame: CGRectMake(0, 0, self.postsTableView.bounds.size.width, self.postsTableView.bounds.size.height))
             noDataLabel.text = "No Data Available"
             noDataLabel.textColor = UIColor(red: 22.0/255.0, green: 106.0/255.0, blue: 176.0/255.0, alpha: 1.0)
             noDataLabel.textAlignment = NSTextAlignment.Center

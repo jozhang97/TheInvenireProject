@@ -118,7 +118,7 @@ class TableViewController: ViewController, UITableViewDelegate, UITableViewDataS
         let query = PFQuery(className:"Posts")
         var answer = 0
         query.whereKey("title", equalTo: cell.song.text!)
-        var messages = try? query.findObjects()
+        let messages = try? query.findObjects()
         var liableUser = ""
         for object in messages! {
             if object["usersLiked"] == nil {
@@ -145,7 +145,7 @@ class TableViewController: ViewController, UITableViewDelegate, UITableViewDataS
         let query = PFQuery(className:"Posts")
         var answer = 0
         query.whereKey("title", equalTo: songTitle)
-        var messages = try? query.findObjects()
+        let messages = try? query.findObjects()
         var liableUser = ""
         for object in messages! {
             if object["usersLiked"] == nil {
@@ -169,7 +169,6 @@ class TableViewController: ViewController, UITableViewDelegate, UITableViewDataS
     }
 
     func like (cell: TableViewCell) {
-        var displayError = ""
         let query = PFQuery(className:"Posts")
         query.whereKey("title", equalTo: cell.song.text!)
         query.findObjectsInBackgroundWithBlock {

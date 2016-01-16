@@ -47,7 +47,7 @@ class LoginViewController: ViewController, UITextFieldDelegate {
             attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
         usernameLine.layer.borderWidth = 1
         usernameLine.layer.borderColor = UIColor.whiteColor().CGColor
-        
+        username.textColor = UIColor.whiteColor()
         view.addSubview(username)
         view.addSubview(usernameLine)
     }
@@ -56,6 +56,7 @@ class LoginViewController: ViewController, UITextFieldDelegate {
         password.backgroundColor = UIColor.clearColor()
         password.attributedPlaceholder = NSAttributedString(string:"PASSWORD",
             attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
+        password.textColor = UIColor.whiteColor()
         password.secureTextEntry = true
         passwordLine.layer.borderWidth = 1
         passwordLine.layer.borderColor = UIColor.whiteColor().CGColor

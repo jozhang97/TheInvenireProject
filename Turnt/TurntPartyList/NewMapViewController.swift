@@ -57,11 +57,11 @@ class NewMapViewController: UIViewController, MKMapViewDelegate, CLLocationManag
             mapView.mapType = .Satellite
         }
     }
-    
-    func mapView(mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
-        var center = mapView.centerCoordinate
-    }
-    
+//    
+//    func mapView(mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+//        var center = mapView.centerCoordinate
+//    }
+//    
     override func viewDidLoad() {
         super.viewDidLoad()
         //clearAnnotations()
@@ -114,7 +114,7 @@ class NewMapViewController: UIViewController, MKMapViewDelegate, CLLocationManag
     
     func addRadiusCircle(location: CLLocation){
         self.mapView.delegate = self
-        var circle = MKCircle(centerCoordinate: location.coordinate, radius: 10000 as CLLocationDistance)
+        let circle = MKCircle(centerCoordinate: location.coordinate, radius: 10000 as CLLocationDistance)
         self.mapView.addOverlay(circle)
     }
     
@@ -122,7 +122,7 @@ class NewMapViewController: UIViewController, MKMapViewDelegate, CLLocationManag
     
     func mapView(mapView: MKMapView!, rendererForOverlay overlay: MKOverlay!) -> MKOverlayRenderer! {
         if overlay is MKCircle {
-            var circle = MKCircleRenderer(overlay: overlay)
+            let circle = MKCircleRenderer(overlay: overlay)
             circle.strokeColor = UIColor.redColor()
             circle.fillColor = UIColor(red: 255, green: 0, blue: 0, alpha: 0.1)
             circle.lineWidth = 1

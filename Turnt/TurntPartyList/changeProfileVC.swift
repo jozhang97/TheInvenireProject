@@ -45,7 +45,7 @@ class changeProfileVC: ViewController, UINavigationControllerDelegate, UITextFie
             let profPicFile = PFFile(name: "newpicture", data: UIImageJPEGRepresentation(profilePicImageView.image!, 0.5)!)
             currentUser["profPic"] = profPicFile
             currentUser.saveInBackground()
-            var alert = UIAlertView(title: "Profile Picture Updated!", message: "New image has been made as your new profile picture.", delegate: self, cancelButtonTitle: "OK")
+            let alert = UIAlertView(title: "Profile Picture Updated!", message: "New image has been made as your new profile picture.", delegate: self, cancelButtonTitle: "OK")
             alert.show()
         }
     }
@@ -60,7 +60,7 @@ class changeProfileVC: ViewController, UINavigationControllerDelegate, UITextFie
     @IBAction func changePassword(sender: AnyObject) {
         let currentEmail = PFUser.currentUser()!["email"] as! String
         PFUser.requestPasswordResetForEmailInBackground(currentEmail)
-        var alert = UIAlertView(title: "Reset password", message: "Check email <" + currentEmail +
+        let alert = UIAlertView(title: "Reset password", message: "Check email <" + currentEmail +
             "> to reset password.", delegate: self, cancelButtonTitle: "OK")
         alert.show()
     }
@@ -82,7 +82,7 @@ class changeProfileVC: ViewController, UINavigationControllerDelegate, UITextFie
     
     func putCurrentProfilePic() {
         //this first query deals with loading user profile image and name
-        var query = PFQuery(className:"_User")
+        let query = PFQuery(className:"_User")
         query.whereKey("username", equalTo: (PFUser.currentUser()?.username)!)
         query.findObjectsInBackgroundWithBlock {
             (objects: [PFObject]?, error: NSError?) -> Void in

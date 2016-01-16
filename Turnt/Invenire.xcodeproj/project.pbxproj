@@ -54,6 +54,7 @@
 		1FEB35191C027EC000F7C424 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FEB35171C027EBF00F7C424 /* FBSDKCoreKit.framework */; };
 		1FEB351A1C027EC000F7C424 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FEB35181C027EC000F7C424 /* FBSDKLoginKit.framework */; };
 		1FF902501BF6F638001CD2AD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF9024F1BF6F638001CD2AD /* LoginViewController.swift */; };
+		E7E21C471C49F08C00C3A695 /* DismissSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E21C461C49F08C00C3A695 /* DismissSegue.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -128,6 +129,7 @@
 		1FEB35171C027EBF00F7C424 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		1FEB35181C027EC000F7C424 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		1FF9024F1BF6F638001CD2AD /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		E7E21C461C49F08C00C3A695 /* DismissSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DismissSegue.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -211,6 +213,7 @@
 				1F624B611BE7D0C0004549A6 /* Frameworks */,
 				1F624B091BE7291F004549A6 /* AppDelegate.swift */,
 				1830F77B1C43274800D22DEA /* Main.storyboard */,
+				E7E21C461C49F08C00C3A695 /* DismissSegue.swift */,
 				1FF9024F1BF6F638001CD2AD /* LoginViewController.swift */,
 				1FE0C09E1BF7CF6900C67B48 /* SignUpViewController.swift */,
 				1F624B101BE7291F004549A6 /* Assets.xcassets */,
@@ -352,7 +355,7 @@
 				TargetAttributes = {
 					1F624B051BE7291E004549A6 = {
 						CreatedOnToolsVersion = 7.1;
-						DevelopmentTeam = 93GPGDAN9C;
+						DevelopmentTeam = 6TYW8P6552;
 					};
 					1F624B191BE7291F004549A6 = {
 						CreatedOnToolsVersion = 7.1;
@@ -418,6 +421,7 @@
 			files = (
 				1830F7791C41E07800D22DEA /* NewMapViewController.swift in Sources */,
 				1FF902501BF6F638001CD2AD /* LoginViewController.swift in Sources */,
+				E7E21C471C49F08C00C3A695 /* DismissSegue.swift in Sources */,
 				1F67E45B1C13B3490069F797 /* SongDetailViewController.swift in Sources */,
 				1FE0C09F1BF7CF6900C67B48 /* SignUpViewController.swift in Sources */,
 				18442D501C33265900A228E2 /* TableViewCell.swift in Sources */,

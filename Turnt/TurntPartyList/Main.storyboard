@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="5t6-dT-g5v">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10089" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="5t6-dT-g5v">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10072.1"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -83,7 +83,7 @@
                                     <color key="titleColor" red="0.99228602151201395" green="0.99863916314727907" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="xpk-yq-48b" kind="show" id="EPL-E7-ufr"/>
+                                    <segue destination="JjD-gT-CqD" kind="custom" customClass="DismissSegue" customModule="Invenire" id="lxO-0Y-L8B"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -129,10 +129,10 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="To3-pj-VGh" id="Dd0-hf-IWT">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="69"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="69.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Music" translatesAutoresizingMaskIntoConstraints="NO" id="xdc-mA-oyT">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Music" translatesAutoresizingMaskIntoConstraints="NO" id="xdc-mA-oyT">
                                                     <rect key="frame" x="8" y="1" width="54" height="54"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="54" id="qG6-JG-Iy8"/>
@@ -381,6 +381,7 @@
                                 </state>
                                 <connections>
                                     <action selector="backPressed:" destination="wer-xT-3S9" eventType="touchUpInside" id="WqB-q4-1kr"/>
+                                    <segue destination="wer-xT-3S9" kind="custom" customClass="DismissSegue" customModule="Invenire" id="QEB-HG-3E0"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hZx-Zi-VoX">
@@ -458,7 +459,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="xpk-yq-48b" kind="show" identifier="" id="Fhd-Mh-VUd"/>
+                                    <segue destination="rR3-7z-ypx" kind="custom" customClass="DismissSegue" customModule="Invenire" id="Y0p-CY-aVC"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="artist" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uFL-MM-P7g">
@@ -495,7 +496,7 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rbV-MD-WC7" userLabel="Album Art">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rbV-MD-WC7" userLabel="Album Art">
                                 <rect key="frame" x="40" y="100" width="241" height="245"/>
                             </imageView>
                         </subviews>
@@ -544,9 +545,11 @@
                                 <rect key="frame" x="115" y="0.0" width="90" height="52"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <state key="normal" title="BACK"/>
+                                <state key="normal" title="BACK">
+                                    <color key="titleColor" red="1" green="0.29698148190000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
-                                    <segue destination="xpk-yq-48b" kind="show" id="ECh-ix-QxF"/>
+                                    <segue destination="IM6-eO-AOL" kind="custom" customClass="DismissSegue" customModule="Invenire" id="2T4-cE-FIr"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b05-FQ-WZL">
@@ -572,10 +575,10 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="242"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BiN-jD-Xyu" id="pF9-1G-ucL">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="241"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="241.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Music" translatesAutoresizingMaskIntoConstraints="NO" id="uAw-Ya-9p8">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Music" translatesAutoresizingMaskIntoConstraints="NO" id="uAw-Ya-9p8">
                                                     <rect key="frame" x="8" y="7" width="54" height="51"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="54" id="2Rg-Y5-UAA"/>
@@ -596,7 +599,7 @@
                                                     </attributedString>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tns-Sm-dW9">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Artist" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tns-Sm-dW9">
                                                     <rect key="frame" x="80" y="22" width="165" height="22"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -666,7 +669,7 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DvO-92-UHp">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DvO-92-UHp">
                                 <rect key="frame" x="95" y="126" width="130" height="134"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="134" id="raf-Jd-sVw"/>
@@ -770,7 +773,7 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="IM6-eO-AOL" kind="show" id="OTm-Id-EZh"/>
+                                    <segue destination="rP0-Sx-BgD" kind="custom" customClass="DismissSegue" customModule="Invenire" id="9tm-sf-k7y"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bqM-3I-WyH">
@@ -892,7 +895,7 @@
         <!--UserSignUp-->
         <scene sceneID="few-qc-Nfe">
             <objects>
-                <viewController title="UserSignUp" id="FWi-VY-i2N" customClass="SignUpViewController" customModule="Invenire" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="signupViewCont" title="UserSignUp" id="FWi-VY-i2N" customClass="SignUpViewController" customModule="Invenire" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Rpo-hO-l4o"/>
                         <viewControllerLayoutGuide type="bottom" id="X4k-hu-kiP"/>
@@ -947,7 +950,7 @@
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
-                                            <segue destination="5t6-dT-g5v" kind="show" id="t5C-mC-9MT"/>
+                                            <segue destination="FWi-VY-i2N" kind="custom" customClass="DismissSegue" customModule="Invenire" id="RsM-Qx-PGA"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gbs-kd-uaG">
@@ -977,9 +980,8 @@
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="profileIcon2" highlighted="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ecx-nS-DeK">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="profileIcon2" highlighted="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ecx-nS-DeK">
                                         <rect key="frame" x="95" y="82" width="130" height="118"/>
-                                        <color key="backgroundColor" red="0.38115605012712978" green="0.32646248957335172" blue="0.48806423611111116" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="118" id="bOO-ED-rNL"/>
@@ -1077,10 +1079,12 @@
         <image name="write" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ECh-ix-QxF"/>
-        <segue reference="YIf-XA-l6A"/>
+        <segue reference="q97-NZ-RRa"/>
         <segue reference="BHD-e6-5gV"/>
-        <segue reference="t5C-mC-9MT"/>
+        <segue reference="uaJ-LJ-mro"/>
+        <segue reference="tWG-M2-LTF"/>
+        <segue reference="3t7-HY-1rt"/>
+        <segue reference="mRv-FB-Pdu"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.97404399671052633" green="1" blue="0.76035670230263153" alpha="1" colorSpace="calibratedRGB"/>
 </document>
