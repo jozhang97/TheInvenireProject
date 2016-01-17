@@ -11,7 +11,7 @@ import QuartzCore
 
 class LoginViewController: ViewController, UITextFieldDelegate {
     
-    let bufferView = UIActivityIndicatorView (frame: CGRectMake(UIScreen.mainScreen().bounds.width/2, UIScreen.mainScreen().bounds.height/2, 20, 20))
+    let bufferView = UIActivityIndicatorView (frame: CGRectMake(UIScreen.mainScreen().bounds.width/2-10, UIScreen.mainScreen().bounds.height/2-10, 20, 20))
     let username = UITextField (frame: CGRectMake(20, UIScreen.mainScreen().bounds.height/2, UIScreen.mainScreen().bounds.width - 40, 20))
     let usernameLine = UIButton(frame: CGRectMake(20, UIScreen.mainScreen().bounds.height/2 + 22, UIScreen.mainScreen().bounds.width - 40, 1))
     let password = UITextField (frame: CGRectMake(20, UIScreen.mainScreen().bounds.height/2 + 40, UIScreen.mainScreen().bounds.width - 40, 20))
@@ -33,8 +33,6 @@ class LoginViewController: ViewController, UITextFieldDelegate {
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         view.addGestureRecognizer(tap)
-        username.delegate = self
-        password.delegate = self
     }
     
     func setupBufferView() {
@@ -42,6 +40,7 @@ class LoginViewController: ViewController, UITextFieldDelegate {
     }
     
     func setupUsername() {
+        username.delegate = self
         username.backgroundColor = UIColor.clearColor()
         username.attributedPlaceholder = NSAttributedString(string:"USERNAME",
             attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
@@ -53,6 +52,7 @@ class LoginViewController: ViewController, UITextFieldDelegate {
     }
     
     func setupPassword() {
+        password.delegate = self
         password.backgroundColor = UIColor.clearColor()
         password.attributedPlaceholder = NSAttributedString(string:"PASSWORD",
             attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
@@ -78,7 +78,7 @@ class LoginViewController: ViewController, UITextFieldDelegate {
         loginButton.setTitle("LOG IN", forState: .Normal)
         loginButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         loginButton.layer.borderColor = UIColor.whiteColor().CGColor
-        loginButton.layer.borderWidth = 1
+        loginButton.layer.borderWidth = 2
         loginButton.addTarget(self, action: "pressed:", forControlEvents: .TouchUpInside)
         
         view.addSubview(loginButton)
@@ -93,7 +93,7 @@ class LoginViewController: ViewController, UITextFieldDelegate {
         createAccountButton.setTitle("SIGN UP", forState: .Normal)
         createAccountButton.backgroundColor = UIColor.clearColor()
         createAccountButton.layer.borderColor = UIColor.whiteColor().CGColor
-        createAccountButton.layer.borderWidth = 1
+        createAccountButton.layer.borderWidth = 2
         createAccountButton.addTarget(self, action: "pressed:", forControlEvents: .TouchUpInside)
         
         view.addSubview(accountMake)
