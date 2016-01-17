@@ -76,8 +76,8 @@ class changeProfileVC: ViewController, UINavigationControllerDelegate, UITextFie
         query.findObjectsInBackgroundWithBlock {
             (objects: [PFObject]?, error: NSError?) -> Void in
             if error == nil {
-                if let objects = objects! as? [PFObject] {
-                    let imageFile = objects[0]["profPic"] as! PFFile
+                if objects != nil {
+                    let imageFile = objects![0]["profPic"] as! PFFile
                     imageFile.getDataInBackgroundWithBlock { (imageData: NSData?, error: NSError?) -> Void in if error == nil {
                         let image1 = UIImage(data: imageData!)
                         self.profilePicImageView.image = image1
@@ -99,12 +99,6 @@ class changeProfileVC: ViewController, UINavigationControllerDelegate, UITextFie
         titleLabel.textAlignment = .Center
         titleLabel.frame = CGRectMake(UIScreen.mainScreen().bounds.width/2 - 100, 20, 200, 20)
         titleLabel.adjustsFontSizeToFitWidth = true
-        
-        
-        let titleLine = UILabel(frame: CGRectMake(UIScreen.mainScreen().bounds.width/2 - 100, 45, 200, 1))
-        titleLine.layer.borderWidth = 1
-        titleLine.layer.borderColor = UIColor.whiteColor().CGColor
-        view.addSubview(titleLine)
         
         backButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         backButton.setTitle("BACK", forState: .Normal)
@@ -129,6 +123,7 @@ class changeProfileVC: ViewController, UINavigationControllerDelegate, UITextFie
         updateEmailButton.backgroundColor = UIColor.clearColor()
         updateEmailButton.setTitle("UPDATE EMAIL", forState: .Normal)
         updateEmailButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        updateEmailButton.titleLabel?.font = UIFont(name: "Futura", size: 20)
         updateEmailButton.layer.borderColor = UIColor.whiteColor().CGColor
         updateEmailButton.layer.borderWidth = 1
         updateEmailButton.frame = CGRectMake(50, 150, UIScreen.mainScreen().bounds.width - 100, 30)
@@ -148,6 +143,7 @@ class changeProfileVC: ViewController, UINavigationControllerDelegate, UITextFie
         updatePasswordButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         updatePasswordButton.layer.borderColor = UIColor.whiteColor().CGColor
         updatePasswordButton.layer.borderWidth = 1
+        updatePasswordButton.titleLabel?.font = UIFont(name: "Futura", size: 20)
         updatePasswordButton.frame = CGRectMake(50, 255, UIScreen.mainScreen().bounds.width - 100, 30)
         
     }
@@ -166,6 +162,7 @@ class changeProfileVC: ViewController, UINavigationControllerDelegate, UITextFie
         updateProfileButton.titleLabel?.adjustsFontSizeToFitWidth = true
         updateProfileButton.layer.borderColor = UIColor.whiteColor().CGColor
         updateProfileButton.layer.borderWidth = 1
+        updateProfileButton.titleLabel?.font = UIFont(name: "Futura", size: 20)
         updateProfileButton.frame = CGRectMake(50, 460, UIScreen.mainScreen().bounds.width - 100, 30)
         
         confirmProfPicButton.backgroundColor = UIColor.clearColor()
@@ -173,6 +170,7 @@ class changeProfileVC: ViewController, UINavigationControllerDelegate, UITextFie
         confirmProfPicButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         confirmProfPicButton.layer.borderColor = UIColor.whiteColor().CGColor
         confirmProfPicButton.layer.borderWidth = 1
+        confirmProfPicButton.titleLabel?.font = UIFont(name: "Futura", size: 20)
         confirmProfPicButton.frame = CGRectMake(50, 500, UIScreen.mainScreen().bounds.width - 100, 30)
         confirmProfPicButton.enabled = false
         

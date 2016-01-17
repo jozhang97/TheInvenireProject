@@ -16,16 +16,6 @@ import Parse
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
-
-//    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-//        // Override point for customization after application launch.
-//        Parse.enableLocalDatastore()
-//        Parse.setApplicationId("gqlu265uUbOXkoMTSxHgB3X66qIETfirpuGW7IMu", clientKey: "LnUFicCjywfpSxMlfRU6YmHTR6c09wDyGvivgKMs")
-//        return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
-//    }
-    
-    
     
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
@@ -34,6 +24,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Parse.setApplicationId("ubX1Uz9t0xey3JmriirdALN8g7aUyQLPK7hdXt0y",
             clientKey: "7xiy0Gn2sgQW5YVnABWUvC1BoX1idQekHf80vXiM")
         
+        let attr = NSDictionary(object: UIFont(name: "Futura", size: 16.0)!, forKey: NSFontAttributeName)
+        UISegmentedControl.appearance().setTitleTextAttributes(attr as [NSObject : AnyObject], forState: .Normal)
+        
+        UITabBar.appearance().barTintColor = UIColor.blackColor()
         // Override point for customization after application launch.
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }

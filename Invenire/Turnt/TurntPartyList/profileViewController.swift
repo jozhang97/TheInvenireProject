@@ -24,19 +24,13 @@ class profileViewController: ViewController, UITableViewDelegate, UITableViewDat
     var artworks = [UIImage]()
     var currentState = 0
     
-    @IBOutlet weak var profbgImageView: UIImageView!
+    @IBOutlet weak var editButton: UIButton!
+    @IBOutlet weak var logoutButton: UIButton!
+    
+    @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var postsTableView: UITableView!
     
     @IBOutlet weak var segmentControl: UISegmentedControl!
-    
-    func clearArrays() {
-        songTitles.removeAll()
-        artistTitles.removeAll()
-        albumTitles.removeAll()
-        pictures.removeAll()
-        likes.removeAll()
-        artworks.removeAll()
-    }
 
     @IBAction func segmentControlAction(sender: AnyObject) {
         if segmentControl.selectedSegmentIndex == 0 {
@@ -56,42 +50,68 @@ class profileViewController: ViewController, UITableViewDelegate, UITableViewDat
             performSegueWithIdentifier("logOutSegue", sender: nil)
         }
     }
-    override func shouldAutorotate() -> Bool {
-        if (UIDevice.currentDevice().orientation == UIDeviceOrientation.LandscapeLeft ||
-            UIDevice.currentDevice().orientation == UIDeviceOrientation.LandscapeRight ||
-            UIDevice.currentDevice().orientation == UIDeviceOrientation.Unknown) {
-                return false
-        }
-        else {
-            return true
-        }
+    
+    func clearArrays() {
+        songTitles.removeAll()
+        artistTitles.removeAll()
+        albumTitles.removeAll()
+        pictures.removeAll()
+        likes.removeAll()
+        artworks.removeAll()
     }
     
-    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-        return [UIInterfaceOrientationMask.Portrait ,UIInterfaceOrientationMask.PortraitUpsideDown]
+    func setupButtons() {
+        editButton.frame = CGRectMake(20,20,40,40)
+        
+        backButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        backButton.setTitle("BACK", forState: .Normal)
+        backButton.titleLabel?.font = UIFont(name: "Futura", size: 20)
+        backButton.frame = CGRectMake(UIScreen.mainScreen().bounds.width/2 - 50, 20, 100, 40)
+        
+        logoutButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        logoutButton.setTitle("LOG OUT", forState: .Normal)
+        logoutButton.titleLabel?.font = UIFont(name: "Futura", size: 20)
+        logoutButton.frame = CGRectMake(UIScreen.mainScreen().bounds.width-120, 20, 100, 40)
+        
     }
     
+    func setupProfile() {
+        userNameLabel.font = UIFont(name: "Futura", size: 30)
+        userNameLabel.frame = CGRectMake(UIScreen.mainScreen().bounds.width/4, 60, UIScreen.mainScreen().bounds.width/2, 35)
+        userNameLabel.adjustsFontSizeToFitWidth = true
+        userNameLabel.textColor = UIColor.whiteColor()
+        
+        imageLabel.layer.cornerRadius = imageLabel.frame.size.width / 2;
+        imageLabel.clipsToBounds = true
+        imageLabel.frame = CGRectMake(UIScreen.mainScreen().bounds.width/2 - 75, 120, 150, 150)
+        
+    }
+    
+    func setupTable() {
+        postsTableView.separatorStyle = UITableViewCellSeparatorStyle.None
+        postsTableView.backgroundColor = UIColor.clearColor()
+        postsTableView.backgroundView?.backgroundColor = UIColor.clearColor()
+        postsTableView.backgroundView = nil
+        postsTableView.frame = CGRectMake(UIScreen.mainScreen().bounds.width/8, UIScreen.mainScreen().bounds.height * 1.7/4 + 45, UIScreen.mainScreen().bounds.width * 0.75, UIScreen.mainScreen().bounds.height*15/32)
+        
+        segmentControl.frame = CGRectMake(UIScreen.mainScreen().bounds.width/8, UIScreen.mainScreen().bounds.height * 1.7/4, UIScreen.mainScreen().bounds.width * 0.75, 35)
+        segmentControl.tintColor = UIColor.whiteColor()
+        segmentControl.setTitle("MY POSTS", forSegmentAtIndex: 0)
+        segmentControl.setTitle("MY LIKES", forSegmentAtIndex: 1)
+        segmentControl.backgroundColor = UIColor.clearColor()
+        segmentControl.layer.borderColor = UIColor.whiteColor().CGColor
+        segmentControl.layer.borderWidth = 2
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "titlepageBackground1")!)
+        
         postsTableView.delegate = self
         postsTableView.dataSource = self
-        let count = Int(arc4random_uniform(5) + 1)
-        profbgImageView.image = UIImage(named: "profbg\(count)")
-        imageLabel.bringSubviewToFront(profbgImageView)
-        // Create a white border with defined width
-        imageLabel.layer.borderColor = UIColor.blackColor().CGColor
-        imageLabel.layer.borderWidth = 3;
         
-        // Set image corner radius
-        imageLabel.layer.cornerRadius = 5.0;
-        
-        // To enable corners to be "clipped"
-        imageLabel.clipsToBounds = true
-        
-        profbgImageView.layer.borderColor = UIColor.blackColor().CGColor
-        profbgImageView.layer.borderWidth = 5;
+        setupButtons()
+        setupProfile()
+        setupTable()
         
         if currentState == 0 {
             segmentControl.selectedSegmentIndex = 0
@@ -103,7 +123,6 @@ class profileViewController: ViewController, UITableViewDelegate, UITableViewDat
             getMemberInfo()
             getMemberInfoLikes()
         }
-        postsTableView.separatorStyle = UITableViewCellSeparatorStyle.None
     }
     
     func getMemberInfoLikes() {
@@ -142,10 +161,10 @@ class profileViewController: ViewController, UITableViewDelegate, UITableViewDat
         query.findObjectsInBackgroundWithBlock {
             (objects: [PFObject]?, error: NSError?) -> Void in
             if error == nil {
-                if let objects = objects! as? [PFObject] {
-                    self.userNameLabel.text = "Welcome " + (PFUser.currentUser()?.username)! + "!"
+                if objects != nil{
+                    self.userNameLabel.text = "WELCOME " + (PFUser.currentUser()?.username)! + "!"
                     
-                    let imageFile = objects[0]["profPic"] as! PFFile
+                    let imageFile = objects![0]["profPic"] as! PFFile
                     imageFile.getDataInBackgroundWithBlock { (imageData: NSData?, error: NSError?) -> Void in if error == nil {
                             let image1 = UIImage(data: imageData!)
                             self.imageLabel.image = image1
@@ -199,12 +218,27 @@ class profileViewController: ViewController, UITableViewDelegate, UITableViewDat
         return numOfSection
     }
     
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        postsTableView?.deselectRowAtIndexPath(indexPath, animated: true)
+        selectedSongIndex = indexPath.row
+    }
+    
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        cell.backgroundColor = UIColor.clearColor()
+        cell.backgroundView = nil
+        cell.backgroundView?.backgroundColor = UIColor.clearColor()
+        cell.contentView.backgroundColor = UIColor.clearColor()
+        
+    }
+    
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-//        let cell = postsTableView.dequeueReusableCellWithIdentifier("postCell", forIndexPath: indexPath) as! postsCellTVC 
+        
         let cell = postsTableView.dequeueReusableCellWithIdentifier("postCell") as! postsCellTVC
         cell.songTitle.text = songTitles[indexPath.row]
         cell.artistTitle.text = artistTitles[indexPath.row]
-        cell.albumTitle.text = albumTitles[indexPath.row]
+        //cell.albumTitle.text = albumTitles[indexPath.row]
         cell.numberOfLikes.text = likes[indexPath.row]
         
         let imageFile = pictures[indexPath.row] 
@@ -221,26 +255,11 @@ class profileViewController: ViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 57
+        return 120
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    
-    /*
-    // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    // Get the new view controller using segue.destinationViewController.
-    // Pass the selected object to the new view controller.
-    }
-    */
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        selectedSongIndex = indexPath.row
-        //self.performSegueWithIdentifier("moreSongDetail2", sender: self)
     }
 
     func findLocation() -> PFGeoPoint {

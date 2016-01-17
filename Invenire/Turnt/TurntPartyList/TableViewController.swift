@@ -9,25 +9,13 @@
 import UIKit 
 
 class TableViewController: ViewController, UITableViewDelegate, UITableViewDataSource, TableViewCellDelegate, CLLocationManagerDelegate {
-
-    
-    @IBAction func segmentChanged(sender: AnyObject) {
-        clearArrays()
-        getParties()
-    }
-    
     let locationManager = CLLocationManager()
-    func clearArrays(){
-        artistNames = Array<String>()
-        songNames = Array<String>()
-        albumNames = Array<String>()
-        likesList = Array<Int>()
-        locations = Array<PFGeoPoint>()
-        artworks = Array<UIImage>()
-        peopleNames = Array<String>()
-    }
     
     @IBOutlet weak var segmentControl: UISegmentedControl!
+    @IBOutlet weak var profileButton: UIButton!
+    @IBOutlet weak var shareButton: UIButton!
+    @IBOutlet weak var discoverLabel: UILabel!
+    @IBOutlet weak var tableView: UITableView!
     var artistNames = Array<String>()
     var songNames = Array<String> ()
     var albumNames = Array<String>()
@@ -37,18 +25,64 @@ class TableViewController: ViewController, UITableViewDelegate, UITableViewDataS
     var peopleNames = Array<String>()
     var selectedSongIndex = 0
     
-    @IBOutlet weak var tableView: UITableView!
+    @IBAction func segmentChanged(sender: AnyObject) {
+        clearArrays()
+        getParties()
+    }
+    
+    func setupTop() {
+        discoverLabel.text = "DISCOVER"
+        discoverLabel.font = UIFont(name: "Futura", size: 30)
+        discoverLabel.textColor = UIColor.whiteColor()
+        discoverLabel.textAlignment = .Center
+        discoverLabel.frame = CGRectMake(UIScreen.mainScreen().bounds.width/2 - 100, 30, 200, 40)
+        
+        
+        profileButton.frame = CGRectMake(20, 20, 50, 50)
+        
+        shareButton.frame = CGRectMake(UIScreen.mainScreen().bounds.width-70, 20, 50, 50)
+    }
+    
+    func setupTable() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        getParties()
+        tableView.separatorStyle = UITableViewCellSeparatorStyle.None
+        
+        tableView.separatorStyle = UITableViewCellSeparatorStyle.None
+        tableView.backgroundColor = UIColor.clearColor()
+        tableView.backgroundView?.backgroundColor = UIColor.clearColor()
+        tableView.backgroundView = nil
+        tableView.frame = CGRectMake(UIScreen.mainScreen().bounds.width/10, UIScreen.mainScreen().bounds.height * 1/10 + 45, UIScreen.mainScreen().bounds.width * 8/10, UIScreen.mainScreen().bounds.height*25/32)
+        
+        segmentControl.frame = CGRectMake(UIScreen.mainScreen().bounds.width/8, UIScreen.mainScreen().bounds.height * 1/10, UIScreen.mainScreen().bounds.width * 8/10, 35)
+        segmentControl.tintColor = UIColor.whiteColor()
+        segmentControl.setTitle("MOST POPULAR", forSegmentAtIndex: 0)
+        segmentControl.setTitle("MOST RECENT", forSegmentAtIndex: 1)
+        segmentControl.setTitle("NEAR ME", forSegmentAtIndex: 2)
+        segmentControl.backgroundColor = UIColor.clearColor()
+        segmentControl.layer.borderColor = UIColor.whiteColor().CGColor
+        segmentControl.layer.borderWidth = 2
+    }
+    
     override func viewDidLoad() {
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "titlepageBackground1")!)
         super.viewDidLoad()
         // new
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         // end new
-        tableView.delegate = self
-        tableView.dataSource = self
-        getParties()
-        tableView.separatorStyle = UITableViewCellSeparatorStyle.None
+        setupTop()
+        setupTable()
+    }
+    
+    func clearArrays(){
+        artistNames = Array<String>()
+        songNames = Array<String>()
+        albumNames = Array<String>()
+        likesList = Array<Int>()
+        locations = Array<PFGeoPoint>()
+        artworks = Array<UIImage>()
+        peopleNames = Array<String>()
     }
 
     override func didReceiveMemoryWarning() {
@@ -82,8 +116,8 @@ class TableViewController: ViewController, UITableViewDelegate, UITableViewDataS
         query.findObjectsInBackgroundWithBlock {
             (objects: [PFObject]?, error: NSError?) -> Void in
             if error == nil {
-                if let objects = objects! as? [PFObject] {
-                    for object in objects {
+                if objects != nil {
+                    for object in objects! {
                         self.artistNames.append(object["artist"] as! String)
                         self.songNames.append(object["title"] as! String)
                         self.albumNames.append(object["album"] as! String)
@@ -98,20 +132,6 @@ class TableViewController: ViewController, UITableViewDelegate, UITableViewDataS
                 print("Error: \(error!) \(error!.userInfo)")
             }
         }
-    }
-    override func shouldAutorotate() -> Bool {
-        if (UIDevice.currentDevice().orientation == UIDeviceOrientation.LandscapeLeft ||
-            UIDevice.currentDevice().orientation == UIDeviceOrientation.LandscapeRight ||
-            UIDevice.currentDevice().orientation == UIDeviceOrientation.Unknown) {
-                return false
-        }
-        else {
-            return true
-        }
-    }
-    
-    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-        return [UIInterfaceOrientationMask.Portrait ,UIInterfaceOrientationMask.PortraitUpsideDown]
     }
     
     func check(cell:TableViewCell) -> Int {
@@ -176,8 +196,8 @@ class TableViewController: ViewController, UITableViewDelegate, UITableViewDataS
             if error == nil {
                 
                 // Do something with the found objects
-                if let objects = objects! as? [PFObject] {
-                    for object in objects {
+                if objects != nil {
+                    for object in objects! {
                         if object["usersLiked"] == nil {
                             let currLikes = object["numLikes"] as! Int
                             //                        NSLog("Current Likes %i", currLikes)
@@ -236,9 +256,34 @@ class TableViewController: ViewController, UITableViewDelegate, UITableViewDataS
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+        var numOfSection = 0
+        if songNames.count > 0 {
+            tableView.backgroundView = nil
+            numOfSection = 1
+        } else {
+            let noDataLabel: UILabel = UILabel(frame: CGRectMake(0, 0, tableView.bounds.size.width, tableView.bounds.size.height))
+            noDataLabel.text = "No Data Available"
+            noDataLabel.textColor = UIColor(red: 22.0/255.0, green: 106.0/255.0, blue: 176.0/255.0, alpha: 1.0)
+            noDataLabel.textAlignment = NSTextAlignment.Center
+            tableView.backgroundView = noDataLabel
+        }
+        return numOfSection
     }
     
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        selectedSongIndex = indexPath.row
+        self.performSegueWithIdentifier("showSongDetail", sender: self)
+    }
+    
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        cell.backgroundColor = UIColor.clearColor()
+        cell.backgroundView = nil
+        cell.backgroundView?.backgroundColor = UIColor.clearColor()
+        cell.contentView.backgroundColor = UIColor.clearColor()
+        
+    }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return songNames.count
@@ -248,22 +293,33 @@ class TableViewController: ViewController, UITableViewDelegate, UITableViewDataS
         let cell = tableView.dequeueReusableCellWithIdentifier("tableCell", forIndexPath: indexPath) as! TableViewCell
             cell.artist.text = artistNames[indexPath.row]
             cell.song.text = songNames[indexPath.row]
-            cell.album.text = albumNames[indexPath.row]
-            cell.likes.text = String(likesList[indexPath.row]) + " likes"
-            cell.distance.text = "distance: "+String(findDistance(locations[indexPath.row])) + " miles away"
+            //cell.album.text = albumNames[indexPath.row]
+            cell.likes.text = String(likesList[indexPath.row])
+            //cell.distance.text = "distance: "+String(findDistance(locations[indexPath.row])) + " miles away"
             cell.artwork.image = artworks[indexPath.row]
             // Set the text of the memberName field of the cell to the right value
+            cell.likeButton.frame = CGRectMake(cell.frame.width - 37, cell.frame.height/2 - 25, 30, 30)
+            cell.bringSubviewToFront(cell.likes)
+            cell.likeButton.layer.zPosition = 0
+            cell.likes.layer.zPosition = 1
+        
             if checker(cell.song.text!) == 0 {
-                cell.likeButton.setImage(UIImage(named: "redThumbsDown"), forState: .Normal)
+                cell.likeButton.setImage(UIImage(named: "fullwhiteheart"), forState: .Normal)
+                cell.likes.textColor = UIColor.blackColor()
             }
             else {
-                cell.likeButton.setImage(UIImage(named: "greenThumbsUp"), forState: .Normal)
+                cell.likeButton.setImage(UIImage(named: "whiteheart"), forState: .Normal)
+                cell.likes.textColor = UIColor.whiteColor()
             }
         
         
         cell.delegate = self
         // Set the image of the memberProfilePic imageview in the cell
         return cell
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 120
     }
     
     func findLocation() -> PFGeoPoint {
@@ -281,15 +337,6 @@ class TableViewController: ViewController, UITableViewDelegate, UITableViewDataS
     func findDistance(musicLocation :PFGeoPoint) -> Double {
         let currLocation = findLocation()
         return round(100*musicLocation.distanceInMilesTo(currLocation))/100
-    }
-    
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 67
-    }
-    
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        selectedSongIndex = indexPath.row
-        self.performSegueWithIdentifier("showSongDetail", sender: self)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

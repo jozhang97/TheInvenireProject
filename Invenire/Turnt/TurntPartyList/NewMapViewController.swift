@@ -12,6 +12,18 @@ import MapKit
 
 class NewMapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     var zoomFactor:CLLocationDistance = 50000
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    @IBOutlet weak var zoominButton: UIButton!
+    @IBOutlet weak var zoomoutButton: UIButton!
+    @IBOutlet weak var mapView: MKMapView!
+        {
+        didSet {
+            mapView.delegate = self
+            mapView.mapType = .Standard
+            mapView.showsUserLocation = true
+        }
+    }
+    let locationManager = CLLocationManager()
     
     @IBAction func zoomIn(sender: AnyObject) {
         zoomFactor -= 5000
@@ -30,18 +42,6 @@ class NewMapViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         mapView.setRegion(region, animated: true)
     }
     
-    let locationManager = CLLocationManager()
-    @IBOutlet weak var mapView: MKMapView!
-    {
-        didSet {
-            mapView.delegate = self
-            mapView.mapType = .Standard
-            mapView.showsUserLocation = true
-        }
-    }
-
-    @IBOutlet weak var segmentedControl: UISegmentedControl!
-    
     @IBAction func segmentChanged(sender: AnyObject)
     {
         if segmentedControl.selectedSegmentIndex == 0
@@ -57,11 +57,19 @@ class NewMapViewController: UIViewController, MKMapViewDelegate, CLLocationManag
             mapView.mapType = .Satellite
         }
     }
-//    
-//    func mapView(mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
-//        var center = mapView.centerCoordinate
-//    }
-//    
+    
+    func setupMapView() {
+        mapView.frame = CGRectMake(0,0, UIScreen.mainScreen().bounds.width, UIScreen.mainScreen().bounds.height)
+        segmentedControl.frame = CGRectMake(UIScreen.mainScreen().bounds.width/8, UIScreen.mainScreen().bounds.height * 1/15, UIScreen.mainScreen().bounds.width * 8/10, 35)
+        segmentedControl.tintColor = UIColor.whiteColor()
+        segmentedControl.backgroundColor = UIColor.blueColor()
+        segmentedControl.layer.borderColor = UIColor.whiteColor().CGColor
+        segmentedControl.layer.borderWidth = 2
+        
+        zoominButton.frame = CGRectMake(UIScreen.mainScreen().bounds.width - 50, UIScreen.mainScreen().bounds.height/5, 30, 30)
+        zoomoutButton.frame = CGRectMake(UIScreen.mainScreen().bounds.width - 50, UIScreen.mainScreen().bounds.height/5 + 33, 30, 30)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //clearAnnotations()
@@ -73,29 +81,7 @@ class NewMapViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         
         // Do any additional setup after loading the view.
         
-        /* OLD WAY of showing area around user
-        var location = CLLocationCoordinate2DMake(currentLocation.coordinate.latitude, currentLocation.coordinate.longitude)
-        
-        var span = MKCoordinateSpanMake(0.5, 0.5)
-        var region = MKCoordinateRegionMake(location, span)
-        mapView.setRegion(region, animated: true)
-        */
-        
-        /* Another way
-        var currentLocation = CLLocation()
-        if CLLocationManager.locationServicesEnabled()
-        {
-        locationManager.delegate = self
-        locationManager.startUpdatingLocation()
-        currentLocation = locationManager.location!
-        }
-        var userLocation = CLLocationCoordinate2DMake(currentLocation.coordinate.latitude, currentLocation.coordinate.longitude)
-        
-        let region = MKCoordinateRegionMakeWithDistance(
-            userLocation, zoomFactor, zoomFactor)
-        mapView.setRegion(region, animated: true)
-        */
-        
+        setupMapView()
         let center = handleExistingMusic()
         addRadiusCircle(CLLocation(latitude: center.latitude, longitude: center.longitude))
     }
