@@ -16,6 +16,8 @@ class changeProfileVC: ViewController, UINavigationControllerDelegate, UITextFie
     @IBOutlet weak var confirmProfPicButton: UIButton!
     @IBOutlet weak var profilePicImageView: UIImageView!
     @IBOutlet weak var newEmail: UITextField!
+    @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var titleLabel: UILabel!
     
     @IBAction func updatePicture(sender: AnyObject) {
         let image = UIImagePickerController()
@@ -25,20 +27,7 @@ class changeProfileVC: ViewController, UINavigationControllerDelegate, UITextFie
         self.presentViewController(image, animated: true, completion: nil)
         
     }
-    override func shouldAutorotate() -> Bool {
-        if (UIDevice.currentDevice().orientation == UIDeviceOrientation.LandscapeLeft ||
-            UIDevice.currentDevice().orientation == UIDeviceOrientation.LandscapeRight ||
-            UIDevice.currentDevice().orientation == UIDeviceOrientation.Unknown) {
-                return false
-        }
-        else {
-            return true
-        }
-    }
     
-    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-        return [UIInterfaceOrientationMask.Portrait ,UIInterfaceOrientationMask.PortraitUpsideDown]
-    }
     
     @IBAction func confirmPic(sender: AnyObject) {
         if let currentUser = PFUser.currentUser(){
@@ -103,20 +92,99 @@ class changeProfileVC: ViewController, UINavigationControllerDelegate, UITextFie
         }
     }
     
+    func setupTitleArea() {
+        titleLabel.text = "EDIT PROFILE"
+        titleLabel.font = UIFont(name: "Futura", size: 25)
+        titleLabel.textColor = UIColor.whiteColor()
+        titleLabel.textAlignment = .Center
+        titleLabel.frame = CGRectMake(UIScreen.mainScreen().bounds.width/2 - 100, 20, 200, 20)
+        titleLabel.adjustsFontSizeToFitWidth = true
+        
+        
+        let titleLine = UILabel(frame: CGRectMake(UIScreen.mainScreen().bounds.width/2 - 100, 45, 200, 1))
+        titleLine.layer.borderWidth = 1
+        titleLine.layer.borderColor = UIColor.whiteColor().CGColor
+        view.addSubview(titleLine)
+        
+        backButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        backButton.setTitle("BACK", forState: .Normal)
+        backButton.titleLabel?.font = UIFont(name: "Futura", size: 20)
+        backButton.titleLabel?.adjustsFontSizeToFitWidth = true
+        backButton.frame = CGRectMake(20, 20, 50, 20)
+        
+    }
+    
+    func setupEmail() {
+        newEmail.backgroundColor = UIColor.clearColor()
+        newEmail.attributedPlaceholder = NSAttributedString(string:"NEW EMAIL",
+            attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
+        newEmail.textColor = UIColor.whiteColor()
+        newEmail.frame = CGRectMake(50, 100, UIScreen.mainScreen().bounds.width - 100, 30)
+        
+        let newEmailLine = UILabel(frame: CGRectMake(50, 132, UIScreen.mainScreen().bounds.width - 100, 1))
+        newEmailLine.layer.borderWidth = 1
+        newEmailLine.layer.borderColor = UIColor.whiteColor().CGColor
+        view.addSubview(newEmailLine)
+        
+        updateEmailButton.backgroundColor = UIColor.clearColor()
+        updateEmailButton.setTitle("UPDATE EMAIL", forState: .Normal)
+        updateEmailButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        updateEmailButton.layer.borderColor = UIColor.whiteColor().CGColor
+        updateEmailButton.layer.borderWidth = 1
+        updateEmailButton.frame = CGRectMake(50, 150, UIScreen.mainScreen().bounds.width - 100, 30)
+    }
+    
+    func setupPassword() {
+        let psswdLabel = UILabel(frame: CGRectMake(50, 220, UIScreen.mainScreen().bounds.width - 100, 25))
+        psswdLabel.text = "WE WILL EMAIL YOU A LINK TO RESET YOUR PASSWORD"
+        psswdLabel.font = UIFont(name: "Futura", size: 18)
+        psswdLabel.textColor = UIColor.whiteColor()
+        psswdLabel.backgroundColor = UIColor.clearColor()
+        psswdLabel.adjustsFontSizeToFitWidth = true
+        view.addSubview(psswdLabel)
+        
+        updatePasswordButton.backgroundColor = UIColor.clearColor()
+        updatePasswordButton.setTitle("RESET PASSWORD", forState: .Normal)
+        updatePasswordButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        updatePasswordButton.layer.borderColor = UIColor.whiteColor().CGColor
+        updatePasswordButton.layer.borderWidth = 1
+        updatePasswordButton.frame = CGRectMake(50, 255, UIScreen.mainScreen().bounds.width - 100, 30)
+        
+    }
+    
+    func setupProfPic() {
+        
+        profilePicImageView.layer.cornerRadius = profilePicImageView.frame.size.width / 2;
+        profilePicImageView.clipsToBounds = true
+        profilePicImageView.layer.borderColor = UIColor.blackColor().CGColor
+        profilePicImageView.layer.borderWidth = 3;
+        profilePicImageView.frame = CGRectMake(UIScreen.mainScreen().bounds.width/2 - 62.5, 300, 125, 125)
+
+        updateProfileButton.backgroundColor = UIColor.clearColor()
+        updateProfileButton.setTitle("CHOOSE A NEW PROFILE PICTURE", forState: .Normal)
+        updateProfileButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        updateProfileButton.titleLabel?.adjustsFontSizeToFitWidth = true
+        updateProfileButton.layer.borderColor = UIColor.whiteColor().CGColor
+        updateProfileButton.layer.borderWidth = 1
+        updateProfileButton.frame = CGRectMake(50, 460, UIScreen.mainScreen().bounds.width - 100, 30)
+        
+        confirmProfPicButton.backgroundColor = UIColor.clearColor()
+        confirmProfPicButton.setTitle("UPDATE PROFILE PICTURE", forState: .Normal)
+        confirmProfPicButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        confirmProfPicButton.layer.borderColor = UIColor.whiteColor().CGColor
+        confirmProfPicButton.layer.borderWidth = 1
+        confirmProfPicButton.frame = CGRectMake(50, 500, UIScreen.mainScreen().bounds.width - 100, 30)
+        confirmProfPicButton.enabled = false
+        
+        putCurrentProfilePic()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "titlepageBackground1")!)
-        updatePasswordButton.layer.backgroundColor  = UIColor.orangeColor().CGColor
-        updatePasswordButton.layer.cornerRadius = 10
-        updateEmailButton.layer.backgroundColor  = UIColor.orangeColor().CGColor
-        updateEmailButton.layer.cornerRadius = 10
-        updateProfileButton.layer.backgroundColor  = UIColor.orangeColor().CGColor
-        updateProfileButton.layer.cornerRadius = 10
-        confirmProfPicButton.layer.backgroundColor  = UIColor.orangeColor().CGColor
-        confirmProfPicButton.layer.cornerRadius = 10
-        putCurrentProfilePic()
-        confirmProfPicButton.enabled = false
-        // Do any additional setup after loading the view.
+        setupTitleArea()
+        setupEmail()
+        setupPassword()
+        setupProfPic()
     }
 
     override func didReceiveMemoryWarning() {
