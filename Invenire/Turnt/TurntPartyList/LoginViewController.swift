@@ -20,6 +20,7 @@ class LoginViewController: ViewController, UITextFieldDelegate {
     let titleName = UILabel(frame: CGRectMake(10, UIScreen.mainScreen().bounds.height*1/4, UIScreen.mainScreen().bounds.width - 20, 50))
     let accountMake = UILabel(frame: CGRectMake(10, UIScreen.mainScreen().bounds.height*3/4, UIScreen.mainScreen().bounds.width - 20, 15))
     let createAccountButton = UIButton(frame: CGRectMake(20, UIScreen.mainScreen().bounds.height*3/4 + 20, UIScreen.mainScreen().bounds.width - 40, 30))
+    
     let displayError = ""
     
     override func viewDidLoad() {
@@ -162,7 +163,7 @@ class LoginViewController: ViewController, UITextFieldDelegate {
             }
         }
         else if sender == createAccountButton {
-            self.performSegueWithIdentifier("toMakeUser", sender: self)
+            performSegueWithIdentifier("toSignUp", sender: self)
         }
     }
     

@@ -22,19 +22,22 @@ import UIKit
 
 class SignUpViewController: ViewController, UINavigationControllerDelegate, UITextFieldDelegate, UIImagePickerControllerDelegate{
     
-    @IBOutlet weak var profPic: UIImageView!
-    @IBOutlet weak var submitButton: UIButton!
-    @IBOutlet weak var emailField: UITextField!
-    @IBOutlet weak var confirmPasswordField: UITextField!
-    @IBOutlet weak var passwordField: UITextField!
-    @IBOutlet weak var usernameField: UITextField!
-    @IBOutlet weak var nameField: UITextField!
-    @IBOutlet weak var scrollView: UIScrollView!
+    let profPic = UIImageView()
+    let submitButton = UIButton()
+    let scrollView = UIScrollView()
+    let titleLabel = UILabel()
+    let loginButton = UIButton()
+    let accountMake = UILabel()
+    let enterPicButton = UIButton()
     
-    @IBOutlet weak var titleLable: UILabel!
+    let nameF = UITextField (frame: CGRectMake(UIScreen.mainScreen().bounds.width/5, UIScreen.mainScreen().bounds.height*3/10, UIScreen.mainScreen().bounds.width*3/5, 20))
+    let usernameF = UITextField (frame: CGRectMake(UIScreen.mainScreen().bounds.width/5, UIScreen.mainScreen().bounds.height*4/10, UIScreen.mainScreen().bounds.width*3/5, 20))
+    let passwordF = UITextField (frame: CGRectMake(UIScreen.mainScreen().bounds.width/5, UIScreen.mainScreen().bounds.height*5/10, UIScreen.mainScreen().bounds.width*3/5, 20))
+    let confirmF = UITextField (frame: CGRectMake(UIScreen.mainScreen().bounds.width/5, UIScreen.mainScreen().bounds.height*6/10, UIScreen.mainScreen().bounds.width*3/5, 20))
+    let emailF = UITextField (frame: CGRectMake(UIScreen.mainScreen().bounds.width/5, UIScreen.mainScreen().bounds.height*7/10, UIScreen.mainScreen().bounds.width*3/5, 20))
     
     func textFieldDidBeginEditing(textField: UITextField) {
-        if textField == emailField || textField == confirmPasswordField {
+        if textField == emailF || textField == confirmF {
             scrollView.setContentOffset(CGPointMake(0, 250), animated: true)
         }
         else {
@@ -71,14 +74,13 @@ class SignUpViewController: ViewController, UINavigationControllerDelegate, UITe
         }
     }
     
-    
-    @IBAction func createAccount(sender: AnyObject) {
-        let username = self.usernameField.text
-        let password = self.passwordField.text
-        let email = self.emailField.text
+    func createAccount() {
+        let username = usernameF.text
+        let password = passwordF.text
+        let email = emailF.text
         let finalEmail = email!.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
-        let name = self.nameField.text
-        let confirmPassword = self.confirmPasswordField.text
+        let name = nameF.text
+        let confirmPassword = confirmF.text
         
         
         // Validate the text fields
@@ -140,7 +142,7 @@ class SignUpViewController: ViewController, UINavigationControllerDelegate, UITe
         }
     }
     
-    @IBAction func chooseImage(sender: AnyObject) {
+    func chooseImage(sender: AnyObject) {
         let image = UIImagePickerController()
         image.delegate = self
         image.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
@@ -154,15 +156,156 @@ class SignUpViewController: ViewController, UINavigationControllerDelegate, UITe
         
     }
     
+    func setupTitle() {
+        titleLabel.text = "CREATE AN ACCOUNT"
+        titleLabel.frame = CGRectMake(40, 20, UIScreen.mainScreen().bounds.width - 80, 40)
+        titleLabel.font = UIFont(name: "Futura", size: 25)
+        titleLabel.textColor = UIColor.whiteColor()
+        titleLabel.textAlignment = .Center
+        titleLabel.adjustsFontSizeToFitWidth = true
+        view.addSubview(titleLabel)
+    }
+    
+    func setupProfilePic() {
+        
+        profPic.backgroundColor = UIColor.clearColor()
+        profPic.layer.cornerRadius = profPic.frame.size.width / 2;
+        profPic.clipsToBounds = true
+        profPic.layer.borderColor = UIColor.blackColor().CGColor
+        profPic.layer.borderWidth = 3;
+        profPic.frame = CGRectMake(UIScreen.mainScreen().bounds.width/2 - 55, UIScreen.mainScreen().bounds.height/10, 110, 110)
+        
+        view.addSubview(profPic)
+        
+        enterPicButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        enterPicButton.setTitle("CLICK TO BROWSE", forState: .Normal)
+        enterPicButton.titleLabel?.font = UIFont(name: "Futura", size: 20)
+        enterPicButton.titleLabel?.adjustsFontSizeToFitWidth = true
+        enterPicButton.frame = CGRectMake(UIScreen.mainScreen().bounds.width/2 - 58, UIScreen.mainScreen().bounds.height/10, 120, 120)
+        enterPicButton.addTarget(self, action: "pressed:", forControlEvents: .TouchUpInside)
+        
+        view.addSubview(enterPicButton)
+    }
+    
+    func setupTextFields() {
+        
+        
+        let nameLine = UILabel(frame: CGRectMake(UIScreen.mainScreen().bounds.width/5, UIScreen.mainScreen().bounds.height*3/10 + 22, UIScreen.mainScreen().bounds.width*3/5, 1))
+        
+        nameF.backgroundColor = UIColor.clearColor()
+        nameF.attributedPlaceholder = NSAttributedString(string:"NAME",
+            attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
+        nameLine.layer.borderWidth = 1
+        nameLine.layer.borderColor = UIColor.whiteColor().CGColor
+        nameF.textColor = UIColor.whiteColor()
+        view.addSubview(nameF)
+        view.addSubview(nameLine)
+        
+        
+        let usernameLine = UILabel(frame: CGRectMake(UIScreen.mainScreen().bounds.width/5, UIScreen.mainScreen().bounds.height*4/10 + 22, UIScreen.mainScreen().bounds.width*3/5, 1))
+        
+        usernameF.backgroundColor = UIColor.clearColor()
+        usernameF.attributedPlaceholder = NSAttributedString(string:"USERNAME",
+            attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
+        usernameLine.layer.borderWidth = 1
+        usernameLine.layer.borderColor = UIColor.whiteColor().CGColor
+        usernameF.textColor = UIColor.whiteColor()
+        view.addSubview(usernameF)
+        view.addSubview(usernameLine)
+    
+        
+        let passwordLine = UILabel(frame: CGRectMake(UIScreen.mainScreen().bounds.width/5, UIScreen.mainScreen().bounds.height*5/10 + 22, UIScreen.mainScreen().bounds.width*3/5, 1))
+        
+        passwordF.backgroundColor = UIColor.clearColor()
+        passwordF.attributedPlaceholder = NSAttributedString(string:"PASSWORD",
+            attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
+        passwordLine.layer.borderWidth = 1
+        passwordLine.layer.borderColor = UIColor.whiteColor().CGColor
+        passwordF.textColor = UIColor.whiteColor()
+        passwordF.secureTextEntry = true
+        view.addSubview(passwordF)
+        view.addSubview(passwordLine)
+        
+        
+        let confirmLine = UILabel(frame: CGRectMake(UIScreen.mainScreen().bounds.width/5, UIScreen.mainScreen().bounds.height*6/10 + 22, UIScreen.mainScreen().bounds.width*3/5, 1))
+        
+        confirmF.backgroundColor = UIColor.clearColor()
+        confirmF.attributedPlaceholder = NSAttributedString(string:"CONFIRM PASSWORD",
+            attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
+        confirmLine.layer.borderWidth = 1
+        confirmLine.layer.borderColor = UIColor.whiteColor().CGColor
+        confirmF.textColor = UIColor.whiteColor()
+        confirmF.secureTextEntry = true
+        view.addSubview(confirmF)
+        view.addSubview(confirmLine)
+        
+        
+        let emailLine = UILabel(frame: CGRectMake(UIScreen.mainScreen().bounds.width/5, UIScreen.mainScreen().bounds.height*7/10 + 22, UIScreen.mainScreen().bounds.width*3/5, 1))
+        
+        emailF.backgroundColor = UIColor.clearColor()
+        emailF.attributedPlaceholder = NSAttributedString(string:"EMAIL",
+            attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
+        emailLine.layer.borderWidth = 1
+        emailLine.layer.borderColor = UIColor.whiteColor().CGColor
+        emailF.textColor = UIColor.whiteColor()
+        view.addSubview(emailF)
+        view.addSubview(emailLine)
+        
+        nameF.delegate = self
+        usernameF.delegate = self
+        passwordF.delegate = self
+        confirmF.delegate = self
+        emailF.delegate = self
+    }
+    
+    func setupButtons() {
+        submitButton.backgroundColor = UIColor.clearColor()
+        submitButton.setTitle("SUBMIT", forState: .Normal)
+        submitButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        submitButton.layer.borderColor = UIColor.whiteColor().CGColor
+        submitButton.layer.borderWidth = 1
+        submitButton.addTarget(self, action: "pressed:", forControlEvents: .TouchUpInside)
+        submitButton.frame = CGRectMake(UIScreen.mainScreen().bounds.width/5, UIScreen.mainScreen().bounds.height*8/10, UIScreen.mainScreen().bounds.width*3/5, 25)
+        view.addSubview(submitButton)
+    
+        accountMake.text = "ALREADY HAVE AN ACCOUNT?"
+        accountMake.textAlignment = .Center
+        accountMake.textColor = UIColor.whiteColor()
+        accountMake.font = UIFont(name: "Futura", size: 15)
+        accountMake.adjustsFontSizeToFitWidth = true
+        accountMake.frame = CGRectMake(UIScreen.mainScreen().bounds.width/5, UIScreen.mainScreen().bounds.height*8.5/10, UIScreen.mainScreen().bounds.width*3/5, 25)
+        
+        loginButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        loginButton.setTitle("LOG IN", forState: .Normal)
+        loginButton.backgroundColor = UIColor.clearColor()
+        loginButton.layer.borderColor = UIColor.whiteColor().CGColor
+        loginButton.layer.borderWidth = 1
+        loginButton.addTarget(self, action: "pressed:", forControlEvents: .TouchUpInside)
+        
+        loginButton.frame = CGRectMake(UIScreen.mainScreen().bounds.width/5, UIScreen.mainScreen().bounds.height*9/10, UIScreen.mainScreen().bounds.width*3/5, 25)
+        
+        view.addSubview(accountMake)
+        view.addSubview(loginButton)
+    }
+    
+    func pressed(sender: UIButton!) {
+        if sender == submitButton {
+            createAccount()
+        }
+        else if sender == loginButton {
+            performSegueWithIdentifier("toLogin", sender: self)
+        }
+        else if sender == enterPicButton {
+            chooseImage(self)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        nameField.delegate = self
-        usernameField.delegate = self
-        passwordField.delegate = self
-        confirmPasswordField.delegate = self
-        emailField.delegate = self
-        
+        setupTitle()
+        setupProfilePic()
+        setupTextFields()
+        setupButtons()
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         view.addGestureRecognizer(tap)

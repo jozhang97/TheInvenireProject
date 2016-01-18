@@ -32,13 +32,16 @@ class postsCellTVC: UITableViewCell {
         
         musicImage.frame = CGRectMake(0,0, 100, 100)
         
-        songTitle.frame = CGRectMake(120, self.frame.height/2 - 30, self.frame.width/2, 20)
+        songTitle.frame = CGRectMake(musicImage.frame.width + 5, self.frame.height/2 - 30, self.frame.width/2.5, 20)
         songTitle.adjustsFontSizeToFitWidth = true
+        songTitle.font = UIFont(name: "Futura", size: 20)
         songTitle.textColor = UIColor.whiteColor()
+        songTitle.numberOfLines = 2
         
-        artistTitle.frame = CGRectMake(120, self.frame.height/2, self.frame.width/2, 20)
+        artistTitle.frame = CGRectMake(musicImage.frame.width + 5, self.frame.height/2, self.frame.width/2.5, 20)
         artistTitle.adjustsFontSizeToFitWidth = true
         artistTitle.textColor = UIColor.whiteColor()
+        artistTitle.font = UIFont(name: "Futura", size: 12)
         
         numberOfLikes.textColor = UIColor.whiteColor()
         numberOfLikes.adjustsFontSizeToFitWidth = true

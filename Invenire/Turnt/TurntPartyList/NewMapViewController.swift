@@ -83,7 +83,7 @@ class NewMapViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         
         setupMapView()
         let center = handleExistingMusic()
-        addRadiusCircle(CLLocation(latitude: center.latitude, longitude: center.longitude))
+        //addRadiusCircle(CLLocation(latitude: center.latitude, longitude: center.longitude)) don't need this right now
     }
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {

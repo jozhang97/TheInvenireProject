@@ -127,10 +127,11 @@ class changeProfileVC: ViewController, UINavigationControllerDelegate, UITextFie
         updateEmailButton.layer.borderColor = UIColor.whiteColor().CGColor
         updateEmailButton.layer.borderWidth = 1
         updateEmailButton.frame = CGRectMake(50, 150, UIScreen.mainScreen().bounds.width - 100, 30)
+        updateEmailButton.titleLabel?.adjustsFontSizeToFitWidth = true
     }
     
     func setupPassword() {
-        let psswdLabel = UILabel(frame: CGRectMake(50, 220, UIScreen.mainScreen().bounds.width - 100, 25))
+        let psswdLabel = UILabel(frame: CGRectMake(25, 220, UIScreen.mainScreen().bounds.width - 50, 25))
         psswdLabel.text = "WE WILL EMAIL YOU A LINK TO RESET YOUR PASSWORD"
         psswdLabel.font = UIFont(name: "Futura", size: 18)
         psswdLabel.textColor = UIColor.whiteColor()
@@ -164,6 +165,7 @@ class changeProfileVC: ViewController, UINavigationControllerDelegate, UITextFie
         updateProfileButton.layer.borderWidth = 1
         updateProfileButton.titleLabel?.font = UIFont(name: "Futura", size: 20)
         updateProfileButton.frame = CGRectMake(50, 460, UIScreen.mainScreen().bounds.width - 100, 30)
+        updateProfileButton.titleLabel?.adjustsFontSizeToFitWidth = true
         
         confirmProfPicButton.backgroundColor = UIColor.clearColor()
         confirmProfPicButton.setTitle("UPDATE PROFILE PICTURE", forState: .Normal)
@@ -173,6 +175,7 @@ class changeProfileVC: ViewController, UINavigationControllerDelegate, UITextFie
         confirmProfPicButton.titleLabel?.font = UIFont(name: "Futura", size: 20)
         confirmProfPicButton.frame = CGRectMake(50, 500, UIScreen.mainScreen().bounds.width - 100, 30)
         confirmProfPicButton.enabled = false
+        confirmProfPicButton.titleLabel?.adjustsFontSizeToFitWidth = true
         
         putCurrentProfilePic()
     }

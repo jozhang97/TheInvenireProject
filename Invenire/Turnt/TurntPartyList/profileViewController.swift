@@ -70,20 +70,21 @@ class profileViewController: ViewController, UITableViewDelegate, UITableViewDat
         
         logoutButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         logoutButton.setTitle("LOG OUT", forState: .Normal)
-        logoutButton.titleLabel?.font = UIFont(name: "Futura", size: 20)
-        logoutButton.frame = CGRectMake(UIScreen.mainScreen().bounds.width-120, 20, 100, 40)
+        logoutButton.titleLabel?.font = UIFont(name: "Futura", size: 17)
+        logoutButton.frame = CGRectMake(UIScreen.mainScreen().bounds.width-100, 20, 100, 40)
         
     }
     
     func setupProfile() {
         userNameLabel.font = UIFont(name: "Futura", size: 30)
-        userNameLabel.frame = CGRectMake(UIScreen.mainScreen().bounds.width/4, 60, UIScreen.mainScreen().bounds.width/2, 35)
+        userNameLabel.frame = CGRectMake(10, 60, UIScreen.mainScreen().bounds.width - 20, 35)
         userNameLabel.adjustsFontSizeToFitWidth = true
         userNameLabel.textColor = UIColor.whiteColor()
         
         imageLabel.layer.cornerRadius = imageLabel.frame.size.width / 2;
         imageLabel.clipsToBounds = true
-        imageLabel.frame = CGRectMake(UIScreen.mainScreen().bounds.width/2 - 75, 120, 150, 150)
+        imageLabel.frame = CGRectMake(UIScreen.mainScreen().bounds.width/2 - 65, UIScreen.mainScreen().bounds.height*1.6/10, 130, 130)
+        imageLabel.contentMode = .ScaleAspectFill
         
     }
     

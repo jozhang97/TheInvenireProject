@@ -47,13 +47,13 @@ class TableViewCell: UITableViewCell
         
         artwork.frame = CGRectMake(0,0, 100, 100)
         
-        song.frame = CGRectMake(120, self.frame.height/2 - 30, self.frame.width/2, 20)
-        
-        song.font = UIFont(name: "Futura", size: 15)
+        song.frame = CGRectMake(artwork.frame.width + 5, self.frame.height/2 - 30, self.frame.width/2.5, 20)
+        song.font = UIFont(name: "Futura", size: 20)
         song.adjustsFontSizeToFitWidth = true
+        song.numberOfLines = 2
         song.textColor = UIColor.whiteColor()
         
-        artist.frame = CGRectMake(120, self.frame.height/2, self.frame.width/2, 20)
+        artist.frame = CGRectMake(artwork.frame.width + 5, self.frame.height/2, self.frame.width/2.5, 20)
         artist.adjustsFontSizeToFitWidth = true
         artist.textColor = UIColor.whiteColor()
         artist.font = UIFont(name: "Futura", size: 12)

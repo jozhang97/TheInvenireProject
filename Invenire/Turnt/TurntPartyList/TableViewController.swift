@@ -16,6 +16,7 @@ class TableViewController: ViewController, UITableViewDelegate, UITableViewDataS
     @IBOutlet weak var shareButton: UIButton!
     @IBOutlet weak var discoverLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    let bufferView = UIActivityIndicatorView (frame: CGRectMake(UIScreen.mainScreen().bounds.width/2, UIScreen.mainScreen().bounds.height/2, 20, 20))
     var artistNames = Array<String>()
     var songNames = Array<String> ()
     var albumNames = Array<String>()
@@ -35,12 +36,13 @@ class TableViewController: ViewController, UITableViewDelegate, UITableViewDataS
         discoverLabel.font = UIFont(name: "Futura", size: 30)
         discoverLabel.textColor = UIColor.whiteColor()
         discoverLabel.textAlignment = .Center
-        discoverLabel.frame = CGRectMake(UIScreen.mainScreen().bounds.width/2 - 100, 30, 200, 40)
+        discoverLabel.frame = CGRectMake(UIScreen.mainScreen().bounds.width/2 - 100, 20, 200, 40)
         
         
-        profileButton.frame = CGRectMake(20, 20, 50, 50)
+        profileButton.frame = CGRectMake(20, 15, 50, 50)
         
-        shareButton.frame = CGRectMake(UIScreen.mainScreen().bounds.width-70, 20, 50, 50)
+        shareButton.frame = CGRectMake(UIScreen.mainScreen().bounds.width-70, 15, 50, 50)
+        view.addSubview(bufferView)
     }
     
     func setupTable() {
@@ -55,14 +57,16 @@ class TableViewController: ViewController, UITableViewDelegate, UITableViewDataS
         tableView.backgroundView = nil
         tableView.frame = CGRectMake(UIScreen.mainScreen().bounds.width/10, UIScreen.mainScreen().bounds.height * 1/10 + 45, UIScreen.mainScreen().bounds.width * 8/10, UIScreen.mainScreen().bounds.height*25/32)
         
-        segmentControl.frame = CGRectMake(UIScreen.mainScreen().bounds.width/8, UIScreen.mainScreen().bounds.height * 1/10, UIScreen.mainScreen().bounds.width * 8/10, 35)
+        segmentControl.frame = CGRectMake(UIScreen.mainScreen().bounds.width/8, UIScreen.mainScreen().bounds.height * 1/10, UIScreen.mainScreen().bounds.width * 8/10, 40)
         segmentControl.tintColor = UIColor.whiteColor()
-        segmentControl.setTitle("MOST POPULAR", forSegmentAtIndex: 0)
-        segmentControl.setTitle("MOST RECENT", forSegmentAtIndex: 1)
+        segmentControl.setTitle("POPULAR", forSegmentAtIndex: 0)
+        segmentControl.setTitle("RECENT", forSegmentAtIndex: 1)
         segmentControl.setTitle("NEAR ME", forSegmentAtIndex: 2)
         segmentControl.backgroundColor = UIColor.clearColor()
         segmentControl.layer.borderColor = UIColor.whiteColor().CGColor
         segmentControl.layer.borderWidth = 2
+        UISegmentedControl.appearance().setTitleTextAttributes(NSDictionary(objects: [UIFont.systemFontOfSize(14.0)], forKeys: [NSFontAttributeName]) as [NSObject : AnyObject], forState: UIControlState.Normal)
+        //You have to set the resizes text property to the right settings
     }
     
     override func viewDidLoad() {
@@ -92,6 +96,7 @@ class TableViewController: ViewController, UITableViewDelegate, UITableViewDataS
     
     func getParties(){
         // artwork has error
+        bufferView.startAnimating()
         let query = PFQuery(className:"Posts")
         if segmentControl.selectedSegmentIndex == 0 {
             query.addDescendingOrder("numLikes")
@@ -106,11 +111,6 @@ class TableViewController: ViewController, UITableViewDelegate, UITableViewDataS
         Something wrong with images and synchronous queries
         */
         let messages = try? query.findObjects()
-        for object in messages! {
-            let artwork = object["artwork"] as! PFFile
-            let image = try? UIImage(data: artwork.getData())
-            self.artworks.append(image!!)
-        }
         query.whereKey("location", nearGeoPoint: findLocation(), withinMiles: 100)
         query.limit = 15
         query.findObjectsInBackgroundWithBlock {
@@ -124,6 +124,9 @@ class TableViewController: ViewController, UITableViewDelegate, UITableViewDataS
                         self.likesList.append(object["numLikes"] as! Int)
                         self.locations.append(object["location"] as! PFGeoPoint)
                         self.peopleNames.append(object["username"] as! String)
+                        let artwork = object["artwork"] as! PFFile
+                        let image = try? UIImage(data: artwork.getData())
+                        self.artworks.append(image!!)
                     }
                     self.tableView.reloadData()
                 }
@@ -132,6 +135,7 @@ class TableViewController: ViewController, UITableViewDelegate, UITableViewDataS
                 print("Error: \(error!) \(error!.userInfo)")
             }
         }
+        bufferView.stopAnimating()
     }
     
     func check(cell:TableViewCell) -> Int {
@@ -240,6 +244,7 @@ class TableViewController: ViewController, UITableViewDelegate, UITableViewDataS
                     }
                     self.clearArrays()
                     self.getParties() // use a wherekey (not very efficient)
+                    self.tableView.reloadData()
                 }
             } else {
                 // Log details of the failure
@@ -342,8 +347,6 @@ class TableViewController: ViewController, UITableViewDelegate, UITableViewDataS
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showSongDetail"
         {
-            selectedSongIndex = (self.tableView.indexPathForSelectedRow?.row)!
-            
             let vc = segue.destinationViewController as! SongDetailViewController
             vc.selectedArtist = self.artistNames[selectedSongIndex]
             vc.selectedSongName = self.songNames[selectedSongIndex]

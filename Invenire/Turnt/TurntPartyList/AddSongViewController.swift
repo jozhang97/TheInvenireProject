@@ -25,6 +25,9 @@ class AddSongViewController: ViewController, UITextFieldDelegate, CLLocationMana
     
     @IBOutlet weak var background: UIImageView!
 
+    func setupView() {
+        
+    }
     @IBAction func shareMusic(sender: AnyObject) {
         let myPost = PFObject(className:"Posts")
         let point = PFGeoPoint(location: currentLocation)
@@ -64,30 +67,18 @@ class AddSongViewController: ViewController, UITextFieldDelegate, CLLocationMana
         }
         performSegueWithIdentifier("submitParty", sender: self)
     }
-    override func shouldAutorotate() -> Bool {
-        if (UIDevice.currentDevice().orientation == UIDeviceOrientation.LandscapeLeft ||
-            UIDevice.currentDevice().orientation == UIDeviceOrientation.LandscapeRight ||
-            UIDevice.currentDevice().orientation == UIDeviceOrientation.Unknown) {
-                return false
-        }
-        else {
-            return true
-        }
-    }
-    
-    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-        return [UIInterfaceOrientationMask.Portrait ,UIInterfaceOrientationMask.PortraitUpsideDown]
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "titlepageBackground1")!)
+        
         // Do any additional setup after loading the view, typically from a nib.
         locationManager = CLLocationManager()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
+        setupView()
+        
         getNowplayinginfo()
         
     }
