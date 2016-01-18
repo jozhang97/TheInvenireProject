@@ -8,7 +8,7 @@
 
 import UIKit 
 
-class TableViewController: ViewController, UITableViewDelegate, UITableViewDataSource, TableViewCellDelegate, CLLocationManagerDelegate {
+class TableViewController: ViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate, UINavigationControllerDelegate {
     let locationManager = CLLocationManager()
     
     @IBOutlet weak var segmentControl: UISegmentedControl!
@@ -318,7 +318,7 @@ class TableViewController: ViewController, UITableViewDelegate, UITableViewDataS
             }
         
         
-        cell.delegate = self
+        //cell.delegate = self
         // Set the image of the memberProfilePic imageview in the cell
         return cell
     }

@@ -11,23 +11,27 @@ import CoreLocation
 import Parse
 import MediaPlayer
 
-class AddSongViewController: ViewController, UITextFieldDelegate, CLLocationManagerDelegate,  UINavigationControllerDelegate {
+class AddSongViewController: ViewController, UITextFieldDelegate, CLLocationManagerDelegate {
     
     var locationManager: CLLocationManager!
     var currentLocation = CLLocation!()
     var musicPlayer = MPMusicPlayerController.systemMusicPlayer()
     
+    @IBOutlet weak var sharemusicLabel: UILabel!
+    @IBOutlet weak var shareButton: UIButton!
     
-    @IBOutlet weak var albumArt: UIImageView!
-    @IBOutlet weak var songTitle: UILabel!
-    @IBOutlet weak var artistName: UILabel!
-    @IBOutlet weak var albumName: UILabel!
+    @IBOutlet weak var albumArt = UIImageView(frame: CGRectMake(UIScreen.mainScreen().bounds.width/2 - UIScreen.mainScreen().bounds.width/6, UIScreen.mainScreen().bounds.height/2 - UIScreen.mainScreen().bounds.height/6, UIScreen.mainScreen().bounds.width/3, UIScreen.mainScreen().bounds.height/3))
+    @IBOutlet weak var songTitle = UILabel(frame: CGRectMake(UIScreen.mainScreen().bounds.width/2 - UIScreen.mainScreen().bounds.width/6, UIScreen.mainScreen().bounds.height/2 - UIScreen.mainScreen().bounds.height/6 + UIScreen.mainScreen().bounds.height/3 + UIScreen.mainScreen().bounds.height/10, UIScreen.mainScreen().bounds.width/3, UIScreen.mainScreen().bounds.height/15))
+    @IBOutlet weak var artistName = UILabel(frame: CGRectMake(UIScreen.mainScreen().bounds.width/2 - UIScreen.mainScreen().bounds.width/6, UIScreen.mainScreen().bounds.height/2 - UIScreen.mainScreen().bounds.height/6 + UIScreen.mainScreen().bounds.height/3 + UIScreen.mainScreen().bounds.height/5, UIScreen.mainScreen().bounds.width/3, UIScreen.mainScreen().bounds.height/15))
+    @IBOutlet weak var albumName = UILabel(frame: CGRectMake(UIScreen.mainScreen().bounds.width/2 - UIScreen.mainScreen().bounds.width/6, UIScreen.mainScreen().bounds.height/2 - UIScreen.mainScreen().bounds.height/6 + UIScreen.mainScreen().bounds.height/3 + UIScreen.mainScreen().bounds.height*3/10, UIScreen.mainScreen().bounds.width/3, UIScreen.mainScreen().bounds.height/15))
     
-    @IBOutlet weak var background: UIImageView!
+    @IBOutlet weak var background = UIImageView(frame: CGRectMake(0,0, UIScreen.mainScreen().bounds.width, UIScreen.mainScreen().bounds.height))
 
     func setupView() {
+        background!.backgroundColor = UIColor.clearColor()
         
     }
+    
     @IBAction func shareMusic(sender: AnyObject) {
         let myPost = PFObject(className:"Posts")
         let point = PFGeoPoint(location: currentLocation)
@@ -37,7 +41,7 @@ class AddSongViewController: ViewController, UITextFieldDelegate, CLLocationMana
             let title = nowPlaying.valueForProperty(MPMediaItemPropertyTitle) as? String
             let artist = nowPlaying.valueForProperty(MPMediaItemPropertyArtist) as? String
             let album = nowPlaying.valueForProperty(MPMediaItemPropertyAlbumTitle) as? String
-            let imageData = UIImagePNGRepresentation(self.albumArt.image!)
+            let imageData = UIImagePNGRepresentation(self.albumArt!.image!)
             let artwork = PFFile(data: imageData!)
             print(title != nil)
             print(artist != nil)
@@ -65,8 +69,9 @@ class AddSongViewController: ViewController, UITextFieldDelegate, CLLocationMana
                 }
             }
         }
-        performSegueWithIdentifier("submitParty", sender: self)
+        performSegueWithIdentifier("submitParty", sender: UIStoryboardSegue.self)
     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,9 +82,8 @@ class AddSongViewController: ViewController, UITextFieldDelegate, CLLocationMana
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
-        setupView()
-        
         getNowplayinginfo()
+        setupView()
         
     }
     
@@ -106,22 +110,34 @@ class AddSongViewController: ViewController, UITextFieldDelegate, CLLocationMana
                 artwork = UIImage(named: "placeholderimage.png")
             }
             
-            songTitle.text = title
-            artistName.text = artist
-            albumName.text = album
-            albumArt.image = artwork
+            songTitle!.text = title
+            artistName!.text = artist
+            albumName!.text = album
+            albumArt!.image = artwork
 
             let darkBlur = UIBlurEffect(style: UIBlurEffectStyle.Dark)
             let blurView = UIVisualEffectView(effect: darkBlur)
-            blurView.frame = background.bounds
-            background.addSubview(blurView)
-            self.background.image = artwork
+            blurView.frame = background!.bounds
+            background!.addSubview(blurView)
+            self.background!.image = artwork
+            
             
         } else {
-            albumArt.image = UIImage(named: "placeholderimage.png")
-            songTitle.text = "Unknown"
-            artistName.text = "Unknown"
-            albumName.text = "Unknown"
+            let titleName = UILabel(frame: CGRectMake(10, UIScreen.mainScreen().bounds.height*1/4, UIScreen.mainScreen().bounds.width - 20, 50))
+            titleName.text = "NO SONG BEING PLAYED ON iTUNES!"
+            titleName.font = UIFont(name: "Futura", size: 40)
+            titleName.textColor = UIColor.whiteColor()
+            titleName.textAlignment = .Center
+            titleName.backgroundColor = UIColor.clearColor()
+            
+            view.addSubview(titleName)
+            
+            
+            albumArt!.image = UIImage(named: "placeholderimage.png")
+            songTitle!.text = "Unknown"
+            artistName!.text = "Unknown"
+            albumName!.text = "Unknown"
+            
         }
     }
     
@@ -132,109 +148,3 @@ class AddSongViewController: ViewController, UITextFieldDelegate, CLLocationMana
     
     
 }
-
-
-
-/***
-//  makePartyViewController.swift
-//  TurntPartyList
-//
-//  Created by Jeffrey Zhang on 11/14/15.
-//  Copyright © 2015 Jeffrey Zhang. All rights reserved.
-//
-
-import UIKit
-
-class AddSongViewController: UIViewController, UITextFieldDelegate, UINavigationControllerDelegate {
-
-    @IBOutlet weak var songName: UITextField!
-    @IBOutlet weak var artistName: UITextField!
-    @IBOutlet weak var albumName: UITextField!
-    @IBAction func submit(sender: AnyObject) {
-        var displayError = ""
-        if songName.text == ""{
-            displayError = "Please enter a song name"
-        }
-        else if artistName.text == ""
-        {
-            displayError = "Please enter an artist"
-        }
-
-        if displayError !=  ""
-        {
-            displayAlert("Incomplete form", displayError: displayError)
-        }
-        else
-        {
-            let Test = PFObject(className: "Posts")
-            Test["title"] = songName.text!
-            Test["artist"] = artistName.text!
-            Test["album"] = albumName.text!
-            Test["numLikes"] = 0
-            PFGeoPoint.geoPointForCurrentLocationInBackground { //WHY DOESN'T THIS WORK
-                (geoPoint: PFGeoPoint?, error: NSError?) -> Void in
-                if error == nil {
-                    print("Got geoPoint") //Never reaches this
-                    print(geoPoint)
-                    print("done")
-                    Test["location"] = geoPoint
-                } else {
-                    print(error ) //No error either
-                }
-            }
-            Test.saveInBackgroundWithBlock { (succeeded, signupError) -> Void in
-                if signupError == nil{
-                    self.performSegueWithIdentifier("submitParty", sender: nil)
-                } else {
-                    if let error = signupError!.userInfo["error"] as? NSString {
-                        displayError = error as String
-                    } else {
-                        displayError = "Please try again later"
-                    }
-                    self.displayAlert("Could not sign up", displayError: displayError)
-                    
-                }
-                
-            }
-
-        }
-    }
-    
-    func displayAlert(title: String, displayError: String)
-    {
-        let alert = UIAlertController(title: title, message: displayError, preferredStyle: UIAlertControllerStyle.Alert)
-        
-        alert.addAction(UIAlertAction(title: "OK",style: UIAlertActionStyle.Default, handler: nil))
-        
-        self.presentViewController(alert, animated: true, completion: nil)
-    }
-    
-    
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        
-        // Do any additional setup after loading the view.
-    }
-    
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-}
-*/

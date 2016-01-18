@@ -46,9 +46,6 @@
                                 <state key="normal" title="Share">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
-                                <connections>
-                                    <action selector="submit:" destination="JjD-gT-CqD" eventType="touchUpInside" id="rr1-FZ-BQA"/>
-                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Album(optional)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Xvc-7i-g7h">
                                 <rect key="frame" x="16" y="273" width="122" height="21"/>
@@ -76,16 +73,19 @@
                         </subviews>
                         <color key="backgroundColor" red="0.044363913370000001" green="0.15416942980000001" blue="0.51357323229999996" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
+                    <navigationItem key="navigationItem" id="DFR-M4-IaZ"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="albumName" destination="bUQ-Pi-VnP" id="eH6-G7-Uvy"/>
                         <outlet property="artistName" destination="Q3h-7O-UB9" id="KuH-Fy-hSk"/>
-                        <outlet property="songName" destination="BVh-xu-LtO" id="eI5-sW-3w0"/>
+                        <outlet property="shareButton" destination="yCP-Bu-NY0" id="MFz-KV-g08"/>
+                        <outlet property="sharemusicLabel" destination="dfM-UQ-ZZL" id="xHr-45-2Xw"/>
+                        <segue destination="xpk-yq-48b" kind="push" identifier="submitParty" id="DYF-TK-zWL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HMt-Sb-WD6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-447" y="1089"/>
+            <point key="canvasLocation" x="59" y="2199"/>
         </scene>
         <!--Songs-->
         <scene sceneID="WP5-DQ-tnl">
@@ -196,7 +196,7 @@
                                     <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="rR3-7z-ypx" kind="modal" id="mRv-FB-Pdu"/>
+                                    <segue destination="JjD-gT-CqD" kind="modal" id="6y8-Bn-VQM"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ycU-IT-mc6">
@@ -249,6 +249,7 @@
         <scene sceneID="SRQ-5u-fjA">
             <objects>
                 <tabBarController title="Parties" id="xpk-yq-48b" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="r3p-Yz-qhy"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="HFb-Ft-GdB">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
@@ -503,6 +504,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.044363913370000001" green="0.15416942980000001" blue="0.51357323229999996" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
+                    <navigationItem key="navigationItem" id="9gZ-BE-B2m"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="backButton" destination="nqk-Ee-wv9" id="MHK-WI-uBR"/>
@@ -701,11 +703,11 @@
         <image name="write" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="q97-NZ-RRa"/>
+        <segue reference="DYF-TK-zWL"/>
+        <segue reference="6y8-Bn-VQM"/>
         <segue reference="d3z-by-DEv"/>
-        <segue reference="uaJ-LJ-mro"/>
+        <segue reference="YIf-XA-l6A"/>
         <segue reference="tWG-M2-LTF"/>
-        <segue reference="mRv-FB-Pdu"/>
         <segue reference="wil-hY-HpA"/>
     </inferredMetricsTieBreakers>
 </document>
