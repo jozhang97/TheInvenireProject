@@ -30,6 +30,7 @@ class SignUpViewController: ViewController, UINavigationControllerDelegate, UITe
     let accountMake = UILabel()
     let enterPicButton = UIButton()
     
+    let bufferView = UIActivityIndicatorView (frame: CGRectMake(UIScreen.mainScreen().bounds.width/2, UIScreen.mainScreen().bounds.height/2, 20, 20))
     let nameF = UITextField (frame: CGRectMake(UIScreen.mainScreen().bounds.width/5, UIScreen.mainScreen().bounds.height*3/10, UIScreen.mainScreen().bounds.width*3/5, 20))
     let usernameF = UITextField (frame: CGRectMake(UIScreen.mainScreen().bounds.width/5, UIScreen.mainScreen().bounds.height*4/10, UIScreen.mainScreen().bounds.width*3/5, 20))
     let passwordF = UITextField (frame: CGRectMake(UIScreen.mainScreen().bounds.width/5, UIScreen.mainScreen().bounds.height*5/10, UIScreen.mainScreen().bounds.width*3/5, 20))
@@ -101,8 +102,7 @@ class SignUpViewController: ViewController, UINavigationControllerDelegate, UITe
         }
         else {
             // Run a spinner to show a task in progress
-            let spinner: UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRectMake(UIScreen.mainScreen().bounds.width/2, UIScreen.mainScreen().bounds.height/2, 150, 150)) as UIActivityIndicatorView
-            spinner.startAnimating()
+            bufferView.startAnimating()
             
             let newUser = PFUser()
             
@@ -113,7 +113,7 @@ class SignUpViewController: ViewController, UINavigationControllerDelegate, UITe
             newUser["confirmPassword"] = confirmPassword
             
             if profPic.image == nil {
-                let profPicFile = PFFile(name: name! + "_picture", data: UIImageJPEGRepresentation(UIImage(named: "profileIcon2.jpg")!, 0.5)!)
+                let profPicFile = PFFile(name: name! + "_picture", data: UIImageJPEGRepresentation(UIImage(named: "genericProfilePic.png")!, 0.5)!)
                 newUser["profPic"] = profPicFile
             }
             else {
@@ -125,7 +125,7 @@ class SignUpViewController: ViewController, UINavigationControllerDelegate, UITe
             newUser.signUpInBackgroundWithBlock({ (succeed, error) -> Void in
                 
                 // Stop the spinner
-                spinner.stopAnimating()
+                self.bufferView.stopAnimating()
                 if ((error) != nil) {
                     let alert = UIAlertView(title: "Error", message: "\(error)", delegate: self, cancelButtonTitle: "OK")
                     alert.show()
@@ -133,11 +133,15 @@ class SignUpViewController: ViewController, UINavigationControllerDelegate, UITe
                 } else {
                     let alert = UIAlertView(title: "Success", message: "Signed Up", delegate: self, cancelButtonTitle: "OK")
                     alert.show()
+                    /*
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
                         let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("Home") 
                         self.presentViewController(viewController, animated: true, completion: nil)
                     })
+                    */
                 }
+                PFUser.logOut()
+                self.performSegueWithIdentifier("toLogin", sender: self)
             })
         }
     }
@@ -300,12 +304,18 @@ class SignUpViewController: ViewController, UINavigationControllerDelegate, UITe
         }
     }
     
+    func setupBufferView() {
+        bufferView.color = UIColor.redColor()
+        view.addSubview(bufferView)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTitle()
         setupProfilePic()
         setupTextFields()
         setupButtons()
+        setupBufferView()
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         view.addGestureRecognizer(tap)

@@ -163,7 +163,7 @@ class profileViewController: ViewController, UITableViewDelegate, UITableViewDat
             (objects: [PFObject]?, error: NSError?) -> Void in
             if error == nil {
                 if objects != nil{
-                    self.userNameLabel.text = "WELCOME " + (PFUser.currentUser()?.username)! + "!"
+                    self.userNameLabel.text = "WELCOME " + ((PFUser.currentUser()?["Name"])! as! String) + "!"
                     
                     let imageFile = objects![0]["profPic"] as! PFFile
                     imageFile.getDataInBackgroundWithBlock { (imageData: NSData?, error: NSError?) -> Void in if error == nil {
