@@ -1,5 +1,5 @@
 //
-//  TableViewCell.swift
+//  TableViewCell.swift this is new
 //  TurntPartyList
 //
 //  Created by Jeffrey Zhang on 11/2/15.
@@ -23,17 +23,29 @@ class TableViewCell: UITableViewCell
     var delegate:TableViewCellDelegate? = nil
     
     @IBAction func likeThis(sender: AnyObject) {
-        delegate?.like(self)
+        delegate!.like(self)
+        //TableViewController().like(self)
+        print("in func likeThis")
+        var currLikes = 0
+        if let likes = Int(likes.text!)
+        {
+            currLikes = likes
+        }
         likeButton.frame = CGRectMake(self.frame.width - 37, self.frame.height/2 - 25, 30, 30)
         if delegate?.check(self) == 0 {
             likeButton.setImage(UIImage(named: "whiteheart"), forState: .Normal)
             likes.textColor = UIColor.whiteColor()
+            likes.text = String(currLikes + 1)
         }
         else {
             likeButton.setImage(UIImage(named: "fullwhiteheart"), forState: .Normal)
             likes.textColor = UIColor.blackColor()
+            likes.text = String(currLikes - 1)
         }
+        
+        
     }
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -47,13 +59,13 @@ class TableViewCell: UITableViewCell
         
         artwork.frame = CGRectMake(0,0, 100, 100)
         
-        song.frame = CGRectMake(artwork.frame.width + 5, self.frame.height/2 - 30, self.frame.width/2.5, 20)
-        song.font = UIFont(name: "Futura", size: 20)
+        song.frame = CGRectMake(artwork.frame.width + 5, self.frame.height/2 - 45, self.frame.width/2.5, 35)
+        song.font = UIFont(name: "Futura", size: 16)
         song.adjustsFontSizeToFitWidth = true
         song.numberOfLines = 2
         song.textColor = UIColor.whiteColor()
         
-        artist.frame = CGRectMake(artwork.frame.width + 5, self.frame.height/2, self.frame.width/2.5, 20)
+        artist.frame = CGRectMake(artwork.frame.width + 5, self.frame.height/2-5, self.frame.width/2.5, 20)
         artist.adjustsFontSizeToFitWidth = true
         artist.textColor = UIColor.whiteColor()
         artist.font = UIFont(name: "Futura", size: 12)

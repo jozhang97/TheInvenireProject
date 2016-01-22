@@ -32,8 +32,7 @@ class LoginViewController: ViewController, UITextFieldDelegate {
         setupNewUser()
         setupBufferView()
         
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
-        view.addGestureRecognizer(tap)
+
         username.delegate = self
         password.delegate = self
     }
@@ -179,6 +178,7 @@ class LoginViewController: ViewController, UITextFieldDelegate {
     }
     
     override func viewDidAppear(animated: Bool) {
+        
         if PFUser.currentUser() != nil {
             self.performSegueWithIdentifier("toMainVC", sender: self)
         }

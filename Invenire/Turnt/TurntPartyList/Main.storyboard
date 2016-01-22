@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="5t6-dT-g5v">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="5t6-dT-g5v">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -66,9 +66,6 @@
                                 <state key="normal" title="Back">
                                     <color key="titleColor" red="0.99228602151201395" green="0.99863916314727907" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
-                                <connections>
-                                    <segue destination="JjD-gT-CqD" kind="custom" customClass="DismissSegue" customModule="Invenire" id="lxO-0Y-L8B"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.044363913370000001" green="0.15416942980000001" blue="0.51357323229999996" alpha="1" colorSpace="calibratedRGB"/>
@@ -80,12 +77,11 @@
                         <outlet property="artistName" destination="Q3h-7O-UB9" id="KuH-Fy-hSk"/>
                         <outlet property="shareButton" destination="yCP-Bu-NY0" id="MFz-KV-g08"/>
                         <outlet property="sharemusicLabel" destination="dfM-UQ-ZZL" id="xHr-45-2Xw"/>
-                        <segue destination="xpk-yq-48b" kind="push" identifier="submitParty" id="DYF-TK-zWL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HMt-Sb-WD6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="59" y="2199"/>
+            <point key="canvasLocation" x="751" y="1935"/>
         </scene>
         <!--Songs-->
         <scene sceneID="WP5-DQ-tnl">
@@ -112,7 +108,7 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="To3-pj-VGh" id="Dd0-hf-IWT">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="69"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="69.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Music" id="xdc-mA-oyT">
@@ -169,7 +165,6 @@
                                             <outlet property="likeButton" destination="thJ-Ew-CoY" id="nlD-jd-eay"/>
                                             <outlet property="likes" destination="Gxh-ah-9hr" id="yO4-UG-6y8"/>
                                             <outlet property="song" destination="gKr-aU-XgU" id="iXo-tu-Wuf"/>
-                                            <segue destination="wer-xT-3S9" kind="modal" identifier="showSongDetail" id="d3z-by-DEv"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -191,19 +186,19 @@
                                 <rect key="frame" x="272" y="28" width="42" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" image="share-7">
+                                <state key="normal" image="share-white">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="JjD-gT-CqD" kind="modal" id="6y8-Bn-VQM"/>
+                                    <segue destination="rR3-7z-ypx" kind="modal" id="8Hk-YY-7de"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ycU-IT-mc6">
                                 <rect key="frame" x="9" y="28" width="35" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" image="circle-user-7">
+                                <state key="normal" image="white-icon">
                                     <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
@@ -214,6 +209,7 @@
                         <color key="backgroundColor" red="0.044363913370000001" green="0.15416942980000001" blue="0.51357323229999996" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Table" image="layout-arrange-09-7" id="jla-Uu-qSR"/>
+                    <navigationItem key="navigationItem" id="qk5-Sq-MQA"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="discoverLabel" destination="gGJ-Y7-65T" id="GK4-Ct-Lbs"/>
@@ -221,6 +217,7 @@
                         <outlet property="segmentControl" destination="wM4-aZ-mpR" id="0o8-bN-ieI"/>
                         <outlet property="shareButton" destination="KjK-fg-kdY" id="4Y3-Xv-d4u"/>
                         <outlet property="tableView" destination="aq8-TZ-GY5" id="CPh-tY-rs5"/>
+                        <segue destination="wer-xT-3S9" kind="modal" identifier="showSongDetail" id="OeR-52-z40"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ebc-4B-d0I" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -235,6 +232,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     </view>
+                    <navigationItem key="navigationItem" id="doz-Ws-DBA"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <segue destination="xpk-yq-48b" kind="modal" identifier="toMainVC" id="byS-0u-uRQ"/>
@@ -243,7 +241,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cz4-Gn-3dM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-535" y="258"/>
+            <point key="canvasLocation" x="-495" y="-126"/>
         </scene>
         <!--Parties-->
         <scene sceneID="SRQ-5u-fjA">
@@ -311,52 +309,41 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="JhV-nk-AfK">
-                                <rect key="frame" x="14" y="24" width="34" height="30"/>
+                                <rect key="frame" x="14" y="24" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="16"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="16"/>
                                 <state key="normal" title="Back">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="rR3-7z-ypx" kind="custom" customClass="DismissSegue" customModule="Invenire" id="Y0p-CY-aVC"/>
+                                    <segue destination="G5C-5O-Cpr" kind="modal" identifier="submitParty" id="wyy-Dl-8f8"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="artist" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="uFL-MM-P7g">
                                 <rect key="frame" x="40" y="368" width="241" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="18"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="18"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="song" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lK3-Jz-8wI">
                                 <rect key="frame" x="40" y="341" width="241" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="18"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="18"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="album" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="uVl-Pm-TH1">
                                 <rect key="frame" x="40" y="395" width="241" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="18"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="18"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="fml-R3-5QW">
-                                <rect key="frame" x="140" y="431" width="49" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="15"/>
-                                <state key="normal" title="SHARE">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="shareMusic:" destination="rR3-7z-ypx" eventType="touchUpInside" id="lrv-e6-fZo"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Share your music!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Tjz-bO-nxy">
-                                <rect key="frame" x="91" y="62" width="138" height="35"/>
+                                <rect key="frame" x="80" y="62" width="157" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="18"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="18"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -364,9 +351,21 @@
                                 <rect key="frame" x="40" y="100" width="241" height="245"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="fml-R3-5QW">
+                                <rect key="frame" x="136" y="433" width="49" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
+                                <state key="normal" title="SHARE">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="shareMusic:" destination="rR3-7z-ypx" eventType="touchUpInside" id="lrv-e6-fZo"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.044363913370000001" green="0.15416942980000001" blue="0.51357323229999996" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
+                    <navigationItem key="navigationItem" id="Vef-0o-xxX"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="albumArt" destination="rbV-MD-WC7" id="D15-rY-QrG"/>
@@ -378,7 +377,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xyt-JI-8JO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="441" y="1278"/>
+            <point key="canvasLocation" x="466" y="1224"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="ho1-q7-Y8M">
@@ -416,7 +415,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="16"/>
                                 <state key="normal" title="Log Out">
-                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="logOut:" destination="IM6-eO-AOL" eventType="touchUpInside" id="hUk-Kc-MtU"/>
@@ -451,7 +450,7 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="242"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BiN-jD-Xyu" id="pF9-1G-ucL">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="241"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="241.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Music" id="uAw-Ya-9p8">
@@ -694,20 +693,20 @@
     </scenes>
     <resources>
         <image name="Music" width="225" height="225"/>
-        <image name="circle-user-7" width="30" height="30"/>
         <image name="earth-america-7" width="30" height="30"/>
         <image name="layout-arrange-09-7" width="29" height="30"/>
         <image name="minus-sign" width="29" height="30"/>
         <image name="plus-sign" width="29" height="30"/>
-        <image name="share-7" width="30" height="30"/>
+        <image name="share-white" width="30" height="30"/>
+        <image name="white-icon" width="30" height="30"/>
         <image name="write" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="DYF-TK-zWL"/>
-        <segue reference="6y8-Bn-VQM"/>
-        <segue reference="d3z-by-DEv"/>
+        <segue reference="byS-0u-uRQ"/>
+        <segue reference="wil-hY-HpA"/>
+        <segue reference="OeR-52-z40"/>
+        <segue reference="wyy-Dl-8f8"/>
         <segue reference="YIf-XA-l6A"/>
         <segue reference="tWG-M2-LTF"/>
-        <segue reference="wil-hY-HpA"/>
     </inferredMetricsTieBreakers>
 </document>

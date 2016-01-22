@@ -65,12 +65,12 @@ class profileViewController: ViewController, UITableViewDelegate, UITableViewDat
         
         backButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         backButton.setTitle("BACK", forState: .Normal)
-        backButton.titleLabel?.font = UIFont(name: "Futura", size: 20)
+        backButton.titleLabel?.font = UIFont(name: "Futura", size: 16)
         backButton.frame = CGRectMake(UIScreen.mainScreen().bounds.width/2 - 50, 20, 100, 40)
         
         logoutButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         logoutButton.setTitle("LOG OUT", forState: .Normal)
-        logoutButton.titleLabel?.font = UIFont(name: "Futura", size: 17)
+        logoutButton.titleLabel?.font = UIFont(name: "Futura", size: 16)
         logoutButton.frame = CGRectMake(UIScreen.mainScreen().bounds.width-100, 20, 100, 40)
         
     }
@@ -83,7 +83,7 @@ class profileViewController: ViewController, UITableViewDelegate, UITableViewDat
         
         imageLabel.layer.cornerRadius = imageLabel.frame.size.width / 2;
         imageLabel.clipsToBounds = true
-        imageLabel.frame = CGRectMake(UIScreen.mainScreen().bounds.width/2 - 65, UIScreen.mainScreen().bounds.height*1.6/10, 130, 130)
+        imageLabel.frame = CGRectMake(UIScreen.mainScreen().bounds.width/2 - 65, UIScreen.mainScreen().bounds.height*1.6/10+8, 130, 130)
         imageLabel.contentMode = .ScaleAspectFill
         
     }

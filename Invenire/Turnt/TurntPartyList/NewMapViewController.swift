@@ -26,7 +26,7 @@ class NewMapViewController: UIViewController, MKMapViewDelegate, CLLocationManag
     let locationManager = CLLocationManager()
     
     @IBAction func zoomIn(sender: AnyObject) {
-        zoomFactor -= 5000
+        zoomFactor -= 5000              
         //let userLocation = mapView.userLocation
         let region = MKCoordinateRegionMakeWithDistance(
                 mapView.centerCoordinate, zoomFactor, zoomFactor)
@@ -142,13 +142,17 @@ class NewMapViewController: UIViewController, MKMapViewDelegate, CLLocationManag
                 print("Successfully retrieved \(objects!.count) scores.")
                 // Do something with the found objects
                 if let objects = objects {
+                    self.mapView.addAnnotations(objects)
                     for object in objects {
-                        self.mapView.addAnnotations(objects)
                         
                         totalLat = totalLat + object["location"].latitude
                         totalLong = totalLong + object["location"].longitude
                         //self.mapView.showAnnotations(objects, animated: true)
                     }
+                }
+                else
+                {
+                    print("failed to enter")
                 }
         
         return CLLocationCoordinate2D(latitude: totalLat/numObjects, longitude: totalLong/numObjects)

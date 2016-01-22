@@ -28,7 +28,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UISegmentedControl.appearance().setTitleTextAttributes(attr as [NSObject : AnyObject], forState: .Normal)
         
         UITabBar.appearance().barTintColor = UIColor.blackColor()
-        // Override point for customization after application launch.
+        // Override point for customization
+        
+        
+        
+        
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }
     

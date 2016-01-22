@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		1830F7791C41E07800D22DEA /* NewMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1830F7771C41E07800D22DEA /* NewMapViewController.swift */; };
 		1830F77A1C41E07800D22DEA /* MKPFObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1830F7781C41E07800D22DEA /* MKPFObject.swift */; };
-		1830F77C1C43274800D22DEA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1830F77B1C43274800D22DEA /* Main.storyboard */; };
 		18442D4E1C3325A400A228E2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18442D4D1C3325A400A228E2 /* ViewController.swift */; };
 		18442D501C33265900A228E2 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18442D4F1C33265900A228E2 /* TableViewCell.swift */; };
 		18442D521C33266500A228E2 /* AddSongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18442D511C33266500A228E2 /* AddSongViewController.swift */; };
@@ -46,6 +45,7 @@
 		1F624B5E1BE7D0A2004549A6 /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F624B571BE7D0A2004549A6 /* ParseFacebookUtilsV4.framework */; };
 		1F624B5F1BE7D0A2004549A6 /* ParseTwitterUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F624B581BE7D0A2004549A6 /* ParseTwitterUtils.framework */; };
 		1F624B601BE7D0A2004549A6 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F624B591BE7D0A2004549A6 /* ParseUI.framework */; };
+		1F654B461C52074F0061C619 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F654B451C52074F0061C619 /* Main.storyboard */; };
 		1F67E45B1C13B3490069F797 /* SongDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F67E45A1C13B3490069F797 /* SongDetailViewController.swift */; };
 		1F89497E1C13E20F005548D2 /* postsCellTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F89497B1C13E20F005548D2 /* postsCellTVC.swift */; };
 		1F89497F1C13E20F005548D2 /* profileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F89497C1C13E20F005548D2 /* profileViewController.swift */; };
@@ -77,7 +77,6 @@
 /* Begin PBXFileReference section */
 		1830F7771C41E07800D22DEA /* NewMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewMapViewController.swift; sourceTree = "<group>"; };
 		1830F7781C41E07800D22DEA /* MKPFObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKPFObject.swift; sourceTree = "<group>"; };
-		1830F77B1C43274800D22DEA /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		18442D4D1C3325A400A228E2 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		18442D4F1C33265900A228E2 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		18442D511C33266500A228E2 /* AddSongViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddSongViewController.swift; sourceTree = "<group>"; };
@@ -121,6 +120,7 @@
 		1F624B581BE7D0A2004549A6 /* ParseTwitterUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseTwitterUtils.framework; path = Parse/ParseTwitterUtils.framework; sourceTree = "<group>"; };
 		1F624B591BE7D0A2004549A6 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseUI.framework; path = Parse/ParseUI.framework; sourceTree = "<group>"; };
 		1F624B621BE7D0F7004549A6 /* TurntPartyList-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TurntPartyList-Bridging-Header.h"; sourceTree = "<group>"; };
+		1F654B451C52074F0061C619 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		1F67E45A1C13B3490069F797 /* SongDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongDetailViewController.swift; sourceTree = "<group>"; };
 		1F89497B1C13E20F005548D2 /* postsCellTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = postsCellTVC.swift; sourceTree = "<group>"; };
 		1F89497C1C13E20F005548D2 /* profileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = profileViewController.swift; sourceTree = "<group>"; };
@@ -212,17 +212,17 @@
 			children = (
 				1F624B611BE7D0C0004549A6 /* Frameworks */,
 				1F624B091BE7291F004549A6 /* AppDelegate.swift */,
-				1830F77B1C43274800D22DEA /* Main.storyboard */,
+				1F654B451C52074F0061C619 /* Main.storyboard */,
 				E7E21C461C49F08C00C3A695 /* DismissSegue.swift */,
 				1FF9024F1BF6F638001CD2AD /* LoginViewController.swift */,
 				1FE0C09E1BF7CF6900C67B48 /* SignUpViewController.swift */,
 				1F624B101BE7291F004549A6 /* Assets.xcassets */,
 				1F624B391BE72B22004549A6 /* TableViewController.swift */,
+				18442D4F1C33265900A228E2 /* TableViewCell.swift */,
 				1F89497C1C13E20F005548D2 /* profileViewController.swift */,
 				1830F7771C41E07800D22DEA /* NewMapViewController.swift */,
 				1830F7781C41E07800D22DEA /* MKPFObject.swift */,
 				18442D4D1C3325A400A228E2 /* ViewController.swift */,
-				18442D4F1C33265900A228E2 /* TableViewCell.swift */,
 				18442D511C33266500A228E2 /* AddSongViewController.swift */,
 				1F67E45A1C13B3490069F797 /* SongDetailViewController.swift */,
 				1F624B121BE7291F004549A6 /* LaunchScreen.storyboard */,
@@ -355,7 +355,7 @@
 				TargetAttributes = {
 					1F624B051BE7291E004549A6 = {
 						CreatedOnToolsVersion = 7.1;
-						DevelopmentTeam = 93GPGDAN9C;
+						DevelopmentTeam = 2ZAB53W5TP;
 					};
 					1F624B191BE7291F004549A6 = {
 						CreatedOnToolsVersion = 7.1;
@@ -392,9 +392,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1830F77C1C43274800D22DEA /* Main.storyboard in Resources */,
 				1F624B141BE7291F004549A6 /* LaunchScreen.storyboard in Resources */,
 				1F624B111BE7291F004549A6 /* Assets.xcassets in Resources */,
+				1F654B461C52074F0061C619 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -576,7 +576,7 @@
 				);
 				INFOPLIST_FILE = TurntPartyList/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = test.TurntPartyLists;
+				PRODUCT_BUNDLE_IDENTIFIER = test.TurntPartyLists1;
 				PRODUCT_NAME = Invenire;
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "TurntPartyList/TurntPartyList-Bridging-Header.h";
@@ -599,7 +599,7 @@
 				);
 				INFOPLIST_FILE = TurntPartyList/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = test.TurntPartyLists;
+				PRODUCT_BUNDLE_IDENTIFIER = test.TurntPartyLists1;
 				PRODUCT_NAME = Invenire;
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "TurntPartyList/TurntPartyList-Bridging-Header.h";

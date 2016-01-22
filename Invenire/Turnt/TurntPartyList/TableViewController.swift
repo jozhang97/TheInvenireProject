@@ -6,9 +6,9 @@
 //  Copyright © 2015 Jeffrey Zhang. All rights reserved.
 //f
 
-import UIKit 
+import UIKit
 
-class TableViewController: ViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate, UINavigationControllerDelegate {
+class TableViewController: ViewController, UITableViewDelegate, UITableViewDataSource, TableViewCellDelegate, CLLocationManagerDelegate, UINavigationControllerDelegate {
     let locationManager = CLLocationManager()
     
     @IBOutlet weak var segmentControl: UISegmentedControl!
@@ -88,7 +88,7 @@ class TableViewController: ViewController, UITableViewDelegate, UITableViewDataS
         artworks = Array<UIImage>()
         peopleNames = Array<String>()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -108,8 +108,8 @@ class TableViewController: ViewController, UITableViewDelegate, UITableViewDataS
             query.whereKey("location", nearGeoPoint: findLocation())
         }
         /***
-        Something wrong with images and synchronous queries
-        */
+         Something wrong with images and synchronous queries
+         */
         let messages = try? query.findObjects()
         query.whereKey("location", nearGeoPoint: findLocation(), withinMiles: 100)
         query.limit = 15
@@ -164,7 +164,7 @@ class TableViewController: ViewController, UITableViewDelegate, UITableViewDataS
         }
         return answer
     }
-
+    
     func checker(songTitle:String) -> Int {
         let query = PFQuery(className:"Posts")
         var answer = 0
@@ -178,7 +178,7 @@ class TableViewController: ViewController, UITableViewDelegate, UITableViewDataS
             else {
                 for user in object["usersLiked"] as! NSArray {
                     if user as! String == (PFUser.currentUser()?.username!)! {
-                    liableUser = user as! String
+                        liableUser = user as! String
                     }
                 }
             }
@@ -191,7 +191,7 @@ class TableViewController: ViewController, UITableViewDelegate, UITableViewDataS
         }
         return answer
     }
-
+    
     func like (cell: TableViewCell) {
         let query = PFQuery(className:"Posts")
         query.whereKey("title", equalTo: cell.song.text!)
@@ -279,6 +279,8 @@ class TableViewController: ViewController, UITableViewDelegate, UITableViewDataS
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         selectedSongIndex = indexPath.row
+        print(selectedSongIndex)
+        
         self.performSegueWithIdentifier("showSongDetail", sender: self)
     }
     
@@ -296,29 +298,29 @@ class TableViewController: ViewController, UITableViewDelegate, UITableViewDataS
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("tableCell", forIndexPath: indexPath) as! TableViewCell
-            cell.artist.text = artistNames[indexPath.row]
-            cell.song.text = songNames[indexPath.row]
-            //cell.album.text = albumNames[indexPath.row]
-            cell.likes.text = String(likesList[indexPath.row])
-            //cell.distance.text = "distance: "+String(findDistance(locations[indexPath.row])) + " miles away"
-            cell.artwork.image = artworks[indexPath.row]
-            // Set the text of the memberName field of the cell to the right value
-            cell.likeButton.frame = CGRectMake(cell.frame.width - 37, cell.frame.height/2 - 25, 30, 30)
-            cell.bringSubviewToFront(cell.likes)
-            cell.likeButton.layer.zPosition = 0
-            cell.likes.layer.zPosition = 1
+        cell.artist.text = artistNames[indexPath.row]
+        cell.song.text = songNames[indexPath.row]
+        //cell.album.text = albumNames[indexPath.row]
+        cell.likes.text = String(likesList[indexPath.row])
+        //cell.distance.text = "distance: "+String(findDistance(locations[indexPath.row])) + " miles away"
+        cell.artwork.image = artworks[indexPath.row]
+        // Set the text of the memberName field of the cell to the right value
+        cell.likeButton.frame = CGRectMake(cell.frame.width - 37, cell.frame.height/2 - 25, 30, 30)
+        cell.bringSubviewToFront(cell.likes)
+        cell.likeButton.layer.zPosition = 0
+        cell.likes.layer.zPosition = 1
         
-            if checker(cell.song.text!) == 0 {
-                cell.likeButton.setImage(UIImage(named: "fullwhiteheart"), forState: .Normal)
-                cell.likes.textColor = UIColor.blackColor()
-            }
-            else {
-                cell.likeButton.setImage(UIImage(named: "whiteheart"), forState: .Normal)
-                cell.likes.textColor = UIColor.whiteColor()
-            }
+        if checker(cell.song.text!) == 0 {
+            cell.likeButton.setImage(UIImage(named: "fullwhiteheart"), forState: .Normal)
+            cell.likes.textColor = UIColor.blackColor()
+        }
+        else {
+            cell.likeButton.setImage(UIImage(named: "whiteheart"), forState: .Normal)
+            cell.likes.textColor = UIColor.whiteColor()
+        }
         
         
-        //cell.delegate = self
+        cell.delegate = self
         // Set the image of the memberProfilePic imageview in the cell
         return cell
     }
@@ -347,6 +349,8 @@ class TableViewController: ViewController, UITableViewDelegate, UITableViewDataS
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showSongDetail"
         {
+            print(selectedSongIndex )
+            print("foo")
             let vc = segue.destinationViewController as! SongDetailViewController
             vc.selectedArtist = self.artistNames[selectedSongIndex]
             vc.selectedSongName = self.songNames[selectedSongIndex]
@@ -358,5 +362,5 @@ class TableViewController: ViewController, UITableViewDelegate, UITableViewDataS
             vc.check = 0    //not needed but to re-ensure
         }
     }
-
+    
 }

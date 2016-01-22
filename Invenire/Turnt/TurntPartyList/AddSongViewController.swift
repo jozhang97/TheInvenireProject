@@ -28,12 +28,17 @@ class AddSongViewController: ViewController, UITextFieldDelegate, CLLocationMana
     @IBOutlet weak var background = UIImageView(frame: CGRectMake(0,0, UIScreen.mainScreen().bounds.width, UIScreen.mainScreen().bounds.height))
 
     func setupView() {
-        background!.backgroundColor = UIColor.clearColor()
+        if let backgroundView = background
+        {
+            backgroundView.backgroundColor = UIColor.clearColor()
+
+        }
         
     }
     
     @IBAction func shareMusic(sender: AnyObject) {
         let myPost = PFObject(className:"Posts")
+        print("are we here")
         let point = PFGeoPoint(location: currentLocation)
         
         print(musicPlayer.nowPlayingItem != nil)
@@ -84,7 +89,13 @@ class AddSongViewController: ViewController, UITextFieldDelegate, CLLocationMana
         locationManager.startUpdatingLocation()
         getNowplayinginfo()
         setupView()
-        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        view.addGestureRecognizer(tap)
+    }
+    
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
     }
     
     func locationManager(manager:CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -107,13 +118,17 @@ class AddSongViewController: ViewController, UITextFieldDelegate, CLLocationMana
             }
             
             if artwork == nil {
-                artwork = UIImage(named: "placeholderimage.png")
+                artwork = UIImage(named: "Music.png")!
             }
             
             songTitle!.text = title
             artistName!.text = artist
             albumName!.text = album
-            albumArt!.image = artwork
+            if let imageView = albumArt
+            {
+                 imageView.image = artwork
+            }
+           
 
             let darkBlur = UIBlurEffect(style: UIBlurEffectStyle.Dark)
             let blurView = UIVisualEffectView(effect: darkBlur)
@@ -125,18 +140,32 @@ class AddSongViewController: ViewController, UITextFieldDelegate, CLLocationMana
         } else {
             let titleName = UILabel(frame: CGRectMake(10, UIScreen.mainScreen().bounds.height*1/4, UIScreen.mainScreen().bounds.width - 20, 50))
             titleName.text = "NO SONG BEING PLAYED ON iTUNES!"
-            titleName.font = UIFont(name: "Futura", size: 40)
+            titleName.font = UIFont(name: "Futura", size: 20)
             titleName.textColor = UIColor.whiteColor()
             titleName.textAlignment = .Center
             titleName.backgroundColor = UIColor.clearColor()
             
             view.addSubview(titleName)
             
+            let artwork = UIImage(named: "Music.png")!
             
-            albumArt!.image = UIImage(named: "placeholderimage.png")
-            songTitle!.text = "Unknown"
-            artistName!.text = "Unknown"
-            albumName!.text = "Unknown"
+            if let imageView = albumArt
+            {
+                imageView.image = artwork
+            }
+            if let songLabel = songTitle
+            {
+                songLabel.text = "Unknown"
+            }
+            if let artistNameLabel = artistName
+            {
+                artistNameLabel.text = "Unknown"
+            }
+            if let albumNameLabel = albumName
+            {
+                 albumNameLabel.text = "Unknown"
+            }
+           
             
         }
     }
