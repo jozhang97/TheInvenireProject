@@ -17,6 +17,7 @@ class TableViewController: ViewController, UITableViewDelegate, UITableViewDataS
     @IBOutlet weak var discoverLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     let bufferView = UIActivityIndicatorView (frame: CGRectMake(UIScreen.mainScreen().bounds.width/2, UIScreen.mainScreen().bounds.height/2, 20, 20))
+    
     var artistNames = Array<String>()
     var songNames = Array<String> ()
     var albumNames = Array<String>()
@@ -42,7 +43,7 @@ class TableViewController: ViewController, UITableViewDelegate, UITableViewDataS
         profileButton.frame = CGRectMake(20, 15, 50, 50)
         
         shareButton.frame = CGRectMake(UIScreen.mainScreen().bounds.width-70, 15, 50, 50)
-        view.addSubview(bufferView)
+        
     }
     
     func setupTable() {
@@ -69,14 +70,24 @@ class TableViewController: ViewController, UITableViewDelegate, UITableViewDataS
         //You have to set the resizes text property to the right settings
     }
     
+    func setupBufferView() {
+        view.addSubview(bufferView)
+        bufferView.color = UIColor.redColor()
+        view.insertSubview(bufferView, aboveSubview: view)
+        view.bringSubviewToFront(bufferView)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // new
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         // end new
+        setupBufferView()
+        bufferView.startAnimating()
         setupTop()
         setupTable()
+        bufferView.stopAnimating()
     }
     
     func clearArrays(){
@@ -128,7 +139,9 @@ class TableViewController: ViewController, UITableViewDelegate, UITableViewDataS
                         let image = try? UIImage(data: artwork.getData())
                         self.artworks.append(image!!)
                     }
+                    self.bufferView.startAnimating()
                     self.tableView.reloadData()
+                    self.bufferView.stopAnimating()
                 }
             } else {
                 // Log details of the failure
@@ -266,11 +279,15 @@ class TableViewController: ViewController, UITableViewDelegate, UITableViewDataS
             tableView.backgroundView = nil
             numOfSection = 1
         } else {
-            let noDataLabel: UILabel = UILabel(frame: CGRectMake(0, 0, tableView.bounds.size.width, tableView.bounds.size.height))
-            noDataLabel.text = "No Data Available"
-            noDataLabel.textColor = UIColor(red: 22.0/255.0, green: 106.0/255.0, blue: 176.0/255.0, alpha: 1.0)
-            noDataLabel.textAlignment = NSTextAlignment.Center
-            tableView.backgroundView = noDataLabel
+ 
+            bufferView.startAnimating()
+            bufferView.stopAnimating()
+//            let noDataLabel: UILabel = UILabel(frame: CGRectMake(0, 0, tableView.bounds.size.width, tableView.bounds.size.height))
+//            noDataLabel.text = "No Data Available"
+//            noDataLabel.textColor = UIColor(red: 22.0/255.0, green: 106.0/255.0, blue: 176.0/255.0, alpha: 1.0)
+//            noDataLabel.textAlignment = NSTextAlignment.Center
+//            tableView.backgroundView = noDataLabel
+
         }
         return numOfSection
     }

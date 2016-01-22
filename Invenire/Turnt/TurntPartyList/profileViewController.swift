@@ -76,7 +76,7 @@ class profileViewController: ViewController, UITableViewDelegate, UITableViewDat
     }
     
     func setupProfile() {
-        userNameLabel.font = UIFont(name: "Futura", size: 30)
+        userNameLabel.font = UIFont(name: "Futura", size: 25)
         userNameLabel.frame = CGRectMake(10, 60, UIScreen.mainScreen().bounds.width - 20, 35)
         userNameLabel.adjustsFontSizeToFitWidth = true
         userNameLabel.textColor = UIColor.whiteColor()

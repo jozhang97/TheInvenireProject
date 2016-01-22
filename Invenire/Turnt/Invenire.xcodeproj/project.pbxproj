@@ -46,6 +46,7 @@
 		1F624B5F1BE7D0A2004549A6 /* ParseTwitterUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F624B581BE7D0A2004549A6 /* ParseTwitterUtils.framework */; };
 		1F624B601BE7D0A2004549A6 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F624B591BE7D0A2004549A6 /* ParseUI.framework */; };
 		1F654B461C52074F0061C619 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F654B451C52074F0061C619 /* Main.storyboard */; };
+		1F654B481C52111C0061C619 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F654B471C52111C0061C619 /* AboutViewController.swift */; };
 		1F67E45B1C13B3490069F797 /* SongDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F67E45A1C13B3490069F797 /* SongDetailViewController.swift */; };
 		1F89497E1C13E20F005548D2 /* postsCellTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F89497B1C13E20F005548D2 /* postsCellTVC.swift */; };
 		1F89497F1C13E20F005548D2 /* profileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F89497C1C13E20F005548D2 /* profileViewController.swift */; };
@@ -121,6 +122,7 @@
 		1F624B591BE7D0A2004549A6 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseUI.framework; path = Parse/ParseUI.framework; sourceTree = "<group>"; };
 		1F624B621BE7D0F7004549A6 /* TurntPartyList-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TurntPartyList-Bridging-Header.h"; sourceTree = "<group>"; };
 		1F654B451C52074F0061C619 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		1F654B471C52111C0061C619 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		1F67E45A1C13B3490069F797 /* SongDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongDetailViewController.swift; sourceTree = "<group>"; };
 		1F89497B1C13E20F005548D2 /* postsCellTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = postsCellTVC.swift; sourceTree = "<group>"; };
 		1F89497C1C13E20F005548D2 /* profileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = profileViewController.swift; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 				1F624B611BE7D0C0004549A6 /* Frameworks */,
 				1F624B091BE7291F004549A6 /* AppDelegate.swift */,
 				1F654B451C52074F0061C619 /* Main.storyboard */,
+				1F654B471C52111C0061C619 /* AboutViewController.swift */,
 				E7E21C461C49F08C00C3A695 /* DismissSegue.swift */,
 				1FF9024F1BF6F638001CD2AD /* LoginViewController.swift */,
 				1FE0C09E1BF7CF6900C67B48 /* SignUpViewController.swift */,
@@ -422,6 +425,7 @@
 				1830F7791C41E07800D22DEA /* NewMapViewController.swift in Sources */,
 				1FF902501BF6F638001CD2AD /* LoginViewController.swift in Sources */,
 				E7E21C471C49F08C00C3A695 /* DismissSegue.swift in Sources */,
+				1F654B481C52111C0061C619 /* AboutViewController.swift in Sources */,
 				1F67E45B1C13B3490069F797 /* SongDetailViewController.swift in Sources */,
 				1FE0C09F1BF7CF6900C67B48 /* SignUpViewController.swift in Sources */,
 				18442D501C33265900A228E2 /* TableViewCell.swift in Sources */,

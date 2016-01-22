@@ -20,7 +20,10 @@ class LoginViewController: ViewController, UITextFieldDelegate {
     let titleName = UILabel(frame: CGRectMake(10, UIScreen.mainScreen().bounds.height*1/4, UIScreen.mainScreen().bounds.width - 20, 50))
     let accountMake = UILabel(frame: CGRectMake(10, UIScreen.mainScreen().bounds.height*3/4, UIScreen.mainScreen().bounds.width - 20, 15))
     let createAccountButton = UIButton(frame: CGRectMake(20, UIScreen.mainScreen().bounds.height*3/4 + 20, UIScreen.mainScreen().bounds.width - 40, 30))
+    let aboutButton = UIButton(frame: CGRectMake(UIScreen.mainScreen().bounds.width*3.5/5, UIScreen.mainScreen().bounds.height*9/10, 80, 15))
     
+    
+
     let displayError = ""
     
     override func viewDidLoad() {
@@ -32,9 +35,13 @@ class LoginViewController: ViewController, UITextFieldDelegate {
         setupNewUser()
         setupBufferView()
         
-
+        aboutButton.setTitle("ABOUT", forState: .Normal)
+        aboutButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        aboutButton.addTarget(self, action: "pressed:", forControlEvents: .TouchUpInside)
         username.delegate = self
         password.delegate = self
+        
+        
     }
     
     func setupBufferView() {
@@ -50,6 +57,7 @@ class LoginViewController: ViewController, UITextFieldDelegate {
         username.textColor = UIColor.whiteColor()
         view.addSubview(username)
         view.addSubview(usernameLine)
+        view.addSubview(aboutButton)
     }
     
     func setupPassword() {
@@ -163,6 +171,9 @@ class LoginViewController: ViewController, UITextFieldDelegate {
         }
         else if sender == createAccountButton {
             performSegueWithIdentifier("toSignUp", sender: self)
+        }
+        else if sender == aboutButton {
+            performSegueWithIdentifier("toAbout", sender: self)
         }
     }
     

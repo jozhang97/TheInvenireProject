@@ -224,6 +224,33 @@
             </objects>
             <point key="canvasLocation" x="-38" y="1304"/>
         </scene>
+        <!--About View Controller-->
+        <scene sceneID="qUm-15-ATg">
+            <objects>
+                <viewController id="WvR-XV-xWX" customClass="AboutViewController" customModule="Invenire" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kW5-kJ-jiO">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="xC1-tl-7Oi">
+                                <rect key="frame" x="266" y="22" width="34" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="5t6-dT-g5v" kind="modal" id="l1e-lG-1Vg"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FXZ-zc-tZt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-839" y="-75"/>
+        </scene>
         <!--Home-->
         <scene sceneID="sc6-BX-col">
             <objects>
@@ -237,6 +264,7 @@
                     <connections>
                         <segue destination="xpk-yq-48b" kind="modal" identifier="toMainVC" id="byS-0u-uRQ"/>
                         <segue destination="FWi-VY-i2N" kind="modal" identifier="toSignUp" id="ptf-zE-ndD"/>
+                        <segue destination="WvR-XV-xWX" kind="modal" identifier="toAbout" id="qDJ-qT-Lvd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cz4-Gn-3dM" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -304,10 +332,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="PHL-s5-D8k">
-                                <rect key="frame" x="0.0" y="62" width="320" height="434"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="JhV-nk-AfK">
                                 <rect key="frame" x="14" y="24" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -371,7 +395,6 @@
                         <outlet property="albumArt" destination="rbV-MD-WC7" id="D15-rY-QrG"/>
                         <outlet property="albumName" destination="uVl-Pm-TH1" id="pqk-yl-5X5"/>
                         <outlet property="artistName" destination="uFL-MM-P7g" id="wPl-Sf-4Od"/>
-                        <outlet property="background" destination="PHL-s5-D8k" id="m7L-v1-xN2"/>
                         <outlet property="songTitle" destination="lK3-Jz-8wI" id="Gaj-7G-7Ku"/>
                     </connections>
                 </viewController>
@@ -431,16 +454,6 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="29"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="5sJ-LC-zJW">
-                                <rect key="frame" x="0.0" y="0.0" width="118" height="52"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="write">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="rP0-Sx-BgD" kind="modal" id="tWG-M2-LTF"/>
-                                </connections>
-                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="242" sectionHeaderHeight="28" sectionFooterHeight="28" id="NsB-vt-h8u">
                                 <rect key="frame" x="0.0" y="297" width="320" height="246"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -500,6 +513,16 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="5sJ-LC-zJW">
+                                <rect key="frame" x="0.0" y="0.0" width="118" height="52"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="pencil-white">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="rP0-Sx-BgD" kind="modal" id="tWG-M2-LTF"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.044363913370000001" green="0.15416942980000001" blue="0.51357323229999996" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
@@ -696,17 +719,17 @@
         <image name="earth-america-7" width="30" height="30"/>
         <image name="layout-arrange-09-7" width="29" height="30"/>
         <image name="minus-sign" width="29" height="30"/>
+        <image name="pencil-white" width="30" height="30"/>
         <image name="plus-sign" width="29" height="30"/>
         <image name="share-white" width="30" height="30"/>
         <image name="white-icon" width="30" height="30"/>
-        <image name="write" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="byS-0u-uRQ"/>
-        <segue reference="wil-hY-HpA"/>
-        <segue reference="OeR-52-z40"/>
-        <segue reference="wyy-Dl-8f8"/>
+        <segue reference="1AH-IY-Lir"/>
         <segue reference="YIf-XA-l6A"/>
+        <segue reference="wyy-Dl-8f8"/>
+        <segue reference="BHD-e6-5gV"/>
         <segue reference="tWG-M2-LTF"/>
     </inferredMetricsTieBreakers>
 </document>
