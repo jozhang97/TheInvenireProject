@@ -175,7 +175,7 @@ class SignUpViewController: ViewController, UINavigationControllerDelegate, UITe
         profPic.backgroundColor = UIColor.clearColor()
         profPic.layer.cornerRadius = profPic.frame.size.width / 2;
         profPic.clipsToBounds = true
-        profPic.layer.borderColor = UIColor.blackColor().CGColor
+        profPic.layer.borderColor = UIColor.whiteColor().CGColor
         profPic.layer.borderWidth = 3;
         profPic.frame = CGRectMake(UIScreen.mainScreen().bounds.width/2 - 55, UIScreen.mainScreen().bounds.height/10, 110, 110)
         

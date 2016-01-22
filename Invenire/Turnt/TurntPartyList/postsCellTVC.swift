@@ -26,7 +26,7 @@ class postsCellTVC: UITableViewCell {
         
         let heartImageView = UIImageView()
         heartImageView.image = UIImage(named: "whiteheart")
-        heartImageView.frame = CGRectMake(self.frame.width - 50, self.frame.height/2 - 20, 40, 40)
+        heartImageView.frame = CGRectMake(self.frame.width - 40, self.frame.height/2 - 20, 30, 30)
             
         self.addSubview(heartImageView)
         
@@ -45,7 +45,7 @@ class postsCellTVC: UITableViewCell {
         
         numberOfLikes.textColor = UIColor.whiteColor()
         numberOfLikes.adjustsFontSizeToFitWidth = true
-        numberOfLikes.frame = CGRectMake(self.frame.width - 37, self.frame.height/2 - 15, 30, 30)
+        numberOfLikes.frame = CGRectMake(self.frame.width - 31, self.frame.height/2 - 19, 30, 30)
         
         
     }

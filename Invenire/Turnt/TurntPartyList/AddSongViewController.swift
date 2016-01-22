@@ -128,18 +128,22 @@ class AddSongViewController: ViewController, UITextFieldDelegate, CLLocationMana
             {
                  imageView.image = artwork
             }
-           
-
+            
+            
+            
             let darkBlur = UIBlurEffect(style: UIBlurEffectStyle.Dark)
             let blurView = UIVisualEffectView(effect: darkBlur)
-            blurView.frame = background!.bounds
-            background!.addSubview(blurView)
-            self.background!.image = artwork
+            blurView.frame = view.bounds
+//            self.background!.image = artwork
+// 
+//            // background is nil
+//            background!.addSubview(blurView)
+//            
             
             
         } else {
             let titleName = UILabel(frame: CGRectMake(10, UIScreen.mainScreen().bounds.height*1/4, UIScreen.mainScreen().bounds.width - 20, 50))
-            titleName.text = "NO SONG BEING PLAYED ON iTUNES!"
+//            titleName.text = "NO SONG BEING PLAYED ON iTUNES!"
             titleName.font = UIFont(name: "Futura", size: 20)
             titleName.textColor = UIColor.whiteColor()
             titleName.textAlignment = .Center
@@ -155,15 +159,15 @@ class AddSongViewController: ViewController, UITextFieldDelegate, CLLocationMana
             }
             if let songLabel = songTitle
             {
-                songLabel.text = "Unknown"
+                songLabel.text = "No Song Playing"
             }
             if let artistNameLabel = artistName
             {
-                artistNameLabel.text = "Unknown"
+                artistNameLabel.text = ""
             }
             if let albumNameLabel = albumName
             {
-                 albumNameLabel.text = "Unknown"
+                 albumNameLabel.text = ""
             }
            
             

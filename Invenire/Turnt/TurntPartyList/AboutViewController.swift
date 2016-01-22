@@ -15,8 +15,8 @@ class AboutViewController: ViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        infoLabel.text = "This app was developed by Abhi Mangala, Jeffrey Zhang, Franky Guerrero, Shaili Patel, and Cristian Garay.  Special thanks to our mentors Akkshay Khoslaa and Virindh Borra."
-        infoLabel.numberOfLines = 3
+        infoLabel.text = "This app was developed by Abhi Mangla, Jeffrey Zhang, Franky Guerrero, Shaili Patel, and Cristian Garay. Thanks to Akkshay Khoslaa and Virindh Borra."
+        infoLabel.numberOfLines = 6
         infoLabel.adjustsFontSizeToFitWidth = true
         infoLabel.lineBreakMode = NSLineBreakMode.ByWordWrapping
         infoLabel.textColor = UIColor.whiteColor()
