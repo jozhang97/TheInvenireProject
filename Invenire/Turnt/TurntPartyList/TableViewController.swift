@@ -26,9 +26,10 @@ class TableViewController: ViewController, UITableViewDelegate, UITableViewDataS
     var artworks = Array<UIImage>()
     var peopleNames = Array<String>()
     var selectedSongIndex = 0
+    var datesPosted = Array<NSDate>()
     
     @IBAction func segmentChanged(sender: AnyObject) {
-        clearArrays()
+        
         getParties()
     }
     
@@ -101,6 +102,7 @@ class TableViewController: ViewController, UITableViewDelegate, UITableViewDataS
         locations = Array<PFGeoPoint>()
         artworks = Array<UIImage>()
         peopleNames = Array<String>()
+        datesPosted = Array<NSDate>()
     }
     
     override func didReceiveMemoryWarning() {
@@ -110,13 +112,17 @@ class TableViewController: ViewController, UITableViewDelegate, UITableViewDataS
     
     func getParties(){
         // artwork has error
+        clearArrays()
         bufferView.startAnimating()
+        
+        
         let query = PFQuery(className:"Posts")
         if segmentControl.selectedSegmentIndex == 0 {
             query.addDescendingOrder("numLikes")
         }
         else if segmentControl.selectedSegmentIndex == 1 {
             query.addDescendingOrder("createdAt")
+            
         }
         else if segmentControl.selectedSegmentIndex == 2{
             query.whereKey("location", nearGeoPoint: findLocation())
@@ -141,6 +147,7 @@ class TableViewController: ViewController, UITableViewDelegate, UITableViewDataS
                         let artwork = object["artwork"] as! PFFile
                         let image = try? UIImage(data: artwork.getData())
                         self.artworks.append(image!!)
+                        self.datesPosted.append(object.createdAt! as NSDate)
                     }
                     self.bufferView.startAnimating()
                     self.tableView.reloadData()
@@ -329,6 +336,19 @@ class TableViewController: ViewController, UITableViewDelegate, UITableViewDataS
         cell.bringSubviewToFront(cell.likes)
         cell.likeButton.layer.zPosition = 0
         cell.likes.layer.zPosition = 1
+        if (segmentControl.selectedSegmentIndex == 1)
+        {
+            cell.extraInfoLabel.text = "Posted " + String(Int(round(-1*datesPosted[indexPath.row].timeIntervalSinceNow/60/60/24))) + " days ago"
+        }
+        else if (segmentControl.selectedSegmentIndex == 2)
+        {
+            cell.extraInfoLabel.text = "Posted " + String(findDistance(locations[indexPath.row])) + " miles away"
+            
+        }
+        else
+        {
+            cell.extraInfoLabel.text = ""
+        }
         
         if checker(cell.song.text!) == 0 {
             cell.likeButton.setImage(UIImage(named: "fullwhiteheart"), forState: .Normal)
@@ -363,7 +383,7 @@ class TableViewController: ViewController, UITableViewDelegate, UITableViewDataS
     
     func findDistance(musicLocation :PFGeoPoint) -> Double {
         let currLocation = findLocation()
-        return round(100*musicLocation.distanceInMilesTo(currLocation))/100
+        return round(10*musicLocation.distanceInMilesTo(currLocation))/10
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -380,6 +400,7 @@ class TableViewController: ViewController, UITableViewDelegate, UITableViewDataS
             vc.selectedLikes = "Liked by " + String(likesList[selectedSongIndex]) + " people!"
             vc.selectedArtwork = self.artworks[selectedSongIndex]
             vc.check = 0    //not needed but to re-ensure
+            vc.date = self.datesPosted[selectedSongIndex]
         }
     }
     

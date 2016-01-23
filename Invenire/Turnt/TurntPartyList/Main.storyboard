@@ -307,7 +307,6 @@
                                 </state>
                                 <connections>
                                     <action selector="backPressed:" destination="wer-xT-3S9" eventType="touchUpInside" id="WqB-q4-1kr"/>
-                                    <segue destination="wer-xT-3S9" kind="custom" customClass="DismissSegue" customModule="Invenire" id="QEB-HG-3E0"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -333,10 +332,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="JhV-nk-AfK">
-                                <rect key="frame" x="14" y="24" width="46" height="30"/>
+                                <rect key="frame" x="14" y="22" width="46" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="16"/>
-                                <state key="normal" title="Back">
+                                <state key="normal" title="BACK">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -395,6 +394,7 @@
                         <outlet property="albumArt" destination="rbV-MD-WC7" id="D15-rY-QrG"/>
                         <outlet property="albumName" destination="uVl-Pm-TH1" id="pqk-yl-5X5"/>
                         <outlet property="artistName" destination="uFL-MM-P7g" id="wPl-Sf-4Od"/>
+                        <outlet property="shareButton" destination="fml-R3-5QW" id="7iR-E4-obp"/>
                         <outlet property="songTitle" destination="lK3-Jz-8wI" id="Gaj-7G-7Ku"/>
                     </connections>
                 </viewController>
@@ -668,7 +668,7 @@
                                 <rect key="frame" x="55" y="203" width="91" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -738,7 +738,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Music" width="225" height="225"/>
+        <image name="Music" width="1436" height="1437"/>
         <image name="earth-america-7" width="30" height="30"/>
         <image name="layout-arrange-09-7" width="29" height="30"/>
         <image name="minus-sign" width="29" height="30"/>
@@ -748,10 +748,10 @@
         <image name="white-icon" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="6WK-Gy-dBQ"/>
-        <segue reference="JoY-dm-tsL"/>
-        <segue reference="uaJ-LJ-mro"/>
         <segue reference="1AH-IY-Lir"/>
+        <segue reference="uaJ-LJ-mro"/>
+        <segue reference="BHD-e6-5gV"/>
         <segue reference="tWG-M2-LTF"/>
+        <segue reference="6WK-Gy-dBQ"/>
     </inferredMetricsTieBreakers>
 </document>

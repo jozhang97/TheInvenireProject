@@ -31,11 +31,11 @@ class SignUpViewController: ViewController, UINavigationControllerDelegate, UITe
     let enterPicButton = UIButton()
     
     let bufferView = UIActivityIndicatorView (frame: CGRectMake(UIScreen.mainScreen().bounds.width/2, UIScreen.mainScreen().bounds.height/2, 20, 20))
-    let nameF = UITextField (frame: CGRectMake(UIScreen.mainScreen().bounds.width/5, UIScreen.mainScreen().bounds.height*3/10, UIScreen.mainScreen().bounds.width*3/5, 20))
-    let usernameF = UITextField (frame: CGRectMake(UIScreen.mainScreen().bounds.width/5, UIScreen.mainScreen().bounds.height*4/10, UIScreen.mainScreen().bounds.width*3/5, 20))
-    let passwordF = UITextField (frame: CGRectMake(UIScreen.mainScreen().bounds.width/5, UIScreen.mainScreen().bounds.height*5/10, UIScreen.mainScreen().bounds.width*3/5, 20))
-    let confirmF = UITextField (frame: CGRectMake(UIScreen.mainScreen().bounds.width/5, UIScreen.mainScreen().bounds.height*6/10, UIScreen.mainScreen().bounds.width*3/5, 20))
-    let emailF = UITextField (frame: CGRectMake(UIScreen.mainScreen().bounds.width/5, UIScreen.mainScreen().bounds.height*7/10, UIScreen.mainScreen().bounds.width*3/5, 20))
+    let nameF = UITextField (frame: CGRectMake(UIScreen.mainScreen().bounds.width*0.5/5, UIScreen.mainScreen().bounds.height*3/10, UIScreen.mainScreen().bounds.width*4/5, 20))
+    let usernameF = UITextField (frame: CGRectMake(UIScreen.mainScreen().bounds.width*0.5/5, UIScreen.mainScreen().bounds.height*4/10, UIScreen.mainScreen().bounds.width*4/5, 20))
+    let passwordF = UITextField (frame: CGRectMake(UIScreen.mainScreen().bounds.width*0.5/5, UIScreen.mainScreen().bounds.height*5/10, UIScreen.mainScreen().bounds.width*4/5, 20))
+    let confirmF = UITextField (frame: CGRectMake(UIScreen.mainScreen().bounds.width*0.5/5, UIScreen.mainScreen().bounds.height*6/10, UIScreen.mainScreen().bounds.width*4/5, 20))
+    let emailF = UITextField (frame: CGRectMake(UIScreen.mainScreen().bounds.width*0.5/5, UIScreen.mainScreen().bounds.height*7/10, UIScreen.mainScreen().bounds.width*4/5, 20))
     
     func textFieldDidBeginEditing(textField: UITextField) {
         if textField == emailF || textField == confirmF {
@@ -177,7 +177,7 @@ class SignUpViewController: ViewController, UINavigationControllerDelegate, UITe
         profPic.clipsToBounds = true
         profPic.layer.borderColor = UIColor.whiteColor().CGColor
         profPic.layer.borderWidth = 3;
-        profPic.frame = CGRectMake(UIScreen.mainScreen().bounds.width/2 - 55, UIScreen.mainScreen().bounds.height/10, 110, 110)
+        profPic.frame = CGRectMake(UIScreen.mainScreen().bounds.width/2 - 55, UIScreen.mainScreen().bounds.height/10, 100, 100)
         
         view.addSubview(profPic)
         
@@ -194,7 +194,7 @@ class SignUpViewController: ViewController, UINavigationControllerDelegate, UITe
     func setupTextFields() {
         
         
-        let nameLine = UILabel(frame: CGRectMake(UIScreen.mainScreen().bounds.width/5, UIScreen.mainScreen().bounds.height*3/10 + 22, UIScreen.mainScreen().bounds.width*3/5, 1))
+        let nameLine = UILabel(frame: CGRectMake(UIScreen.mainScreen().bounds.width*0.5/5, UIScreen.mainScreen().bounds.height*3/10 + 22, UIScreen.mainScreen().bounds.width*4/5, 1))
         
         nameF.backgroundColor = UIColor.clearColor()
         nameF.attributedPlaceholder = NSAttributedString(string:"NAME",
@@ -206,7 +206,7 @@ class SignUpViewController: ViewController, UINavigationControllerDelegate, UITe
         view.addSubview(nameLine)
         
         
-        let usernameLine = UILabel(frame: CGRectMake(UIScreen.mainScreen().bounds.width/5, UIScreen.mainScreen().bounds.height*4/10 + 22, UIScreen.mainScreen().bounds.width*3/5, 1))
+        let usernameLine = UILabel(frame: CGRectMake(UIScreen.mainScreen().bounds.width*0.5/5, UIScreen.mainScreen().bounds.height*4/10 + 22, UIScreen.mainScreen().bounds.width*4/5, 1))
         
         usernameF.backgroundColor = UIColor.clearColor()
         usernameF.attributedPlaceholder = NSAttributedString(string:"USERNAME",
@@ -218,7 +218,7 @@ class SignUpViewController: ViewController, UINavigationControllerDelegate, UITe
         view.addSubview(usernameLine)
     
         
-        let passwordLine = UILabel(frame: CGRectMake(UIScreen.mainScreen().bounds.width/5, UIScreen.mainScreen().bounds.height*5/10 + 22, UIScreen.mainScreen().bounds.width*3/5, 1))
+        let passwordLine = UILabel(frame: CGRectMake(UIScreen.mainScreen().bounds.width*0.5/5, UIScreen.mainScreen().bounds.height*5/10 + 22, UIScreen.mainScreen().bounds.width*4/5, 1))
         
         passwordF.backgroundColor = UIColor.clearColor()
         passwordF.attributedPlaceholder = NSAttributedString(string:"PASSWORD",
@@ -231,7 +231,7 @@ class SignUpViewController: ViewController, UINavigationControllerDelegate, UITe
         view.addSubview(passwordLine)
         
         
-        let confirmLine = UILabel(frame: CGRectMake(UIScreen.mainScreen().bounds.width/5, UIScreen.mainScreen().bounds.height*6/10 + 22, UIScreen.mainScreen().bounds.width*3/5, 1))
+        let confirmLine = UILabel(frame: CGRectMake(UIScreen.mainScreen().bounds.width*0.5/5, UIScreen.mainScreen().bounds.height*6/10 + 22, UIScreen.mainScreen().bounds.width*4/5, 1))
         
         confirmF.backgroundColor = UIColor.clearColor()
         confirmF.attributedPlaceholder = NSAttributedString(string:"CONFIRM PASSWORD",
@@ -244,7 +244,7 @@ class SignUpViewController: ViewController, UINavigationControllerDelegate, UITe
         view.addSubview(confirmLine)
         
         
-        let emailLine = UILabel(frame: CGRectMake(UIScreen.mainScreen().bounds.width/5, UIScreen.mainScreen().bounds.height*7/10 + 22, UIScreen.mainScreen().bounds.width*3/5, 1))
+        let emailLine = UILabel(frame: CGRectMake(UIScreen.mainScreen().bounds.width*0.5/5, UIScreen.mainScreen().bounds.height*7/10 + 22, UIScreen.mainScreen().bounds.width*4/5, 1))
         
         emailF.backgroundColor = UIColor.clearColor()
         emailF.attributedPlaceholder = NSAttributedString(string:"EMAIL",

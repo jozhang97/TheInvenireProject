@@ -52,6 +52,7 @@
 		1F89497E1C13E20F005548D2 /* postsCellTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F89497B1C13E20F005548D2 /* postsCellTVC.swift */; };
 		1F89497F1C13E20F005548D2 /* profileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F89497C1C13E20F005548D2 /* profileViewController.swift */; };
 		1F8949801C13E20F005548D2 /* changeProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F89497D1C13E20F005548D2 /* changeProfileVC.swift */; };
+		1FB009A21C53610600E09896 /* NSDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB009A11C53610600E09896 /* NSDateExtension.swift */; };
 		1FE0C09F1BF7CF6900C67B48 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE0C09E1BF7CF6900C67B48 /* SignUpViewController.swift */; };
 		1FEB35191C027EC000F7C424 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FEB35171C027EBF00F7C424 /* FBSDKCoreKit.framework */; };
 		1FEB351A1C027EC000F7C424 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FEB35181C027EC000F7C424 /* FBSDKLoginKit.framework */; };
@@ -129,6 +130,7 @@
 		1F89497B1C13E20F005548D2 /* postsCellTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = postsCellTVC.swift; sourceTree = "<group>"; };
 		1F89497C1C13E20F005548D2 /* profileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = profileViewController.swift; sourceTree = "<group>"; };
 		1F89497D1C13E20F005548D2 /* changeProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = changeProfileVC.swift; sourceTree = "<group>"; };
+		1FB009A11C53610600E09896 /* NSDateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateExtension.swift; sourceTree = "<group>"; };
 		1FE0C09E1BF7CF6900C67B48 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		1FEB35171C027EBF00F7C424 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		1FEB35181C027EC000F7C424 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
@@ -223,9 +225,10 @@
 				1FE0C09E1BF7CF6900C67B48 /* SignUpViewController.swift */,
 				1F624B101BE7291F004549A6 /* Assets.xcassets */,
 				1F624B391BE72B22004549A6 /* TableViewController.swift */,
-				1F67E45A1C13B3490069F797 /* SongDetailViewController.swift */,
-				1F89497C1C13E20F005548D2 /* profileViewController.swift */,
 				18442D4F1C33265900A228E2 /* TableViewCell.swift */,
+				1F67E45A1C13B3490069F797 /* SongDetailViewController.swift */,
+				1FB009A11C53610600E09896 /* NSDateExtension.swift */,
+				1F89497C1C13E20F005548D2 /* profileViewController.swift */,
 				1830F7771C41E07800D22DEA /* NewMapViewController.swift */,
 				1830F7781C41E07800D22DEA /* MKPFObject.swift */,
 				18442D4D1C3325A400A228E2 /* ViewController.swift */,
@@ -436,6 +439,7 @@
 				18442D4E1C3325A400A228E2 /* ViewController.swift in Sources */,
 				1F8949801C13E20F005548D2 /* changeProfileVC.swift in Sources */,
 				1830F77A1C41E07800D22DEA /* MKPFObject.swift in Sources */,
+				1FB009A21C53610600E09896 /* NSDateExtension.swift in Sources */,
 				1F624B0A1BE7291F004549A6 /* AppDelegate.swift in Sources */,
 				1F624B3A1BE72B22004549A6 /* TableViewController.swift in Sources */,
 				1F89497E1C13E20F005548D2 /* postsCellTVC.swift in Sources */,

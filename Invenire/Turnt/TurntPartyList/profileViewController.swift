@@ -61,18 +61,19 @@ class profileViewController: ViewController, UITableViewDelegate, UITableViewDat
     }
     
     func setupButtons() {
-        editButton.frame = CGRectMake(UIScreen.mainScreen().bounds.width*0.5/10, UIScreen.mainScreen().bounds.height*0.5/10,40,40)
+        editButton.frame = CGRectMake(UIScreen.mainScreen().bounds.width*8/10, UIScreen.mainScreen().bounds.height*0.25/10,40,40)
         
         backButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         backButton.setTitle("BACK", forState: .Normal)
         backButton.titleLabel?.font = UIFont(name: "Futura", size: 16)
-        backButton.frame = CGRectMake(UIScreen.mainScreen().bounds.width*7.25/10, UIScreen.mainScreen().bounds.height*0.5/10, 100, 40)
+        backButton.frame = CGRectMake(10, UIScreen.mainScreen().bounds.height*0.25/10, 100, 40)
         
         logoutButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         logoutButton.setTitle("LOG OUT", forState: .Normal)
         logoutButton.titleLabel?.font = UIFont(name: "Futura", size: 16)
-        logoutButton.frame = CGRectMake(UIScreen.mainScreen().bounds.width*7/10, UIScreen.mainScreen().bounds.height*9.25/10, 100, 40)
-        
+        logoutButton.frame = CGRectMake(UIScreen.mainScreen().bounds.width*7/10, UIScreen.mainScreen().bounds.height*9.25/10, 95, 40)
+        logoutButton.layer.borderColor = UIColor.whiteColor().CGColor
+        logoutButton.layer.borderWidth = 2
     }
     
     func setupProfile() {

@@ -20,6 +20,7 @@ class TableViewCell: UITableViewCell
     @IBOutlet weak var likes: UILabel!
     @IBOutlet weak var artwork: UIImageView!
     @IBOutlet weak var likeButton: UIButton!
+    var extraInfoLabel = UILabel()
     var delegate:TableViewCellDelegate? = nil
     
     @IBAction func likeThis(sender: AnyObject) {
@@ -69,6 +70,13 @@ class TableViewCell: UITableViewCell
         artist.adjustsFontSizeToFitWidth = true
         artist.textColor = UIColor.whiteColor()
         artist.font = UIFont(name: "Futura", size: 12)
+        
+        extraInfoLabel.frame = CGRectMake(artwork.frame.width + 5, self.frame.height/2+15, self.frame.width/2.5, 20)
+        extraInfoLabel.adjustsFontSizeToFitWidth = true
+        extraInfoLabel.textColor = UIColor.whiteColor()
+        extraInfoLabel.font = UIFont(name: "Futura", size: 12)
+        
+        self.addSubview(extraInfoLabel)
         
         likes.adjustsFontSizeToFitWidth = true
         likes.frame = CGRectMake(self.frame.width - 27, self.frame.height/2 - 20, 20, 20)

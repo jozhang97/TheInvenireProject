@@ -18,6 +18,7 @@ class AddSongViewController: ViewController, UITextFieldDelegate, CLLocationMana
     var musicPlayer = MPMusicPlayerController.systemMusicPlayer()
     
     @IBOutlet weak var sharemusicLabel: UILabel!
+    
     @IBOutlet weak var shareButton: UIButton!
     
     @IBOutlet weak var albumArt = UIImageView(frame: CGRectMake(UIScreen.mainScreen().bounds.width/2 - UIScreen.mainScreen().bounds.width/6, UIScreen.mainScreen().bounds.height/2 - UIScreen.mainScreen().bounds.height/6, UIScreen.mainScreen().bounds.width/3, UIScreen.mainScreen().bounds.height/3))
@@ -37,17 +38,21 @@ class AddSongViewController: ViewController, UITextFieldDelegate, CLLocationMana
     }
     
     @IBAction func shareMusic(sender: AnyObject) {
+        
         let myPost = PFObject(className:"Posts")
-        print("are we here")
         let point = PFGeoPoint(location: currentLocation)
         
         print(musicPlayer.nowPlayingItem != nil)
-        if let nowPlaying = musicPlayer.nowPlayingItem {
+        if let nowPlaying = musicPlayer.nowPlayingItem
+        {
+            
             let title = nowPlaying.valueForProperty(MPMediaItemPropertyTitle) as? String
             let artist = nowPlaying.valueForProperty(MPMediaItemPropertyArtist) as? String
             let album = nowPlaying.valueForProperty(MPMediaItemPropertyAlbumTitle) as? String
-            let imageData = UIImagePNGRepresentation(self.albumArt!.image!)
-            let artwork = PFFile(name: "artwork_" + title!, data: UIImageJPEGRepresentation(self.albumArt!.image!, 0.5)!)
+//            let imageData = UIImagePNGRepresentation(self.albumArt!.image!)
+            
+            
+            let artwork = PFFile(name: "artwork", data: UIImageJPEGRepresentation(self.albumArt!.image!, 0.5)!)
             print(title != nil)
             print(artist != nil)
             print(album != nil)
@@ -73,8 +78,8 @@ class AddSongViewController: ViewController, UITextFieldDelegate, CLLocationMana
                     print("error")
                 }
             }
+            performSegueWithIdentifier("submitParty", sender: UIStoryboardSegue.self)
         }
-        performSegueWithIdentifier("submitParty", sender: UIStoryboardSegue.self)
     }
     
     
@@ -87,8 +92,9 @@ class AddSongViewController: ViewController, UITextFieldDelegate, CLLocationMana
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
-        getNowplayinginfo()
         setupView()
+        getNowplayinginfo()
+
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         view.addGestureRecognizer(tap)
     }
@@ -150,7 +156,6 @@ class AddSongViewController: ViewController, UITextFieldDelegate, CLLocationMana
             titleName.backgroundColor = UIColor.clearColor()
             
             view.addSubview(titleName)
-            
             let artwork = UIImage(named: "Music.png")!
             
             if let imageView = albumArt

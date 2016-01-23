@@ -97,7 +97,7 @@ class changeProfileVC: ViewController, UINavigationControllerDelegate, UITextFie
         titleLabel.font = UIFont(name: "Futura", size: 25)
         titleLabel.textColor = UIColor.whiteColor()
         titleLabel.textAlignment = .Center
-        titleLabel.frame = CGRectMake(UIScreen.mainScreen().bounds.width/2 - 100, 20, 200, 20)
+        titleLabel.frame = CGRectMake(UIScreen.mainScreen().bounds.width/2 - 100, 30, 200, 20)
         titleLabel.adjustsFontSizeToFitWidth = true
         
         backButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
