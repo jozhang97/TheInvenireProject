@@ -33,6 +33,7 @@ class SongDetailViewController: ViewController {
     var selectedLikes = ""
     
     var selectedSharedBy = ""
+
     
     var selectedArtwork = UIImage(named: "Music")
     
@@ -56,9 +57,13 @@ class SongDetailViewController: ViewController {
     
     var albumArt = UIImageView(frame: CGRect(x: 40, y: 80, width: UIScreen.mainScreen().bounds.width - 80, height: 150))
     
+    var profPicFrame = UIImageView(frame: CGRectMake(UIScreen.mainScreen().bounds.width/2 - 65, 380, 130,130))
+    
     //    let likesHeart = UIImage(CGRect(x: <#T##Int#>, y: <#T##Int#>, width: <#T##Int#>, height: <#T##Int#>))
     
     //
+    
+    
     
     @IBAction func backPressed(sender: AnyObject) {
         
@@ -116,7 +121,7 @@ class SongDetailViewController: ViewController {
         
         super.viewDidLoad()
         
-        
+        getMemberInfo()
         
         
         
@@ -242,6 +247,40 @@ class SongDetailViewController: ViewController {
             
         }
         
+    }
+    
+    
+    
+    func getMemberInfo() {
+        //this first query deals with loading user profile image and name
+        let query = PFQuery(className:"_User")
+        query.whereKey("username", equalTo: self.selectedSharedBy)
+        query.findObjectsInBackgroundWithBlock {
+            (objects: [PFObject]?, error: NSError?) -> Void in
+            if error == nil {
+                if objects != nil{
+                    let imageFile = objects![0]["profPic"] as! PFFile
+                    imageFile.getDataInBackgroundWithBlock { (imageData: NSData?, error: NSError?) -> Void in if error == nil {
+                        let image1 = UIImage(data: imageData!)
+                        self.profPicFrame.image = image1
+                        }
+                    }
+                }
+            }
+            else {
+                // Log details of the failure
+                print("Error: \(error!) \(error!.userInfo)")
+            }
+        }
+        
+        profPicFrame.layer.cornerRadius = profPicFrame.frame.size.width / 2;
+        profPicFrame.clipsToBounds = true
+        profPicFrame.contentMode = .ScaleAspectFill
+        
+        profPicFrame.layer.borderWidth = 2
+        profPicFrame.layer.borderColor = UIColor.whiteColor().CGColor
+        
+        view.addSubview(profPicFrame)
     }
     
     /*

@@ -45,6 +45,7 @@
 		1F624B5E1BE7D0A2004549A6 /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F624B571BE7D0A2004549A6 /* ParseFacebookUtilsV4.framework */; };
 		1F624B5F1BE7D0A2004549A6 /* ParseTwitterUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F624B581BE7D0A2004549A6 /* ParseTwitterUtils.framework */; };
 		1F624B601BE7D0A2004549A6 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F624B591BE7D0A2004549A6 /* ParseUI.framework */; };
+		1F6251C91C534D220094E921 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6251C81C534D220094E921 /* LaunchViewController.swift */; };
 		1F654B461C52074F0061C619 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F654B451C52074F0061C619 /* Main.storyboard */; };
 		1F654B481C52111C0061C619 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F654B471C52111C0061C619 /* AboutViewController.swift */; };
 		1F67E45B1C13B3490069F797 /* SongDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F67E45A1C13B3490069F797 /* SongDetailViewController.swift */; };
@@ -121,6 +122,7 @@
 		1F624B581BE7D0A2004549A6 /* ParseTwitterUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseTwitterUtils.framework; path = Parse/ParseTwitterUtils.framework; sourceTree = "<group>"; };
 		1F624B591BE7D0A2004549A6 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseUI.framework; path = Parse/ParseUI.framework; sourceTree = "<group>"; };
 		1F624B621BE7D0F7004549A6 /* TurntPartyList-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TurntPartyList-Bridging-Header.h"; sourceTree = "<group>"; };
+		1F6251C81C534D220094E921 /* LaunchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 		1F654B451C52074F0061C619 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		1F654B471C52111C0061C619 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		1F67E45A1C13B3490069F797 /* SongDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongDetailViewController.swift; sourceTree = "<group>"; };
@@ -221,14 +223,15 @@
 				1FE0C09E1BF7CF6900C67B48 /* SignUpViewController.swift */,
 				1F624B101BE7291F004549A6 /* Assets.xcassets */,
 				1F624B391BE72B22004549A6 /* TableViewController.swift */,
-				18442D4F1C33265900A228E2 /* TableViewCell.swift */,
+				1F67E45A1C13B3490069F797 /* SongDetailViewController.swift */,
 				1F89497C1C13E20F005548D2 /* profileViewController.swift */,
+				18442D4F1C33265900A228E2 /* TableViewCell.swift */,
 				1830F7771C41E07800D22DEA /* NewMapViewController.swift */,
 				1830F7781C41E07800D22DEA /* MKPFObject.swift */,
 				18442D4D1C3325A400A228E2 /* ViewController.swift */,
 				18442D511C33266500A228E2 /* AddSongViewController.swift */,
-				1F67E45A1C13B3490069F797 /* SongDetailViewController.swift */,
 				1F624B121BE7291F004549A6 /* LaunchScreen.storyboard */,
+				1F6251C81C534D220094E921 /* LaunchViewController.swift */,
 				1F624B151BE7291F004549A6 /* Info.plist */,
 				1F624B621BE7D0F7004549A6 /* TurntPartyList-Bridging-Header.h */,
 				1F89497B1C13E20F005548D2 /* postsCellTVC.swift */,
@@ -437,6 +440,7 @@
 				1F624B3A1BE72B22004549A6 /* TableViewController.swift in Sources */,
 				1F89497E1C13E20F005548D2 /* postsCellTVC.swift in Sources */,
 				18442D521C33266500A228E2 /* AddSongViewController.swift in Sources */,
+				1F6251C91C534D220094E921 /* LaunchViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

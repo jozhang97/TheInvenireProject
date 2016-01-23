@@ -89,6 +89,7 @@ class TableViewController: ViewController, UITableViewDelegate, UITableViewDataS
         bufferView.startAnimating()
         setupTop()
         setupTable()
+        self.tableView.reloadData()
         bufferView.stopAnimating()
     }
     
@@ -374,7 +375,7 @@ class TableViewController: ViewController, UITableViewDelegate, UITableViewDataS
             vc.selectedArtist = self.artistNames[selectedSongIndex]
             vc.selectedSongName = self.songNames[selectedSongIndex]
             vc.selectedAlbum  = self.albumNames[selectedSongIndex]
-            vc.selectedSharedBy = "Shared by " + self.peopleNames[selectedSongIndex]
+            vc.selectedSharedBy = self.peopleNames[selectedSongIndex]
             vc.selectedDistance = String(findDistance(locations[selectedSongIndex])) + " miles away."
             vc.selectedLikes = "Liked by " + String(likesList[selectedSongIndex]) + " people!"
             vc.selectedArtwork = self.artworks[selectedSongIndex]
