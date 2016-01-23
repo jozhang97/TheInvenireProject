@@ -62,9 +62,11 @@ class NewMapViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         mapView.frame = CGRectMake(0,0, UIScreen.mainScreen().bounds.width, UIScreen.mainScreen().bounds.height)
         segmentedControl.frame = CGRectMake(UIScreen.mainScreen().bounds.width/8, UIScreen.mainScreen().bounds.height * 1/15, UIScreen.mainScreen().bounds.width * 8/10, 35)
         segmentedControl.tintColor = UIColor.whiteColor()
-        segmentedControl.backgroundColor = UIColor(red: 0.4431, green: 0.2275, blue: 0.6471, alpha: 1.0) /* #713aa5 */
+        segmentedControl.backgroundColor = UIColor(red: 51/255, green: 92/255, blue: 122/255, alpha: 1.0)
         segmentedControl.layer.borderColor = UIColor.whiteColor().CGColor
         segmentedControl.layer.borderWidth = 2
+        
+        segmentedControl.setTitleTextAttributes(NSDictionary(objects: [UIFont(name: "Futura", size: 14)!], forKeys: [NSFontAttributeName]) as [NSObject: AnyObject], forState: UIControlState.Normal)
         
         
         zoominButton.frame = CGRectMake(UIScreen.mainScreen().bounds.width - 50, UIScreen.mainScreen().bounds.height/5, 30, 30)
@@ -218,7 +220,7 @@ class NewMapViewController: UIViewController, MKMapViewDelegate, CLLocationManag
                 vc.selectedArtist = pf["artist"] as! String
                 vc.selectedSongName = pf["title"] as! String
                 vc.selectedAlbum = pf["album"] as! String
-                vc.selectedSharedBy = "Shared by " + (pf["username"] as! String)
+                vc.selectedSharedBy = (pf["username"] as! String)
                 let distance: Double = findDistance(pf["location"] as! PFGeoPoint)
                 vc.selectedDistance = "distance: " + String(distance) + "miles away"
                 let likes = pf["numLikes"] as! Int

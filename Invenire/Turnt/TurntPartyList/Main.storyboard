@@ -340,7 +340,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="G5C-5O-Cpr" kind="modal" identifier="submitParty" id="wyy-Dl-8f8"/>
+                                    <segue destination="xpk-yq-48b" kind="modal" identifier="submitParty" id="6WK-Gy-dBQ"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="artist" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="uFL-MM-P7g">
@@ -691,18 +691,6 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </mapView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="CYQ-xh-cMa">
-                                <rect key="frame" x="54" y="28" width="212" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <segments>
-                                    <segment title="Standard"/>
-                                    <segment title="Hybrid"/>
-                                    <segment title="Satellite"/>
-                                </segments>
-                                <connections>
-                                    <action selector="segmentChanged:" destination="H27-Yy-npE" eventType="valueChanged" id="2tC-t8-Kpt"/>
-                                </connections>
-                            </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="aYW-Cn-VaF">
                                 <rect key="frame" x="242" y="80" width="83" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -719,6 +707,18 @@
                                     <action selector="zoomOut:" destination="H27-Yy-npE" eventType="touchUpInside" id="3aU-Y3-Gfp"/>
                                 </connections>
                             </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="CYQ-xh-cMa">
+                                <rect key="frame" x="34" y="28" width="252" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="STANDARD"/>
+                                    <segment title="HYBRID"/>
+                                    <segment title="SATELLITE"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segmentChanged:" destination="H27-Yy-npE" eventType="valueChanged" id="2tC-t8-Kpt"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -748,9 +748,8 @@
         <image name="white-icon" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="q97-NZ-RRa"/>
-        <segue reference="OeR-52-z40"/>
-        <segue reference="wyy-Dl-8f8"/>
+        <segue reference="6WK-Gy-dBQ"/>
+        <segue reference="JoY-dm-tsL"/>
         <segue reference="uaJ-LJ-mro"/>
         <segue reference="1AH-IY-Lir"/>
         <segue reference="tWG-M2-LTF"/>

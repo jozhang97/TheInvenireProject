@@ -281,7 +281,7 @@ class profileViewController: ViewController, UITableViewDelegate, UITableViewDat
         let currLocation = findLocation()
         print(currLocation)
         print(musicLocation)
-        return round(100*musicLocation.distanceInMilesTo(currLocation))/100
+        return round(10*musicLocation.distanceInMilesTo(currLocation))/10
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -292,7 +292,7 @@ class profileViewController: ViewController, UITableViewDelegate, UITableViewDat
             vc.selectedArtist = self.artistTitles[selectedSongIndex]
             vc.selectedSongName = self.songTitles[selectedSongIndex]
             vc.selectedAlbum  = self.albumTitles[selectedSongIndex]
-            vc.selectedSharedBy = "Shared by " + self.peopleNames[selectedSongIndex]
+            vc.selectedSharedBy = self.peopleNames[selectedSongIndex]
             vc.selectedDistance = String(findDistance(locations[selectedSongIndex])) + " miles away."
             vc.selectedLikes = "Liked by " + String(likes[selectedSongIndex]) + " people!"
             vc.selectedArtwork = self.artworks[selectedSongIndex]
