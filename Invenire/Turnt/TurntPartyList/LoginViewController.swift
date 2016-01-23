@@ -41,7 +41,8 @@ class LoginViewController: ViewController, UITextFieldDelegate {
         username.delegate = self
         password.delegate = self
         
-        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        view.addGestureRecognizer(tap)
     }
     
     func setupBufferView() {

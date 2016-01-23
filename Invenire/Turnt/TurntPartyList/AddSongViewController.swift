@@ -47,7 +47,7 @@ class AddSongViewController: ViewController, UITextFieldDelegate, CLLocationMana
             let artist = nowPlaying.valueForProperty(MPMediaItemPropertyArtist) as? String
             let album = nowPlaying.valueForProperty(MPMediaItemPropertyAlbumTitle) as? String
             let imageData = UIImagePNGRepresentation(self.albumArt!.image!)
-            let artwork = PFFile(data: imageData!)
+            let artwork = PFFile(name: "artwork_" + title!, data: UIImageJPEGRepresentation(self.albumArt!.image!, 0.5)!)
             print(title != nil)
             print(artist != nil)
             print(album != nil)

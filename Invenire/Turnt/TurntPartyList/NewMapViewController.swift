@@ -62,9 +62,10 @@ class NewMapViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         mapView.frame = CGRectMake(0,0, UIScreen.mainScreen().bounds.width, UIScreen.mainScreen().bounds.height)
         segmentedControl.frame = CGRectMake(UIScreen.mainScreen().bounds.width/8, UIScreen.mainScreen().bounds.height * 1/15, UIScreen.mainScreen().bounds.width * 8/10, 35)
         segmentedControl.tintColor = UIColor.whiteColor()
-        segmentedControl.backgroundColor = UIColor.blueColor()
+        segmentedControl.backgroundColor = UIColor(red: 0.4431, green: 0.2275, blue: 0.6471, alpha: 1.0) /* #713aa5 */
         segmentedControl.layer.borderColor = UIColor.whiteColor().CGColor
         segmentedControl.layer.borderWidth = 2
+        
         
         zoominButton.frame = CGRectMake(UIScreen.mainScreen().bounds.width - 50, UIScreen.mainScreen().bounds.height/5, 30, 30)
         zoomoutButton.frame = CGRectMake(UIScreen.mainScreen().bounds.width - 50, UIScreen.mainScreen().bounds.height/5 + 33, 30, 30)

@@ -56,9 +56,11 @@ class TableViewController: ViewController, UITableViewDelegate, UITableViewDataS
         tableView.backgroundColor = UIColor.clearColor()
         tableView.backgroundView?.backgroundColor = UIColor.clearColor()
         tableView.backgroundView = nil
-        tableView.frame = CGRectMake(UIScreen.mainScreen().bounds.width/10, UIScreen.mainScreen().bounds.height * 1/10 + 45, UIScreen.mainScreen().bounds.width * 8/10, UIScreen.mainScreen().bounds.height*25/32)
+        tableView.frame = CGRectMake(UIScreen.mainScreen().bounds.width*0.5/10, UIScreen.mainScreen().bounds.height * 1/10 + 45, UIScreen.mainScreen().bounds.width * 9/10, UIScreen.mainScreen().bounds.height*25/32)
         
-        segmentControl.frame = CGRectMake(UIScreen.mainScreen().bounds.width/8, UIScreen.mainScreen().bounds.height * 1/10, UIScreen.mainScreen().bounds.width * 8/10, 40)
+        segmentControl.frame = CGRectMake(UIScreen.mainScreen().bounds.width/2-UIScreen.mainScreen().bounds.width * 8/20, UIScreen.mainScreen().bounds.height * 1/10 + 5, UIScreen.mainScreen().bounds.width * 8/10, 30)
+        segmentControl.layer.cornerRadius = 15.0;
+        segmentControl.layer.masksToBounds = true
         segmentControl.tintColor = UIColor.whiteColor()
         segmentControl.setTitle("POPULAR", forSegmentAtIndex: 0)
         segmentControl.setTitle("RECENT", forSegmentAtIndex: 1)

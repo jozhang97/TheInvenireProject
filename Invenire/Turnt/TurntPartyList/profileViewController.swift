@@ -61,17 +61,17 @@ class profileViewController: ViewController, UITableViewDelegate, UITableViewDat
     }
     
     func setupButtons() {
-        editButton.frame = CGRectMake(20,20,40,40)
+        editButton.frame = CGRectMake(UIScreen.mainScreen().bounds.width*0.5/10, UIScreen.mainScreen().bounds.height*0.5/10,40,40)
         
         backButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         backButton.setTitle("BACK", forState: .Normal)
         backButton.titleLabel?.font = UIFont(name: "Futura", size: 16)
-        backButton.frame = CGRectMake(UIScreen.mainScreen().bounds.width/2 - 50, 20, 100, 40)
+        backButton.frame = CGRectMake(UIScreen.mainScreen().bounds.width*7.25/10, UIScreen.mainScreen().bounds.height*0.5/10, 100, 40)
         
         logoutButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         logoutButton.setTitle("LOG OUT", forState: .Normal)
         logoutButton.titleLabel?.font = UIFont(name: "Futura", size: 16)
-        logoutButton.frame = CGRectMake(UIScreen.mainScreen().bounds.width-100, 20, 100, 40)
+        logoutButton.frame = CGRectMake(UIScreen.mainScreen().bounds.width*7/10, UIScreen.mainScreen().bounds.height*9.25/10, 100, 40)
         
     }
     
@@ -93,7 +93,7 @@ class profileViewController: ViewController, UITableViewDelegate, UITableViewDat
         postsTableView.backgroundColor = UIColor.clearColor()
         postsTableView.backgroundView?.backgroundColor = UIColor.clearColor()
         postsTableView.backgroundView = nil
-        postsTableView.frame = CGRectMake(UIScreen.mainScreen().bounds.width/8, UIScreen.mainScreen().bounds.height * 1.7/4 + 45, UIScreen.mainScreen().bounds.width * 0.75, UIScreen.mainScreen().bounds.height*15/32)
+        postsTableView.frame = CGRectMake(UIScreen.mainScreen().bounds.width*0.5/10, UIScreen.mainScreen().bounds.height * 1.7/4 + 45, UIScreen.mainScreen().bounds.width * 9/10, UIScreen.mainScreen().bounds.height*14/32)
         
         segmentControl.frame = CGRectMake(UIScreen.mainScreen().bounds.width/8, UIScreen.mainScreen().bounds.height * 1.7/4, UIScreen.mainScreen().bounds.width * 0.75, 35)
         segmentControl.tintColor = UIColor.whiteColor()
@@ -102,6 +102,8 @@ class profileViewController: ViewController, UITableViewDelegate, UITableViewDat
         segmentControl.backgroundColor = UIColor.clearColor()
         segmentControl.layer.borderColor = UIColor.whiteColor().CGColor
         segmentControl.layer.borderWidth = 2
+        segmentControl.layer.cornerRadius = 15.0;
+        segmentControl.layer.masksToBounds = true
     }
     
     override func viewDidLoad() {
