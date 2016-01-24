@@ -78,13 +78,13 @@ class profileViewController: ViewController, UITableViewDelegate, UITableViewDat
     
     func setupProfile() {
         userNameLabel.font = UIFont(name: "Futura", size: 25)
-        userNameLabel.frame = CGRectMake(10, 60, UIScreen.mainScreen().bounds.width - 20, 35)
+        userNameLabel.frame = CGRectMake(UIScreen.mainScreen().bounds.width*1/10, 55, UIScreen.mainScreen().bounds.width*8/10, 35)
         userNameLabel.adjustsFontSizeToFitWidth = true
         userNameLabel.textColor = UIColor.whiteColor()
         
         imageLabel.layer.cornerRadius = imageLabel.frame.size.width / 2;
         imageLabel.clipsToBounds = true
-        imageLabel.frame = CGRectMake(UIScreen.mainScreen().bounds.width/2 - 65, UIScreen.mainScreen().bounds.height*1.6/10+8, 130, 130)
+        imageLabel.frame = CGRectMake(UIScreen.mainScreen().bounds.width/2 - 60, UIScreen.mainScreen().bounds.height*1.6/10+8, 120, 120)
         imageLabel.contentMode = .ScaleAspectFill
         
     }
@@ -94,9 +94,9 @@ class profileViewController: ViewController, UITableViewDelegate, UITableViewDat
         postsTableView.backgroundColor = UIColor.clearColor()
         postsTableView.backgroundView?.backgroundColor = UIColor.clearColor()
         postsTableView.backgroundView = nil
-        postsTableView.frame = CGRectMake(UIScreen.mainScreen().bounds.width*0.5/10, UIScreen.mainScreen().bounds.height * 1.7/4 + 45, UIScreen.mainScreen().bounds.width * 9/10, UIScreen.mainScreen().bounds.height*14/32)
+        postsTableView.frame = CGRectMake(UIScreen.mainScreen().bounds.width*0.5/10, UIScreen.mainScreen().bounds.height*17/32, UIScreen.mainScreen().bounds.width * 9/10, UIScreen.mainScreen().bounds.height*12/32)
         
-        segmentControl.frame = CGRectMake(UIScreen.mainScreen().bounds.width/8, UIScreen.mainScreen().bounds.height * 1.7/4, UIScreen.mainScreen().bounds.width * 0.75, 35)
+        segmentControl.frame = CGRectMake(UIScreen.mainScreen().bounds.width/8, UIScreen.mainScreen().bounds.height * 14/32, UIScreen.mainScreen().bounds.width * 0.75, 35)
         segmentControl.tintColor = UIColor.whiteColor()
         segmentControl.setTitle("MY POSTS", forSegmentAtIndex: 0)
         segmentControl.setTitle("MY LIKES", forSegmentAtIndex: 1)

@@ -2,7 +2,15 @@
 
 
 
+
+
+
+
 //  SongDetailViewController.swift
+
+
+
+
 
 
 
@@ -10,7 +18,15 @@
 
 
 
+
+
+
+
 //
+
+
+
+
 
 
 
@@ -18,11 +34,27 @@
 
 
 
+
+
+
+
 //  Copyright © 2015 Jeffrey Zhang. All rights reserved.
 
 
 
+
+
+
+
 //
+
+
+
+
+
+
+
+
 
 
 
@@ -38,7 +70,23 @@ import UIKit
 
 
 
+
+
+
+
+
+
+
+
 class SongDetailViewController: ViewController {
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -50,7 +98,15 @@ class SongDetailViewController: ViewController {
     
     
     
+    
+    
+    
+    
     var selectedSongName = ""
+    
+    
+    
+    
     
     
     
@@ -58,7 +114,15 @@ class SongDetailViewController: ViewController {
     
     
     
+    
+    
+    
+    
     var selectedDistance = ""
+    
+    
+    
+    
     
     
     
@@ -66,17 +130,35 @@ class SongDetailViewController: ViewController {
     
     
     
+    
+    
+    
+    
     var selectedSharedBy = ""
     
     
+    
+    
+    
     var date = NSDate()
+    
+    
+    
     
     
     var selectedArtwork = UIImage(named: "Music")
     
     
     
+    
+    
+    
+    
     var check = 0
+    
+    
+    
+    
     
     
     
@@ -88,23 +170,51 @@ class SongDetailViewController: ViewController {
     
     
     
-    var songLabel = UILabel(frame: CGRect(x: 30, y: UIScreen.mainScreen().bounds.height/2 + 7, width: UIScreen.mainScreen().bounds.width - 80, height: 24))
     
     
     
-    var artistLabel = UILabel(frame: CGRect(x: 30, y: UIScreen.mainScreen().bounds.height/2 + 24 + 10, width: UIScreen.mainScreen().bounds.width - 80, height: 20))
     
     
     
-    var albumLabel = UILabel(frame: CGRect(x: 30, y: UIScreen.mainScreen().bounds.height/2 + 44 + 10, width: UIScreen.mainScreen().bounds.width - 80, height: 20))
+    
+    
+    var songLabel = UILabel(frame: CGRect(x: 30, y: UIScreen.mainScreen().bounds.height*10/20, width: UIScreen.mainScreen().bounds.width - 80, height: 24))
     
     
     
-    var likesLabel = UILabel(frame: CGRect(x: 30, y: UIScreen.mainScreen().bounds.height/2 + 90 + 10, width: UIScreen.mainScreen().bounds.width - 80, height: 20))
     
     
     
-    var sharedByLabel = UILabel(frame: CGRect(x: 30, y: UIScreen.mainScreen().bounds.height/2 + 225 + 10, width: UIScreen.mainScreen().bounds.width - 80, height: 20))
+    
+    var artistLabel = UILabel(frame: CGRect(x: 30, y: UIScreen.mainScreen().bounds.height*10/20 + 20, width: UIScreen.mainScreen().bounds.width - 80, height: 20))
+    
+    
+    
+    
+    
+    
+    
+    var albumLabel = UILabel(frame: CGRect(x: 30, y: UIScreen.mainScreen().bounds.height*10/20 + 38, width: UIScreen.mainScreen().bounds.width - 80, height: 20))
+    
+    
+    
+    
+    
+    
+    
+    var likesLabel = UILabel(frame: CGRect(x: 30, y: UIScreen.mainScreen().bounds.height*13/20, width: UIScreen.mainScreen().bounds.width - 80, height: 20))
+    
+    
+    
+    
+    
+    
+    
+    var sharedByLabel = UILabel(frame: CGRect(x: 30, y: UIScreen.mainScreen().bounds.height*17.2/20, width: UIScreen.mainScreen().bounds.width - 80, height: 20))
+    
+    
+    
+    
     
     
     
@@ -112,19 +222,39 @@ class SongDetailViewController: ViewController {
     
     
     
-    var albumArt = UIImageView(frame: CGRect(x: 30, y: 70, width: UIScreen.mainScreen().bounds.width - 60, height: UIScreen.mainScreen().bounds.height*1.5/4))
     
     
     
-    var profPicFrame = UIImageView(frame: CGRectMake(UIScreen.mainScreen().bounds.width/2 - 50, UIScreen.mainScreen().bounds.height/2 + 145, 80,80))
+    
+    var albumArt = UIImageView(frame: CGRect(x: 30, y: 70, width: UIScreen.mainScreen().bounds.width - 60, height: UIScreen.mainScreen().bounds.height*1.45/4))
     
     
     
-    var timeLabel = UILabel(frame: CGRect(x: 30, y: UIScreen.mainScreen().bounds.height/2 + 245 + 10, width: UIScreen.mainScreen().bounds.width - 80, height: 20))
+    
+    
+    
+    
+    var profPicFrame = UIImageView(frame: CGRectMake(UIScreen.mainScreen().bounds.width/2 - 50, UIScreen.mainScreen().bounds.height*14/20, UIScreen.mainScreen().bounds.width * 1.25/5,UIScreen.mainScreen().bounds.width * 1.25/5))
+    
+    
+    
+    
+    
+    
+    
+    var timeLabel = UILabel(frame: CGRect(x: 30, y: UIScreen.mainScreen().bounds.height*17.25/20 + 17, width: UIScreen.mainScreen().bounds.width - 80, height: 20))
+    
+    
+    
+    
     
     
     
     //    let likesHeart = UIImage(CGRect(x: <#T##Int#>, y: <#T##Int#>, width: <#T##Int#>, height: <#T##Int#>))
+    
+    
+    
+    
     
     
     
@@ -136,11 +266,27 @@ class SongDetailViewController: ViewController {
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
     @IBAction func backPressed(sender: AnyObject) {
         
         
+        
+        
+        
         self.dismissViewControllerAnimated(true, completion: nil)
+        
         if check == 0 {
+            
+            
+            
+            
             
             
             
@@ -148,7 +294,15 @@ class SongDetailViewController: ViewController {
             
             
             
+            
+            
+            
+            
         }
+            
+            
+            
+            
             
             
             
@@ -156,7 +310,15 @@ class SongDetailViewController: ViewController {
             
             
             
+            
+            
+            
+            
             //performSegueWithIdentifier("back2", sender: self)
+            
+            
+            
+            
             
             
             
@@ -164,7 +326,15 @@ class SongDetailViewController: ViewController {
             
             
             
+            
+            
+            
+            
         else {
+            
+            
+            
+            
             
             
             
@@ -172,11 +342,23 @@ class SongDetailViewController: ViewController {
             
             
             
+            
+            
+            
+            
         }
         
         
         
+        
+        
+        
+        
     }
+    
+    
+    
+    
     
     
     
@@ -184,7 +366,15 @@ class SongDetailViewController: ViewController {
         
         
         
+        
+        
+        
+        
         if (UIDevice.currentDevice().orientation == UIDeviceOrientation.LandscapeLeft ||
+            
+            
+            
+            
             
             
             
@@ -192,7 +382,15 @@ class SongDetailViewController: ViewController {
             
             
             
+            
+            
+            
+            
             UIDevice.currentDevice().orientation == UIDeviceOrientation.Unknown) {
+                
+                
+                
+                
                 
                 
                 
@@ -200,7 +398,15 @@ class SongDetailViewController: ViewController {
                 
                 
                 
+                
+                
+                
+                
         }
+            
+            
+            
+            
             
             
             
@@ -208,7 +414,15 @@ class SongDetailViewController: ViewController {
             
             
             
+            
+            
+            
+            
             return true
+            
+            
+            
+            
             
             
             
@@ -216,7 +430,19 @@ class SongDetailViewController: ViewController {
         
         
         
+        
+        
+        
+        
     }
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -228,11 +454,27 @@ class SongDetailViewController: ViewController {
         
         
         
+        
+        
+        
+        
         return [UIInterfaceOrientationMask.Portrait ,UIInterfaceOrientationMask.PortraitUpsideDown]
         
         
         
+        
+        
+        
+        
     }
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -244,7 +486,15 @@ class SongDetailViewController: ViewController {
         
         
         
+        
+        
+        
+        
         super.viewDidLoad()
+        
+        
+        
+        
         
         
         
@@ -256,7 +506,19 @@ class SongDetailViewController: ViewController {
         
         
         
+        
+        
+        
+        
+        
+        
+        
+        
         songLabel.text = selectedSongName
+        
+        
+        
+        
         
         
         
@@ -264,7 +526,15 @@ class SongDetailViewController: ViewController {
         
         
         
+        
+        
+        
+        
         albumLabel.text = selectedAlbum
+        
+        
+        
+        
         
         
         
@@ -272,19 +542,39 @@ class SongDetailViewController: ViewController {
         
         
         
+        
+        
+        
+        
         sharedByLabel.text = selectedSharedBy + " at " + selectedDistance
+        
+        
+        
+        
         
         
         
         albumArt.image = selectedArtwork
         
+        
+        
         timeLabel.text = "Posted " + String(Int(round(-1*date.timeIntervalSinceNow/60/60/24))) + " days ago"
+        
+        
+        
         
         
         songLabel.textColor = UIColor.whiteColor()
         
         
+        
+        
+        
         artistLabel.textColor = UIColor.whiteColor()
+        
+        
+        
+        
         
         
         
@@ -292,13 +582,29 @@ class SongDetailViewController: ViewController {
         
         
         
+        
+        
+        
+        
         likesLabel.textColor = UIColor.whiteColor()
+        
+        
+        
+        
         
         
         
         sharedByLabel.textColor = UIColor.whiteColor()
         
+        
+        
         timeLabel.textColor = UIColor.whiteColor()
+        
+        
+        
+        
+        
+        
         
         
         
@@ -308,7 +614,15 @@ class SongDetailViewController: ViewController {
         
         
         
+        
+        
+        
+        
         artistLabel.textAlignment = .Center
+        
+        
+        
+        
         
         
         
@@ -316,11 +630,21 @@ class SongDetailViewController: ViewController {
         
         
         
+        
+        
+        
+        
         likesLabel.textAlignment = .Center
         
         
         
+        
+        
+        
+        
         sharedByLabel.textAlignment = .Center
+        
+        
         
         timeLabel.textAlignment = .Center
         
@@ -328,31 +652,65 @@ class SongDetailViewController: ViewController {
         
         
         
-        songLabel.font = UIFont(name: "Futura", size: 18)
         
         
         
-        artistLabel.font = UIFont(name: "Futura", size: 16)
         
         
         
-        albumLabel.font = UIFont(name: "Futura", size: 16)
+        songLabel.font = UIFont(name: "Futura", size: 16)
         
         
         
-        likesLabel.font = UIFont(name: "Futura", size: 16)
         
         
         
-        sharedByLabel.font = UIFont(name: "Futura", size: 13)
         
-        timeLabel.font = UIFont(name: "Futura", size: 13)
+        artistLabel.font = UIFont(name: "Futura", size: 14)
+        
+        
+        
+        
+        
+        
+        
+        albumLabel.font = UIFont(name: "Futura", size: 14)
+        
+        
+        
+        
+        
+        
+        
+        likesLabel.font = UIFont(name: "Futura", size: 14)
+        
+        
+        
+        
+        
+        
+        
+        sharedByLabel.font = UIFont(name: "Futura", size: 12)
+        
+        
+        
+        timeLabel.font = UIFont(name: "Futura", size: 12)
+        
+        
+        
+        
+        
+        
         
         
         
         
         
         albumArt.contentMode = .ScaleAspectFit
+        
+        
+        
+        
         
         
         
@@ -364,7 +722,19 @@ class SongDetailViewController: ViewController {
         
         
         
+        
+        
+        
+        
+        
+        
+        
+        
         //        let darkBlur = UIBlurEffect(style: UIBlurEffectStyle.Dark)
+        
+        
+        
+        
         
         
         
@@ -372,7 +742,15 @@ class SongDetailViewController: ViewController {
         
         
         
+        
+        
+        
+        
         //        blurView.frame = albumArt.bounds
+        
+        
+        
+        
         
         
         
@@ -380,7 +758,15 @@ class SongDetailViewController: ViewController {
         
         
         
+        
+        
+        
+        
         //
+        
+        
+        
+        
         
         
         
@@ -388,11 +774,23 @@ class SongDetailViewController: ViewController {
         
         
         
+        
+        
+        
+        
         self.view.backgroundColor = UIColor.clearColor()
         
         
         
+        
+        
+        
+        
         //        profileImage.contentMode = .ScaleAspectFit
+        
+        
+        
+        
         
         
         
@@ -404,7 +802,19 @@ class SongDetailViewController: ViewController {
         
         
         
+        
+        
+        
+        
+        
+        
+        
+        
         view.addSubview(artistLabel)
+        
+        
+        
+        
         
         
         
@@ -412,7 +822,15 @@ class SongDetailViewController: ViewController {
         
         
         
+        
+        
+        
+        
         view.addSubview(likesLabel)
+        
+        
+        
+        
         
         
         
@@ -420,17 +838,39 @@ class SongDetailViewController: ViewController {
         
         
         
+        
+        
+        
+        
         view.addSubview(songLabel)
+        
+        
+        
+        
         
         
         
         view.addSubview(albumArt)
         
+        
+        
         view.addSubview(timeLabel)
         
         
         
+        
+        
+        
+        
     }
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -442,7 +882,15 @@ class SongDetailViewController: ViewController {
         
         
         
+        
+        
+        
+        
         super.didReceiveMemoryWarning()
+        
+        
+        
+        
         
         
         
@@ -450,7 +898,19 @@ class SongDetailViewController: ViewController {
         
         
         
+        
+        
+        
+        
     }
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -462,7 +922,15 @@ class SongDetailViewController: ViewController {
         
         
         
+        
+        
+        
+        
         if segue.identifier == "back2" {
+            
+            
+            
+            
             
             
             
@@ -470,7 +938,15 @@ class SongDetailViewController: ViewController {
             
             
             
+            
+            
+            
+            
             if check2 == 0 {
+                
+                
+                
+                
                 
                 
                 
@@ -478,7 +954,15 @@ class SongDetailViewController: ViewController {
                 
                 
                 
+                
+                
+                
+                
             }
+                
+                
+                
+                
                 
                 
                 
@@ -486,7 +970,15 @@ class SongDetailViewController: ViewController {
                 
                 
                 
+                
+                
+                
+                
                 vc.currentState = 1
+                
+                
+                
+                
                 
                 
                 
@@ -494,11 +986,27 @@ class SongDetailViewController: ViewController {
             
             
             
+            
+            
+            
+            
         }
         
         
         
+        
+        
+        
+        
     }
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -508,69 +1016,137 @@ class SongDetailViewController: ViewController {
     
     func getMemberInfo() {
         
+        
+        
         //this first query deals with loading user profile image and name
+        
+        
         
         let query = PFQuery(className:"_User")
         
+        
+        
         query.whereKey("username", equalTo: self.selectedSharedBy)
+        
+        
         
         query.findObjectsInBackgroundWithBlock {
             
+            
+            
             (objects: [PFObject]?, error: NSError?) -> Void in
+            
+            
             
             if error == nil {
                 
+                
+                
                 if objects != nil{
+                    
+                    
                     
                     let imageFile = objects![0]["profPic"] as! PFFile
                     
+                    
+                    
                     imageFile.getDataInBackgroundWithBlock { (imageData: NSData?, error: NSError?) -> Void in if error == nil {
+                        
+                        
                         
                         let image1 = UIImage(data: imageData!)
                         
+                        
+                        
                         self.profPicFrame.image = image1
+                        
+                        
                         
                         }
                         
+                        
+                        
                     }
+                    
+                    
                     
                 }
                 
+                
+                
             }
+                
+                
                 
             else {
                 
+                
+                
                 // Log details of the failure
+                
+                
                 
                 print("Error: \(error!) \(error!.userInfo)")
                 
+                
+                
             }
+            
+            
             
         }
         
         
         
+        
+        
+        
+        
         profPicFrame.layer.cornerRadius = profPicFrame.frame.size.width / 2;
         
+        
+        
         profPicFrame.clipsToBounds = true
+        
+        
         
         profPicFrame.contentMode = .ScaleAspectFill
         
         
         
+        
+        
+        
+        
         profPicFrame.layer.borderWidth = 2
+        
+        
         
         profPicFrame.layer.borderColor = UIColor.whiteColor().CGColor
         
         
         
+        
+        
+        
+        
         view.addSubview(profPicFrame)
+        
+        
         
     }
     
     
     
+    
+    
+    
+    
     /*
+    
+    
+    
+    
     
     
     
@@ -582,7 +1158,19 @@ class SongDetailViewController: ViewController {
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
+    
+    
+    
     
     
     
@@ -590,7 +1178,15 @@ class SongDetailViewController: ViewController {
     
     
     
+    
+    
+    
+    
     // Get the new view controller using segue.destinationViewController.
+    
+    
+    
+    
     
     
     
@@ -598,11 +1194,27 @@ class SongDetailViewController: ViewController {
     
     
     
+    
+    
+    
+    
     }
     
     
     
+    
+    
+    
+    
     */
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     

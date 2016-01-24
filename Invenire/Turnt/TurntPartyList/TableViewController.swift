@@ -29,7 +29,6 @@ class TableViewController: ViewController, UITableViewDelegate, UITableViewDataS
     var datesPosted = Array<NSDate>()
     
     @IBAction func segmentChanged(sender: AnyObject) {
-        
         getParties()
     }
     
@@ -52,7 +51,7 @@ class TableViewController: ViewController, UITableViewDelegate, UITableViewDataS
         tableView.dataSource = self
         getParties()
         tableView.separatorStyle = UITableViewCellSeparatorStyle.None
-        
+        view.addSubview(tableView)
         tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         tableView.backgroundColor = UIColor.clearColor()
         tableView.backgroundView?.backgroundColor = UIColor.clearColor()
@@ -90,8 +89,9 @@ class TableViewController: ViewController, UITableViewDelegate, UITableViewDataS
         bufferView.startAnimating()
         setupTop()
         setupTable()
-        self.tableView.reloadData()
+        
         bufferView.stopAnimating()
+        
     }
     
     func clearArrays(){
@@ -127,40 +127,31 @@ class TableViewController: ViewController, UITableViewDelegate, UITableViewDataS
         else if segmentControl.selectedSegmentIndex == 2{
             query.whereKey("location", nearGeoPoint: findLocation())
         }
-        /***
-         Something wrong with images and synchronous queries
-         */
-        let messages = try? query.findObjects()
+        
         query.whereKey("location", nearGeoPoint: findLocation(), withinMiles: 100)
         query.limit = 15
-        query.findObjectsInBackgroundWithBlock {
-            (objects: [PFObject]?, error: NSError?) -> Void in
-            if error == nil {
-                if objects != nil {
-                    for object in objects! {
-                        self.artistNames.append(object["artist"] as! String)
-                        self.songNames.append(object["title"] as! String)
-                        self.albumNames.append(object["album"] as! String)
-                        self.likesList.append(object["numLikes"] as! Int)
-                        self.locations.append(object["location"] as! PFGeoPoint)
-                        self.peopleNames.append(object["username"] as! String)
-                        let artwork = object["artwork"] as! PFFile
-                        let image = try? UIImage(data: artwork.getData())
-                        self.artworks.append(image!!)
-                        self.datesPosted.append(object.createdAt! as NSDate)
-                    }
-                    self.bufferView.startAnimating()
-                    self.tableView.reloadData()
-                    self.bufferView.stopAnimating()
-                }
-            } else {
-                // Log details of the failure
-                print("Error: \(error!) \(error!.userInfo)")
+        let objects = try? query.findObjects()
+        if objects != nil {
+            for object in objects! {
+                self.artistNames.append(object["artist"] as! String)
+                self.songNames.append(object["title"] as! String)
+                self.albumNames.append(object["album"] as! String)
+                self.likesList.append(object["numLikes"] as! Int)
+                self.locations.append(object["location"] as! PFGeoPoint)
+                self.peopleNames.append(object["username"] as! String)
+                let artwork = object["artwork"] as! PFFile
+                let image = try? UIImage(data: artwork.getData())
+                self.artworks.append(image!!)
+                self.datesPosted.append(object.createdAt! as NSDate)
+                
             }
+            self.bufferView.startAnimating()
+            self.tableView.reloadData()
+            self.bufferView.stopAnimating()
+            
         }
-        bufferView.stopAnimating()
     }
-    
+
     func check(cell:TableViewCell) -> Int {
         let query = PFQuery(className:"Posts")
         var answer = 0
