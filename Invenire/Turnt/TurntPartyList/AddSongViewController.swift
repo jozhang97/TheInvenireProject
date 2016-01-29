@@ -113,18 +113,22 @@ class AddSongViewController: ViewController, UITextFieldDelegate, CLLocationMana
     }
     
     func getNowplayinginfo() {
+        let diceRoll = Int(arc4random_uniform(6) + 1)
         if let nowPlaying = musicPlayer.nowPlayingItem {
             let title = nowPlaying[MPMediaItemPropertyTitle] as? String
             let artist = nowPlaying[MPMediaItemPropertyArtist] as? String
             let album = nowPlaying[MPMediaItemPropertyAlbumTitle] as? String
             var artwork: UIImage!
+            
+            /* copyright issues here!
             let size = CGSize(width: 300, height: 300)
             if let art = nowPlaying.valueForProperty(MPMediaItemPropertyArtwork) as? MPMediaItemArtwork {
                 artwork = art.imageWithSize(size)
             }
+            */
             
             if artwork == nil {
-                artwork = UIImage(named: "Music.png")!
+                artwork = UIImage(named: "Music\(diceRoll).png")!
             }
             
             songTitle!.text = title
@@ -156,7 +160,7 @@ class AddSongViewController: ViewController, UITextFieldDelegate, CLLocationMana
             titleName.backgroundColor = UIColor.clearColor()
             
             view.addSubview(titleName)
-            let artwork = UIImage(named: "Music.png")!
+            let artwork = UIImage(named: "Music\(diceRoll).png")!
             
             if let imageView = albumArt
             {
