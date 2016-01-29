@@ -94,7 +94,7 @@ class AddSongViewController: ViewController, UITextFieldDelegate, CLLocationMana
         locationManager.startUpdatingLocation()
         setupView()
         getNowplayinginfo()
-
+        
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         view.addGestureRecognizer(tap)
     }
